@@ -5,8 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ETL"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="ETL" WindowState="Normal" Height="960" Width="1280" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" MouseDown="Window_MouseDown">
     <Grid>
-        <TextBlock x:Name="pageTB" ></TextBlock>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <Grid Grid.Row="0">
+            <DockPanel>
+                <Menu>
+                    <MenuItem Header="File">
+                        
+                    </MenuItem>
+                </Menu>
+            </DockPanel>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <DataGrid/>
+        </Grid>
     </Grid>
 </Window>
