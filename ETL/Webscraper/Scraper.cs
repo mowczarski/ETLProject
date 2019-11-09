@@ -1,39 +1,42 @@
-﻿using HtmlAgilityPack;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web;
 
 namespace ETL.Webscraper
 {
-    public class Scraper
+    public class MovieModel
     {
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public string Director { get; set; }
+        public List<Actor> Actors { get; set; }
 
-        private ObservableCollection<EntryModel> _entries = new ObservableCollection<EntryModel>();
-
-        public ObservableCollection<EntryModel> Entries
+        public MovieModel(string cTitle, string cDescription, string cDirector, List<Actor> cActors)
         {
-            get { return _entries; }
-            set { _entries = value; }
+            Title = cTitle;
+            Description = cDescription;
+            Director = cDirector;
+            Actors = cActors;
         }
 
-        public void ScrapeData(string page)
+        override public string ToString(){
+            return Title;
+        }
+    }
+
+    public class Actor
+    {
+        public string Name { get; set; }
+
+        public Actor(string cName)
         {
-            var web = new HtmlWeb();
-            var document = web.Load(page);
+            Name = cName;
+        }
 
-            var art = document.DocumentNode.SelectNodes("//*[@class = 'cat-prod-row-desc']");
-
-            foreach ( var singleArt in art)
-            {
-                var header = HttpUtility.HtmlDecode(singleArt.SelectSingleNode(".//strong[@class ='cat-prod-row-name']").InnerText);
-                var score = HttpUtility.HtmlDecode(singleArt.SelectSingleNode(".//span[@class ='prod-review']/span[@class ='product-score']").InnerText);
-                Debug.Print(header);
-            }
+        override public string ToString(){
+            return Name;
         }
     }
 }

@@ -23,16 +23,22 @@ namespace ETL
     public partial class MainWindow : Window
     {
 
-        Scraper scraper;
+        FilmWebScraper scraper;
         public MainWindow()
         {
 
             InitializeComponent();
-            scraper = new Scraper();
+            scraper = new FilmWebScraper();
 
             DataContext = scraper;
-
-            scraper.ScrapeData("https://www.ceneo.pl/Komputery");
+            var movies = scraper.ScrapeMovies();
+            System.Diagnostics.Debug.Print(movies.Count.ToString());
+            foreach(var movie in movies){
+                System.Diagnostics.Debug.Print(movie.Title);
+                System.Diagnostics.Debug.Print(movie.Description);
+                System.Diagnostics.Debug.Print(movie.Director);
+                System.Diagnostics.Debug.Print(movie.Actors.Count.ToString());
+            }
         }
     }
 }
