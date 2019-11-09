@@ -1,42 +1,91 @@
-﻿using System;
+﻿using HtmlAgilityPack;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace ETL.Webscraper
 {
-    public class MovieModel
+    public class FilmWebScraper
     {
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public string Director { get; set; }
-        public List<Actor> Actors { get; set; }
+        private readonly string FilmWebUrl = "https://www.filmweb.pl";
+        private readonly string MoviesListSuffix = "/films/search?orderBy=popularity&descending=true&page=";
+        private readonly string CastSuffix = "/cast/actors";
+        private readonly HtmlWeb HtmlWeb = new HtmlWeb();
 
-        public MovieModel(string cTitle, string cDescription, string cDirector, List<Actor> cActors)
+        public List<MovieModel> ScrapeMovies()
         {
-            Title = cTitle;
-            Description = cDescription;
-            Director = cDirector;
-            Actors = cActors;
+            var resultMovies = new List<MovieModel>();
+            for (int i=1; i<1001; i++){
+                var page = HtmlWeb.Load(FilmWebUrl + MoviesListSuffix + i).DocumentNode;
+                var movies = page.SelectNodes("//*[@class = 'hits__item']");
+     
+                foreach (var movie in movies)
+                {
+                    var movieLinkNode = movie.SelectSingleNode(".//a[@class ='filmPreview__link']");
+                    if (movieLinkNode != null){
+                        resultMovies.Add(ScrapeMovie(HttpUtility.HtmlDecode(movieLinkNode.GetAttributeValue("href", "default"))));
+                    } else {
+                        System.Diagnostics.Debug.Print("Something wrong happenned on page: " + i + " after:" + resultMovies[resultMovies.Count-1]);
+                    }
+                    
+                }            
+            }   
+            return resultMovies;
         }
-
-        override public string ToString(){
-            return Title;
-        }
-    }
-
-    public class Actor
-    {
-        public string Name { get; set; }
-
-        public Actor(string cName)
+        
+        private MovieModel ScrapeMovie(string url)
         {
-            Name = cName;
+            var page = HtmlWeb.Load(FilmWebUrl + url).DocumentNode;
+            
+            return new MovieModel(
+                getFilmTitle(page, url),
+                getFilmDescription(page),
+                getFilmDirector(page),
+                getActors(url)
+            );
         }
 
-        override public string ToString(){
-            return Name;
+        private string getFilmTitle(HtmlNode page, string url)
+        {
+            return page.SelectSingleNode("//h1[@class = 'inline filmTitle']").SelectSingleNode("//a[@href = '" + url + "']").InnerText;
+        }
+
+        private string getFilmDescription(HtmlNode page)
+        {
+            var descriptionNode = page.SelectSingleNode("//div[@class = 'filmPlot bottom-15']");
+
+            if (descriptionNode != null)
+            {
+                return descriptionNode.InnerText;
+            } else
+            {
+                return "No description";
+            }
+        
+        }
+
+        private string getFilmDirector(HtmlNode page)
+        {
+            return page.SelectSingleNode("//li[@itemprop = 'director']").InnerText;
+        }
+
+        private List<Actor> getActors(String url)
+        {
+            var result = new List<Actor>();
+            var page = HtmlWeb.Load(FilmWebUrl + url + CastSuffix).DocumentNode;
+            var actorNodes = page.SelectNodes("//a[@rel = 'v:starring']");
+
+            foreach (var actor in actorNodes)
+            {
+                result.Add(new Actor(actor.InnerText));
+            }
+
+            return result;
         }
     }
 }
