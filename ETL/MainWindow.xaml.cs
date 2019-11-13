@@ -1,4 +1,5 @@
-﻿using ETL.Webscraper;
+﻿using ETL.Callers;
+using ETL.Webscraper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,7 @@ namespace ETL
     {
 
         FilmWebScraper scraper;
+        DataCallers db = new DataCallers();
         public MainWindow()
         {
 
@@ -34,6 +36,9 @@ namespace ETL
             var movies = scraper.ScrapeMovies();
             System.Diagnostics.Debug.Print(movies.Count.ToString());
             foreach(var movie in movies){
+
+                //db.AddMovie(new Data.Model.Movie { Title = movie.Title });
+
                 System.Diagnostics.Debug.Print(movie.Title);
                 System.Diagnostics.Debug.Print(movie.Description);
                 System.Diagnostics.Debug.Print(movie.Director);
