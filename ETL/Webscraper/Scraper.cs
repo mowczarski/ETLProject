@@ -17,15 +17,18 @@ namespace ETL.Webscraper
         private readonly string CastSuffix = "/cast/actors";
         private readonly HtmlWeb HtmlWeb = new HtmlWeb();
 
-        public List<MovieModel> ScrapeMovies()
+        private int counter = 0;
+
+        public List<MovieModel> ScrapeMovies(int from, int to)
         {
             var resultMovies = new List<MovieModel>();
-            for (int i=1; i<1001; i++){
+            for (int i = from; i < to; i++){
                 var page = HtmlWeb.Load(FilmWebUrl + MoviesListSuffix + i).DocumentNode;
                 var movies = page.SelectNodes("//*[@class = 'hits__item']");
      
                 foreach (var movie in movies)
                 {
+                    Console.WriteLine("Scrapping: " + counter++);
                     var movieLinkNode = movie.SelectSingleNode(".//a[@class ='filmPreview__link']");
                     if (movieLinkNode != null){
                         resultMovies.Add(ScrapeMovie(HttpUtility.HtmlDecode(movieLinkNode.GetAttributeValue("href", "default"))));
@@ -34,7 +37,8 @@ namespace ETL.Webscraper
                     }
                     
                 }            
-            }   
+            }
+            Console.WriteLine("Return on: " + counter++);
             return resultMovies;
         }
         
@@ -52,7 +56,7 @@ namespace ETL.Webscraper
 
         private string getFilmTitle(HtmlNode page, string url)
         {
-            return page.SelectSingleNode("//h1[@class = 'inline filmTitle']").SelectSingleNode("//a[@href = '" + url + "']").InnerText;
+            return page.SelectSingleNode("//h1[@class = 'inline filmTitle']").SelectSingleNode("//a[@href = '" + url + "']")?.InnerText;
         }
 
         private string getFilmDescription(HtmlNode page)
@@ -71,7 +75,7 @@ namespace ETL.Webscraper
 
         private string getFilmDirector(HtmlNode page)
         {
-            return page.SelectSingleNode("//li[@itemprop = 'director']").InnerText;
+            return page.SelectSingleNode("//li[@itemprop = 'director']")?.InnerText;
         }
 
         private List<Actor> getActors(String url)
@@ -80,9 +84,12 @@ namespace ETL.Webscraper
             var page = HtmlWeb.Load(FilmWebUrl + url + CastSuffix).DocumentNode;
             var actorNodes = page.SelectNodes("//a[@rel = 'v:starring']");
 
-            foreach (var actor in actorNodes)
+            if (actorNodes != null)
             {
-                result.Add(new Actor(actor.InnerText));
+                foreach (var actor in actorNodes)
+                {
+                    result.Add(new Actor(actor.InnerText));
+                }
             }
 
             return result;

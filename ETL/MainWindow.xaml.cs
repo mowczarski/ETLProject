@@ -33,7 +33,7 @@ namespace ETL
             scraper = new FilmWebScraper();
 
             DataContext = scraper;
-            var movies = scraper.ScrapeMovies();
+            var movies = scraper.ScrapeMovies(1,500);
             System.Diagnostics.Debug.Print(movies.Count.ToString());
             foreach(var movie in movies){
 

@@ -1,0 +1,15 @@
+﻿<Window x:Class="ETL.View.Main"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ETL.View"
+        mc:Ignorable="d"
+        Title="Main" Height="450" Width="800">
+    <Grid>
+        <Button Content="Start" Click="Button_Click" Margin="0,30,685,348"></Button>
+        <Button Content="Stop" Click="Button_Click_1" Margin="0,100,685,278"></Button>
+        <DataGrid Margin="335,0,0,0"> </DataGrid>
+        <Label Content="" Name="l1" Margin="0,165,597,124"></Label>
+    </Grid>
+</Window>
