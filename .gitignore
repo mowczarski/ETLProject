@@ -4,3 +4,5 @@ ETL/.vs
 ETL/packages
 DataContext/bin
 DataContext/obj
+Contract/obj
+Contract/bin

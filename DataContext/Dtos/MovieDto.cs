@@ -1,5 +1,4 @@
-﻿using DataContext.Enum;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -7,10 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataContext.Model
+namespace DataContext.Dtos
 {
     [Table("Movies")]
-    public class Movie
+    public class MovieDto
     {
         [Key]
         public int MovieId { get; set; }
@@ -26,11 +25,11 @@ namespace DataContext.Model
         public DateTime ReleaseDate { get; set; }
         public string Studio { get; set; }
         public decimal BoxOffice { get; set; }
-        public PRODUCTION_COUNTRY Production { get; set; }
+        public byte Production { get; set; }
 
         // wiele do wielu
-        public virtual ICollection<MovieType> Types { get; set; }
-        public virtual ICollection<Person> Staff { get; set; }
+        public virtual ICollection<MovieTypeDto> Types { get; set; }
+        public virtual ICollection<PersonDto> Staff { get; set; }
 
     }
 }

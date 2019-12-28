@@ -6,10 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataContext.Model
+namespace DataContext.Dtos
 {
     [Table("Persons")]
-    public class Person
+    public class PersonDto
     {
         [Key]
         public int PersonId { get; set; }
@@ -22,6 +22,6 @@ namespace DataContext.Model
         public bool isComposer { get; set; }
         public bool isDescription { get; set; }
 
-        public virtual ICollection<Movie> Movies { get; set; }
+        public virtual ICollection<MovieDto> Movies { get; set; }
     }
 }

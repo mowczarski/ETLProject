@@ -6,7 +6,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{88CBD1AD-EE09-40D5-94DC-46BAF48CE2BF}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <RootNamespace>DataContext</RootNamespace>
     <AssemblyName>DataContext</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
@@ -34,6 +34,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -69,16 +72,15 @@
   <ItemGroup>
     <Compile Include="DataSource\ETLModel.cs" />
     <Compile Include="DataSource\MovieService.cs" />
-    <Compile Include="Enum\MOVIE_TYPE.cs" />
-    <Compile Include="Enum\PRODUCTION_COUNTRY.cs" />
-    <Compile Include="Migrations\201912281612047_init.cs" />
-    <Compile Include="Migrations\201912281612047_init.designer.cs">
-      <DependentUpon>201912281612047_init.cs</DependentUpon>
+    <Compile Include="Mapper.cs" />
+    <Compile Include="Migrations\201912281833154_init.cs" />
+    <Compile Include="Migrations\201912281833154_init.designer.cs">
+      <DependentUpon>201912281833154_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Model\Movie.cs" />
-    <Compile Include="Model\MovieType.cs" />
-    <Compile Include="Model\Person.cs" />
+    <Compile Include="Dtos\MovieDto.cs" />
+    <Compile Include="Dtos\MovieTypeDto.cs" />
+    <Compile Include="Dtos\PersonDto.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -87,8 +89,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201912281612047_init.resx">
-      <DependentUpon>201912281612047_init.cs</DependentUpon>
+    <ProjectReference Include="..\Contract\Contract.csproj">
+      <Project>{2598911c-308b-4b2b-8c6e-8eebab53b8b3}</Project>
+      <Name>Contract</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201912281833154_init.resx">
+      <DependentUpon>201912281833154_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

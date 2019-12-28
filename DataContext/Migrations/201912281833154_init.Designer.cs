@@ -13,7 +13,7 @@ namespace DataContext.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201912281612047_init"; }
+            get { return "201912281833154_init"; }
         }
         
         string IMigrationMetadata.Source

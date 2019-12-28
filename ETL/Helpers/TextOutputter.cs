@@ -17,10 +17,7 @@ namespace ETL.Helpers
         public override void Write(char value)
         {
             base.Write(value);
-            textBox.Dispatcher.BeginInvoke(new Action(() =>
-            {
-                textBox.AppendText(value.ToString());
-            }));
+            textBox.Dispatcher.BeginInvoke(new Action(() => textBox.AppendText(value.ToString())));
         }
 
         public override Encoding Encoding

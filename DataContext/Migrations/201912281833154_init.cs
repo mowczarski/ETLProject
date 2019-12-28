@@ -24,7 +24,7 @@
                         ReleaseDate = c.DateTime(nullable: false, precision: 0),
                         Studio = c.String(unicode: false),
                         BoxOffice = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        Production = c.Int(nullable: false),
+                        Production = c.Byte(nullable: false),
                     })
                 .PrimaryKey(t => t.MovieId);
             
@@ -50,51 +50,51 @@
                     {
                         MovieTypeId = c.Int(nullable: false, identity: true),
                         Name = c.String(unicode: false),
-                        Type = c.Int(nullable: false),
+                        Type = c.Byte(nullable: false),
                         Description = c.String(unicode: false),
                     })
                 .PrimaryKey(t => t.MovieTypeId);
-
+            
             CreateTable(
-                "dbo.PersonMovies",
+                "dbo.PersonDtoMovieDtoes",
                 c => new
-                {
-                    Person_PersonId = c.Int(nullable: false),
-                    Movie_MovieId = c.Int(nullable: false),
-                })
-                .PrimaryKey(t => new { t.Person_PersonId, t.Movie_MovieId })
-                .ForeignKey("dbo.Persons", t => t.Person_PersonId, cascadeDelete: true)
-                .ForeignKey("dbo.Movies", t => t.Movie_MovieId, cascadeDelete: true);
-            //.Index(t => t.Person_PersonId)
-            //.Index(t => t.Movie_MovieId);
-
+                    {
+                        PersonDto_PersonId = c.Int(nullable: false),
+                        MovieDto_MovieId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => new { t.PersonDto_PersonId, t.MovieDto_MovieId })
+                .ForeignKey("dbo.Persons", t => t.PersonDto_PersonId, cascadeDelete: true)
+                .ForeignKey("dbo.Movies", t => t.MovieDto_MovieId, cascadeDelete: true);
+                //.Index(t => t.PersonDto_PersonId)
+                //.Index(t => t.MovieDto_MovieId);
+            
             CreateTable(
-                "dbo.MovieTypeMovies",
+                "dbo.MovieTypeDtoMovieDtoes",
                 c => new
-                {
-                    MovieType_MovieTypeId = c.Int(nullable: false),
-                    Movie_MovieId = c.Int(nullable: false),
-                })
-                .PrimaryKey(t => new { t.MovieType_MovieTypeId, t.Movie_MovieId })
-                .ForeignKey("dbo.MovieTypes", t => t.MovieType_MovieTypeId, cascadeDelete: true)
-                .ForeignKey("dbo.Movies", t => t.Movie_MovieId, cascadeDelete: true);
-                //.Index(t => t.MovieType_MovieTypeId)
-                //.Index(t => t.Movie_MovieId);
+                    {
+                        MovieTypeDto_MovieTypeId = c.Int(nullable: false),
+                        MovieDto_MovieId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => new { t.MovieTypeDto_MovieTypeId, t.MovieDto_MovieId })
+                .ForeignKey("dbo.MovieTypes", t => t.MovieTypeDto_MovieTypeId, cascadeDelete: true)
+                .ForeignKey("dbo.Movies", t => t.MovieDto_MovieId, cascadeDelete: true);
+                //.Index(t => t.MovieTypeDto_MovieTypeId)
+                //.Index(t => t.MovieDto_MovieId);
             
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.MovieTypeMovies", "Movie_MovieId", "dbo.Movies");
-            DropForeignKey("dbo.MovieTypeMovies", "MovieType_MovieTypeId", "dbo.MovieTypes");
-            DropForeignKey("dbo.PersonMovies", "Movie_MovieId", "dbo.Movies");
-            DropForeignKey("dbo.PersonMovies", "Person_PersonId", "dbo.Persons");
-            DropIndex("dbo.MovieTypeMovies", new[] { "Movie_MovieId" });
-            DropIndex("dbo.MovieTypeMovies", new[] { "MovieType_MovieTypeId" });
-            DropIndex("dbo.PersonMovies", new[] { "Movie_MovieId" });
-            DropIndex("dbo.PersonMovies", new[] { "Person_PersonId" });
-            DropTable("dbo.MovieTypeMovies");
-            DropTable("dbo.PersonMovies");
+            DropForeignKey("dbo.MovieTypeDtoMovieDtoes", "MovieDto_MovieId", "dbo.Movies");
+            DropForeignKey("dbo.MovieTypeDtoMovieDtoes", "MovieTypeDto_MovieTypeId", "dbo.MovieTypes");
+            DropForeignKey("dbo.PersonDtoMovieDtoes", "MovieDto_MovieId", "dbo.Movies");
+            DropForeignKey("dbo.PersonDtoMovieDtoes", "PersonDto_PersonId", "dbo.Persons");
+            DropIndex("dbo.MovieTypeDtoMovieDtoes", new[] { "MovieDto_MovieId" });
+            DropIndex("dbo.MovieTypeDtoMovieDtoes", new[] { "MovieTypeDto_MovieTypeId" });
+            DropIndex("dbo.PersonDtoMovieDtoes", new[] { "MovieDto_MovieId" });
+            DropIndex("dbo.PersonDtoMovieDtoes", new[] { "PersonDto_PersonId" });
+            DropTable("dbo.MovieTypeDtoMovieDtoes");
+            DropTable("dbo.PersonDtoMovieDtoes");
             DropTable("dbo.MovieTypes");
             DropTable("dbo.Persons");
             DropTable("dbo.Movies");

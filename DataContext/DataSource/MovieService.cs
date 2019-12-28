@@ -1,31 +1,46 @@
-﻿using DataContext.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Contract.Interfaces;
+using Contract.Model;
 
 namespace DataContext.DataSource
 {
-    public class MovieService
+    public class MovieService : ICaller
     {
-        private ETLModel db = new ETLModel();
-        public void AddMovie(Movie movie)
+        public bool AddMovie(Movie movie)
         {
-            db.Movies.Add(movie);
-            db.SaveChanges();
+            using (var context = new ETLModel())
+            {
+                try
+                {
+                    context.Movies.Add(movie.Set());
+                    context.SaveChanges();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                    throw new System.NotImplementedException();
+                }
+            }
         }
 
-        public void AddType(MovieType type)
+        public IList<Movie> GetAllMovies()
         {
-            db.MovieTypes.Add(type);
-            db.SaveChanges();
-        }
+            using (var context = new ETLModel())
+            {
+                try
+                {
+                    return context.Movies.ToList().Select(x => x.Get()).ToList();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                    throw new Exception();
 
-        public void AddPerson(Person type)
-        {
-            db.Persons.Add(type);
-            db.SaveChanges();
+                }
+            }
         }
     }
 }

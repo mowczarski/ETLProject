@@ -1,19 +1,44 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Contract.Interfaces;
+using Contract.Model;
 using DataContext.DataSource;
-using DataContext.Model;
+using System.Collections.Generic;
 
 namespace ETL.Callers
 {
     public class DataCallers : ICaller
     {
-        MovieService movies = new MovieService();
-        public void AddMovie(Movie movie)
+        static DataCallers instance = null;
+        static MovieService movieService = null;
+        static readonly object padlock = new object();
+
+        public static DataCallers Instance
         {
-            movies.AddMovie(movie);
+            get
+            {
+                if (instance == null || movieService == null)
+                {
+                    lock (padlock)
+                    {
+                        movieService = new MovieService();
+                        instance = new DataCallers();
+                    }
+                }
+                return instance;
+            }
+        }
+
+        public bool AddMovie(Movie movie)
+        {
+            bool result = false;
+            result = movieService.AddMovie(movie);
+            return result;
+        }
+
+        public IList<Movie> GetAllMovies()
+        {
+            IList<Movie> result = null;
+            result = movieService.GetAllMovies();
+            return result;
         }
     }
 }

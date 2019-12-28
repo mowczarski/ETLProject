@@ -1,4 +1,4 @@
-using DataContext.Model;
+using DataContext.Dtos;
 using MySql.Data.Entity;
 using System;
 using System.Data.Entity;
@@ -11,8 +11,8 @@ namespace DataContext.DataSource
     {
         public ETLModel() : base("name=ETLModel") { }
 
-        public DbSet<Movie> Movies { get; set; }
-        public DbSet<Person> Persons { get; set; }
-        public DbSet<MovieType> MovieTypes { get; set; }
+        public DbSet<MovieDto> Movies { get; set; }
+        public DbSet<PersonDto> Persons { get; set; }
+        public DbSet<MovieTypeDto> MovieTypes { get; set; }
     }
 }

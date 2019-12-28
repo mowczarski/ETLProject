@@ -1,19 +1,12 @@
-﻿using ETL.Helpers;
+﻿using Contract.Enum;
+using Contract.Model;
+using ETL.Callers;
+using ETL.Helpers;
 using ETL.Webscraper;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 
 namespace ETL.View
@@ -30,8 +23,10 @@ namespace ETL.View
         readonly int proc = Environment.ProcessorCount;
         public Main()
         {
+          
             InitializeComponent();
-
+            //var movies = caller.GetAllMovies();
+            //dataGrid.ItemsSource = movies;
             outputter = new TextOutputterr(ConsoleOut);
             Console.SetOut(outputter);
             Console.WriteLine("Started");
@@ -77,6 +72,64 @@ namespace ETL.View
         {
             var who = state as string;
             Console.WriteLine(who);
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            var movies = DataCallers.Instance.GetAllMovies();
+            dataGrid.ItemsSource = movies;
+            //DataCallers.Instance.AddMovie(new Movie { });
+            //caller.AddMovie(new Movie { });
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+
+            var person = new List<Person>();
+            person.Add(new Person
+            {
+                Name = "Mariusz",
+                Surname = "Owczarski",
+                isActor = true,
+                isDirector = false,
+                isScenarist = false,
+                isPhotographer = false,
+                isComposer = false,
+                isDescription = false
+            });
+
+
+            var type = new List<MovieType>();
+            type.Add( new MovieType
+            {
+                Name = "Komedia",
+                Type = MOVIE_TYPE.KOMEDIA,
+                Description = "Śmieszny film",
+            });
+
+            var movie = new Movie
+            {
+                Title = "Zielona Mila",
+                OrginalTitle = "Green Mile",
+                Rank = 12,
+                Year = 1995,
+                Duration = "20 min",
+                Rate = 4,
+                RateTotalVotes = 351214,
+                DistributionCompany = "ECDC",
+                Description = "Film o zle skazanym ludziu",
+                ReleaseDate = DateTime.Now,
+                Studio = "Studio Niedziwedz",
+                BoxOffice = 3256478974,
+                Production = PRODUCTION_COUNTRY.ANGLIA,
+                Staff = person,
+                Types = type,
+            };
+
+            DataCallers.Instance.AddMovie(movie);
+
+            //DataCallers.Instance.AddMovie(new Movie { });
+            //caller.AddMovie(new Movie { });
         }
     }
 }
