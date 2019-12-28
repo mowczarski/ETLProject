@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Data.Model
+namespace DataContext.Model
 {
     [Table("Persons")]
     public class Person
@@ -21,5 +21,7 @@ namespace Data.Model
         public bool isPhotographer { get; set; }
         public bool isComposer { get; set; }
         public bool isDescription { get; set; }
+
+        public virtual ICollection<Movie> Movies { get; set; }
     }
 }

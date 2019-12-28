@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Data.Enum
+namespace DataContext.Enum
 {
-    public enum MOVIE_TYPE
+    public enum PRODUCTION_COUNTRY
     {
-        KOMEDIA = 0,
-        DRAMAT = 1,
+        POLAND = 0,
+        ENGLAND = 1,
     }
 }

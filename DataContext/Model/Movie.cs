@@ -1,4 +1,4 @@
-﻿using Data.Enum;
+﻿using DataContext.Enum;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Data.Model
+namespace DataContext.Model
 {
     [Table("Movies")]
     public class Movie

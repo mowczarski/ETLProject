@@ -1,11 +1,11 @@
-﻿using Data.Model;
+﻿using DataContext.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Data.DataSource
+namespace DataContext.DataSource
 {
     public class MovieService
     {
@@ -19,6 +19,12 @@ namespace Data.DataSource
         public void AddType(MovieType type)
         {
             db.MovieTypes.Add(type);
+            db.SaveChanges();
+        }
+
+        public void AddPerson(Person type)
+        {
+            db.Persons.Add(type);
             db.SaveChanges();
         }
     }

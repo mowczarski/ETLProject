@@ -1,4 +1,5 @@
-﻿using ETL.Webscraper;
+﻿using ETL.Helpers;
+using ETL.Webscraper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,11 +25,19 @@ namespace ETL.View
     {
         FilmWebScraper scraper = new FilmWebScraper();
         List<MovieModel> list = new List<MovieModel>();
+        TextOutputterr outputter;
         int? list2 = null;
         readonly int proc = Environment.ProcessorCount;
         public Main()
         {
             InitializeComponent();
+
+            outputter = new TextOutputterr(ConsoleOut);
+            Console.SetOut(outputter);
+            Console.WriteLine("Started");
+
+            var timer1 = new Timer(TimerTick, "Timer1", 0, 100);
+            var timer2 = new Timer(TimerTick, "Timer2", 0, 50);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -37,7 +46,7 @@ namespace ETL.View
 
             var numberOfOperationPerThread = 500 / proc;
 
-            l1.Content += DateTime.Now.ToString(); 
+            //l1.Content += DateTime.Now.ToString(); 
             list2 = (int)DateTime.Now.TimeOfDay.TotalMilliseconds;
 
             for (int i = -1; i < proc; ++i)
@@ -53,7 +62,7 @@ namespace ETL.View
             list.AddRange(scraper.ScrapeMovies(from, to));
 
                 Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() => {
-                l1.Content += "\n" + DateTime.Now.TimeOfDay.ToString() + "\nTotal of " + $"{(int)DateTime.Now.TimeOfDay.TotalMilliseconds - list2 }" + " ms" + "\nCount " + $"{list.Count.ToString()}";
+                //l1.Content += "\n" + DateTime.Now.TimeOfDay.ToString() + "\nTotal of " + $"{(int)DateTime.Now.TimeOfDay.TotalMilliseconds - list2 }" + " ms" + "\nCount " + $"{list.Count.ToString()}";
                 }));
 
         }
@@ -63,5 +72,36 @@ namespace ETL.View
         {
 
         }
+
+        void TimerTick(object state)
+        {
+            var who = state as string;
+            Console.WriteLine(who);
+        }
     }
 }
+
+
+
+//FilmWebScraper scraper;
+//DataCallers db = new DataCallers();
+//public MainWindow()
+//{
+
+//    InitializeComponent();
+//    scraper = new FilmWebScraper();
+
+//    DataContext = scraper;
+//    var movies = scraper.ScrapeMovies(1, 500);
+//    System.Diagnostics.Debug.Print(movies.Count.ToString());
+//    foreach (var movie in movies)
+//    {
+
+//        //db.AddMovie(new Data.Model.Movie { Title = movie.Title });
+
+//        System.Diagnostics.Debug.Print(movie.Title);
+//        System.Diagnostics.Debug.Print(movie.Description);
+//        System.Diagnostics.Debug.Print(movie.Director);
+//        System.Diagnostics.Debug.Print(movie.Actors.Count.ToString());
+//    }
+//}

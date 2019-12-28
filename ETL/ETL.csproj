@@ -71,22 +71,15 @@
     </ApplicationDefinition>
     <Compile Include="Callers\DataCallers.cs" />
     <Compile Include="Callers\ICaller.cs" />
+    <Compile Include="Helpers\TextOutputter.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="View\Main.xaml.cs">
       <DependentUpon>Main.xaml</DependentUpon>
     </Compile>
     <Compile Include="Webscraper\EntryModel.cs" />
     <Compile Include="Webscraper\Scraper.cs" />
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\Main.xaml">
@@ -119,11 +112,10 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\Data\Data.csproj">
-      <Project>{fee8bec0-b914-4b78-a094-ca167b980eba}</Project>
-      <Name>Data</Name>
+    <ProjectReference Include="..\DataContext\DataContext.csproj">
+      <Project>{88cbd1ad-ee09-40d5-94dc-46baf48ce2bf}</Project>
+      <Name>DataContext</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

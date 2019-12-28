@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29123.88
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ETL", "ETL.csproj", "{E97EC1FE-C751-4522-9668-A05F73470E7F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "..\Data\Data.csproj", "{FEE8BEC0-B914-4B78-A094-CA167B980EBA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataContext", "..\DataContext\DataContext.csproj", "{88CBD1AD-EE09-40D5-94DC-46BAF48CE2BF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{E97EC1FE-C751-4522-9668-A05F73470E7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E97EC1FE-C751-4522-9668-A05F73470E7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E97EC1FE-C751-4522-9668-A05F73470E7F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FEE8BEC0-B914-4B78-A094-CA167B980EBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FEE8BEC0-B914-4B78-A094-CA167B980EBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FEE8BEC0-B914-4B78-A094-CA167B980EBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FEE8BEC0-B914-4B78-A094-CA167B980EBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88CBD1AD-EE09-40D5-94DC-46BAF48CE2BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88CBD1AD-EE09-40D5-94DC-46BAF48CE2BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88CBD1AD-EE09-40D5-94DC-46BAF48CE2BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88CBD1AD-EE09-40D5-94DC-46BAF48CE2BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
