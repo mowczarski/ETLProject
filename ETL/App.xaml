@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:ETL"
              StartupUri="View/Main.xaml">
     <Application.Resources>
-        
+        <ResourceDictionary Source="View/Styles.xaml"/>
     </Application.Resources>
 </Application>

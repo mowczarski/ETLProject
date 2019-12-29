@@ -7,6 +7,11 @@ namespace Contract.Interfaces
     public interface ICaller
     {
         bool AddMovie(Movie movie);
-        IList<Movie> GetAllMovies();
+
+        bool AddMovies(List<Movie> movie);
+
+        List<Movie> GetAllMovies();
+
+        bool RemoveAll();
     }
 }

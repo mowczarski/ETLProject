@@ -2,7 +2,7 @@
 {
     public enum MOVIE_TYPE
     {
-        KOMEDIA = 0,
+        UNKNOWN = 0,
         DRAMAT = 1,
         AKCJA = 2,
         DOKUMENTALNY = 3,
@@ -16,6 +16,7 @@
         ROMANS = 11,
         SCIFI = 12,
         THRILLER = 13,
-        ANIMOWANY = 14
+        ANIMOWANY = 14,
+        KOMEDIA = 15,
     }
 }

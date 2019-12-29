@@ -14,15 +14,14 @@
                         MovieId = c.Int(nullable: false, identity: true),
                         Title = c.String(unicode: false),
                         OrginalTitle = c.String(unicode: false),
+                        Director = c.String(unicode: false),
                         Rank = c.Int(),
                         Year = c.Int(),
                         Duration = c.String(unicode: false),
                         Rate = c.Int(),
                         RateTotalVotes = c.Int(),
-                        DistributionCompany = c.String(unicode: false),
                         Description = c.String(unicode: false),
                         ReleaseDate = c.DateTime(nullable: false, precision: 0),
-                        Studio = c.String(unicode: false),
                         BoxOffice = c.Decimal(nullable: false, precision: 18, scale: 2),
                         Production = c.Byte(nullable: false),
                     })
@@ -35,12 +34,6 @@
                         PersonId = c.Int(nullable: false, identity: true),
                         Name = c.String(unicode: false),
                         Surname = c.String(unicode: false),
-                        isActor = c.Boolean(nullable: false),
-                        isDirector = c.Boolean(nullable: false),
-                        isScenarist = c.Boolean(nullable: false),
-                        isPhotographer = c.Boolean(nullable: false),
-                        isComposer = c.Boolean(nullable: false),
-                        isDescription = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.PersonId);
             

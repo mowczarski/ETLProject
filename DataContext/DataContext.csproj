@@ -72,16 +72,15 @@
   <ItemGroup>
     <Compile Include="DataSource\ETLModel.cs" />
     <Compile Include="DataSource\MovieService.cs" />
-    <Compile Include="Mapper.cs" />
-    <Compile Include="Migrations\201912281833154_init.cs" />
-    <Compile Include="Migrations\201912281833154_init.designer.cs">
-      <DependentUpon>201912281833154_init.cs</DependentUpon>
+    <Compile Include="Dtos\Mapper.cs" />
+    <Compile Include="Migrations\201912291831332_init.cs" />
+    <Compile Include="Migrations\201912291831332_init.designer.cs">
+      <DependentUpon>201912291831332_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Dtos\MovieDto.cs" />
     <Compile Include="Dtos\MovieTypeDto.cs" />
     <Compile Include="Dtos\PersonDto.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -95,8 +94,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201912281833154_init.resx">
-      <DependentUpon>201912281833154_init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201912291831332_init.resx">
+      <DependentUpon>201912291831332_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

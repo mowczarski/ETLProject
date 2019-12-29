@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Contract.Interfaces;
 using Contract.Model;
+using DataContext.Dtos;
 
 namespace DataContext.DataSource
 {
@@ -26,7 +27,31 @@ namespace DataContext.DataSource
             }
         }
 
-        public IList<Movie> GetAllMovies()
+        public bool AddMovies(List<Movie> movies)
+        {
+            using (var context = new ETLModel())
+            {
+                try
+                {
+                    var movieDtoList = new List<MovieDto>();
+
+                    foreach (var movie in movies)
+                        movieDtoList.Add(movie.Set());
+
+                    context.Movies.AddRange(movieDtoList);
+                    context.SaveChanges();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                    throw new Exception();
+
+                }
+            }
+        }
+
+        public List<Movie> GetAllMovies()
         {
             using (var context = new ETLModel())
             {
@@ -37,6 +62,27 @@ namespace DataContext.DataSource
                 catch (Exception ex)
                 {
                     return null;
+                    throw new Exception();
+
+                }
+            }
+        }
+
+        public bool RemoveAll()
+        {
+            using (var context = new ETLModel())
+            {
+                try
+                {
+                    var movies = context.Movies.ToList();
+                    context.Movies.RemoveRange(movies);
+                    context.SaveChanges();
+
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    return false;
                     throw new Exception();
 
                 }

@@ -34,10 +34,24 @@ namespace ETL.Callers
             return result;
         }
 
-        public IList<Movie> GetAllMovies()
+        public bool AddMovies(List<Movie> movies)
         {
-            IList<Movie> result = null;
+            bool result = false;
+            result = movieService.AddMovies(movies);
+            return result;
+        }
+
+        public List<Movie> GetAllMovies()
+        {
+            List<Movie> result = null;
             result = movieService.GetAllMovies();
+            return result;
+        }
+
+        public bool RemoveAll()
+        {
+            bool result = false;
+            result = movieService.RemoveAll();
             return result;
         }
     }

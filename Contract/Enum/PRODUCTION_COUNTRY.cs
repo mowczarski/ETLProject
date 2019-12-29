@@ -2,7 +2,7 @@
 {
     public enum PRODUCTION_COUNTRY
     {
-        POLSKA = 0,
+        UNKNOWN = 0,
         ANGLIA = 1,
         ARGENTYNA = 3,
         AUSTRALIA = 4,
@@ -19,6 +19,7 @@
         RFN = 15,
         USA = 16,
         WLOCHY = 17,
-        ZSRR = 18
+        ZSRR = 18,
+        POLSKA = 19,
     }
 }
