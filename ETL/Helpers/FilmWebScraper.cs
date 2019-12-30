@@ -70,11 +70,10 @@ namespace ETL.Webscraper
                 json = Newtonsoft.Json.JsonConvert.SerializeObject(movieList);
                 var path = System.IO.Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + @"\jsons";
 
-                SetFolderPermission(path);
-
                 if (!Directory.Exists(path))
                     Directory.CreateDirectory(path);
 
+                SetFolderPermission(path);
                 System.IO.File.WriteAllText(path + $@"\movies_{from}-{to}.txt", json);
             }
 
@@ -137,27 +136,27 @@ namespace ETL.Webscraper
         }
 
         #region scraping methods
-        private string getTitle(HtmlNode page, string url) => page.SelectSingleNode("//h1[@class = 'inline filmTitle']").SelectSingleNode("//a[@href = '" + url + "']")?.InnerText;
+        private string getTitle(HtmlNode page, string url) => page.SelectSingleNode(".//h1[@class = 'inline filmTitle']").SelectSingleNode("//a[@href = '" + url + "']")?.InnerText;
         
-        private string getOrginalTitle(HtmlNode page) => page.SelectSingleNode("//h2[@class = 'cap s-16 top-5']")?.InnerText;
+        private string getOrginalTitle(HtmlNode page) => page.SelectSingleNode(".//h2[@class = 'cap s-16 top-5']")?.InnerText;
 
-        private string getRank(HtmlNode page) => page.SelectSingleNode("//a[@class = 'worldRanking']")?.InnerText;
+        private string getRank(HtmlNode page) => page.SelectSingleNode(".//a[@class = 'worldRanking']")?.InnerText;
 
-        private string getYear(HtmlNode page) => page.SelectSingleNode("//span[@class = 'filmPreview__year']")?.InnerText;
+        private string getYear(HtmlNode page) => page.SelectSingleNode(".//span[@class = 'filmPreview__year']")?.InnerText;
 
-        private string getDuration(HtmlNode page) => page.SelectSingleNode("//div[@class = 'filmPreview__filmTime']")?.InnerText;
+        private string getDuration(HtmlNode page) => page.SelectSingleNode(".//div[@class = 'filmPreview__filmTime']")?.InnerText;
 
-        private string getRate(HtmlNode page) => page.SelectSingleNode("//span[@class = 'rateBox__rate']")?.InnerText;
+        private string getRate(HtmlNode page) => page.SelectSingleNode(".//span[@class = 'rateBox__rate']")?.InnerText;
 
-        private string getRateTotalVotes(HtmlNode page) => page.SelectSingleNode("//span[@class = 'rateBox__votes rateBox__votes--count']")?.InnerText;
+        private string getRateTotalVotes(HtmlNode page) => page.SelectSingleNode(".//span[@class = 'rateBox__votes rateBox__votes--count']")?.InnerText;
 
-        private string getDescription(HtmlNode page) => page.SelectSingleNode("//div[@class = 'filmPlot bottom-15']")?.InnerText;
+        private string getDescription(HtmlNode page) => page.SelectSingleNode(".//div[@class = 'filmPlot bottom-15']")?.InnerText;
  
-        private string getDirector(HtmlNode page) => page.SelectSingleNode("//li[@itemprop = 'director']")?.InnerText;
+        private string getDirector(HtmlNode page) => page.SelectSingleNode(".//li[@itemprop = 'director']")?.InnerText;
 
-        private string getBoxOffice(HtmlNode page) => page.SelectSingleNode("//li[@class = 'boxoffice']")?.InnerText;
+        private string getBoxOffice(HtmlNode page) => page.SelectSingleNode(".//li[@class = 'boxoffice']")?.InnerText;
 
-        private string getProduction(HtmlNode page) => page.SelectSingleNode("//a[@href = '/films/search?countries=53']")?.InnerText;
+        private string getProduction(HtmlNode page) => page.SelectSingleNode(".//a[@href = '/films/search?countries=53']")?.InnerText;
 
         private string getReleaseDate(HtmlNode mainPage, HtmlNode page)
         {

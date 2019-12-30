@@ -1,6 +1,7 @@
 ﻿using Contract.Enum;
 using System;
 using System.Text.RegularExpressions;
+using System.Linq;
 
 namespace ETL.Helpers
 {
@@ -10,7 +11,7 @@ namespace ETL.Helpers
         public static decimal ConvertToDecimal(dynamic it)
         {
             if (it == null) return 0;
-            else return Convert.ToDecimal(Regex.Match(Convert.ToString(it), @"\d+").Value);
+            else return Convert.ToDecimal(Regex.Match(Convert.ToString(it).Replace(" ", ""), @"\d+").Value);
         }
 
         public static string ConvertToString(dynamic it)
@@ -22,7 +23,7 @@ namespace ETL.Helpers
         public static int? ConvertToInt(dynamic it)
         {
             if (it == null) return null;
-            else return Convert.ToInt32(Regex.Match(Convert.ToString(it), @"\d+").Value);
+            else return Convert.ToInt32(Regex.Match(Convert.ToString(it).Replace(" ", ""), @"\d+").Value);
         }
 
         public static byte ConvertToTypeByte(dynamic it)
@@ -116,7 +117,19 @@ namespace ETL.Helpers
 
             var dataString = Convert.ToString(it).Split(' ');
             var month = 1;
+            var year = 1000;
+            var day = 1;
 
+            try
+            {
+                year = Convert.ToInt32(dataString[4]);
+                day = Convert.ToInt32(dataString[2]);
+            }
+            catch
+            {
+
+            }
+                
             switch (dataString[3])
             {
                 case "stycznia": case "styczeń":
@@ -159,7 +172,7 @@ namespace ETL.Helpers
                     month = 1;
                     break;
             }
-            return new DateTime(dataString[4], month, dataString[2]);
+            return new DateTime(year, month, day);
         }
 
         public static PRODUCTION_COUNTRY ConvertToProduction(dynamic it)

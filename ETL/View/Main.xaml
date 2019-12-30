@@ -23,15 +23,15 @@
                 <RowDefinition Height="50" />
                 <RowDefinition Height="50" />
             </Grid.RowDefinitions>
-            <Button Grid.Row="0" Click="Start_Click" Content="Start"
+            <Button Grid.Row="0" Click="Start_Click" Content="Start" Name="Start" 
                     FontWeight="Bold" Grid.ColumnSpan="2" Style="{StaticResource MyButton2}"/>
-            <Button Grid.Row="1" Click="Setp1_Click"
+            <Button Grid.Row="1" Click="Setp1_Click" Name="Step1" 
                     Style="{StaticResource MyButton2}" Content="Step 1 (Extract)"/>
-            <Button Grid.Row="2" Click="Setp2_Click"  
+            <Button Grid.Row="2" Click="Setp2_Click" IsEnabled="False" Name="Step2"
                     Style="{StaticResource MyButton2}" Content="Step 2 (Transform)"/>
-            <Button Grid.Row="3" Click="Setp3_Click" Content="Step 3 (Insert)"
+            <Button Grid.Row="3" Click="Setp3_Click" Content="Step 3 (Insert)" IsEnabled="False" Name="Step3" 
                     Style="{StaticResource MyButton2}"/>
-            <Button Grid.Row="4" FontSize="16" Grid.ColumnSpan="2" Click="Stop_Click" 
+            <Button Grid.Row="4" FontSize="16" Grid.ColumnSpan="2" Click="Stop_Click" Name="Stop" 
                     FontWeight="Bold" Background="Red" Margin="10" Content="Stop"/>
         </Grid>
         <Grid Grid.Column="1" Grid.Row="1">
@@ -48,7 +48,7 @@
                             <Button Width="50" Margin="10,0,0,0" Click="Search_Click" Content="Search" Background="GreenYellow"></Button>
                             <Button Width="100" Margin="10,0,0,0" Click="DeleteAll_Click" Content="Delete All" Background="Red"></Button>
                         </StackPanel>
-                        <ScrollViewer>
+                        <ScrollViewer HorizontalScrollBarVisibility="Auto" Height="633">
                             <DataGrid x:Name="dataGrid" ></DataGrid>
                         </ScrollViewer>
                     </StackPanel>
