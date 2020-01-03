@@ -1,13 +1,11 @@
 ﻿using Contract.Enum;
 using System;
 using System.Text.RegularExpressions;
-using System.Linq;
 
 namespace ETL.Helpers
 {
     public class Converters
     {
-
         public static decimal ConvertToDecimal(dynamic it)
         {
             if (it == null) return 0;
@@ -55,7 +53,7 @@ namespace ETL.Helpers
                     return 10;
                 case "Romans":
                     return 11;
-                case "Sci-fi":
+                case "Sci-Fi":
                     return 12;
                 case "Thriller":
                     return 13;
@@ -125,10 +123,7 @@ namespace ETL.Helpers
                 year = Convert.ToInt32(dataString[4]);
                 day = Convert.ToInt32(dataString[2]);
             }
-            catch
-            {
-
-            }
+            catch{}
                 
             switch (dataString[3])
             {

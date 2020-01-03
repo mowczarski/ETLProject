@@ -46,7 +46,6 @@ namespace DataContext.DataSource
                 {
                     return false;
                     throw new Exception();
-
                 }
             }
         }
@@ -57,13 +56,15 @@ namespace DataContext.DataSource
             {
                 try
                 {
-                    return context.Movies.ToList().Select(x => x.Get()).ToList();
+                    var result = context.Movies.ToList();
+
+                    return result.Select(x => x.Get()).ToList();
+
                 }
                 catch (Exception ex)
                 {
                     return null;
                     throw new Exception();
-
                 }
             }
         }
@@ -84,7 +85,6 @@ namespace DataContext.DataSource
                 {
                     return false;
                     throw new Exception();
-
                 }
             }
         }

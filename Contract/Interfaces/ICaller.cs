@@ -6,6 +6,7 @@ namespace Contract.Interfaces
 {
     public interface ICaller
     {
+        #region interface methods
         bool AddMovie(Movie movie);
 
         bool AddMovies(List<Movie> movie);
@@ -13,5 +14,6 @@ namespace Contract.Interfaces
         List<Movie> GetAllMovies();
 
         bool RemoveAll();
+        #endregion
     }
 }

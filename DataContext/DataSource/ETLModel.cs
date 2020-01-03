@@ -7,7 +7,10 @@ namespace DataContext.DataSource
     [DbConfigurationType(typeof(MySqlEFConfiguration))]
     public class ETLModel : DbContext
     {
-        public ETLModel() : base("name=ETLModel") { }
+        public ETLModel() : base("name=ETLModel") {
+
+            this.Configuration.LazyLoadingEnabled = false;
+        }
 
         public DbSet<MovieDto> Movies { get; set; }
         public DbSet<PersonDto> Persons { get; set; }

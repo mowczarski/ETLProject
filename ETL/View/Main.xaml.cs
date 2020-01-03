@@ -19,25 +19,27 @@ namespace ETL.View
     /// Interaction logic for Main.xaml
     /// </summary>
     public partial class Main : Window
-    {      
+    {
         List<Movie> movies = null;
+        List<Movie> dbMovies = null;
         List<Movie> moviesToLoad = new List<Movie>();
         readonly int proc = Environment.ProcessorCount;
+        FilmWebScraper scraper = new FilmWebScraper();
 
         public Main()
         {
             InitializeComponent();
-            
-            Thread t = new Thread(() => Search());
-            t.Start();
-
+            scraper.TextBoxValueChanged += OtherWindowOnTextBoxValueChanged;
             WriteToConsole("Application Started");
             WriteToConsole($"Number Of Logical Processors: {Environment.ProcessorCount}");
+            ConsoleScrollViewer.ScrollToBottom();
+            Thread t = new Thread(() => Search());
+            t.Start();
         }
 
         private void OtherWindowOnTextBoxValueChanged(object sender, TextBoxValueEventArgs e)
         {
-            ConsoleOut.Text += e.NewValue + Environment.NewLine;
+            WriteToConsole(e.NewValue);
         }
 
         private object loadingLock = new object();
@@ -49,12 +51,12 @@ namespace ETL.View
             {
                 try
                 {
-                       movies = UpdateData();
+                    if (dbMovies == null)
+                        dbMovies = UpdateData();
 
                     Dispatcher.Invoke((Action)(() =>
                     {
                         UpdateView(txt);
-
                     }));
                 }
                 catch (Exception ex)
@@ -74,19 +76,19 @@ namespace ETL.View
 
         public void UpdateView(string txt)
         {
-            dataGrid.ItemsSource = null;
-            
+            listViewUsers.ItemsSource = null;
+
             if (String.IsNullOrEmpty(txt))
             {
-                dataGrid.ItemsSource = movies;
+                listViewUsers.ItemsSource = dbMovies;
             }
             else
             {
-                dataGrid.ItemsSource = movies.Where(x =>
-                    x.OrginalTitle.Contains(txt)
-                    || x.Title.Contains(txt)
-                    || x.Staff.Any(y => y.Name.Contains(txt)
-                    || x.Types.Any(z => z.Name.Contains(txt))));
+                listViewUsers.ItemsSource = dbMovies.Where(x =>
+                    (!string.IsNullOrEmpty(x.OrginalTitle) && x.OrginalTitle.Contains(txt))
+                    || (!string.IsNullOrEmpty(x.OrginalTitle) && x.Title.Contains(txt))
+                    || (x.Staff != null && x.Staff.Any(y => y.Name.Contains(txt)))
+                    || (x.Types != null && x.Types.Any(z => z.Name.Contains(txt))));
             }
         }
 
@@ -101,7 +103,8 @@ namespace ETL.View
         {
             moviesToLoad = null;
             movies = null;
-            dataGrid.ItemsSource = null;
+            dbMovies = null;
+            listViewUsers.ItemsSource = null;
             Step2.IsEnabled = false;
             Step3.IsEnabled = false;
         }
@@ -115,7 +118,7 @@ namespace ETL.View
             }
 
             Extract();
-            Step2.IsEnabled = true;       
+            Step2.IsEnabled = true;
         }
 
         private void Setp2_Click(object sender, RoutedEventArgs e)
@@ -129,26 +132,32 @@ namespace ETL.View
             Transform();
             Step3.IsEnabled = true;
         }
-
+        private object extractLock = new object();
         private void Extract()
         {
             WriteToConsole("Scrapping started");
-            var numberOfOperationPerThread = 24 / proc;
 
-            for (int i = -1; i < proc; ++i)
+            for (int i = 0; i <= proc; i++)
             {
-                Thread t = new Thread(() => Scrap((int)(numberOfOperationPerThread * i) + 1, (int)(numberOfOperationPerThread * (i + 1))));
-                t.Start();
-                WriteToConsole(@"Thread : {i} started");
-                Thread.Sleep(500);
+                try
+                {
+                    Thread t = new Thread(() => Scrap(i));
+                    t.Start();
+                    Thread.Sleep(50);
+                    WriteToConsole($"Thread : {i} started");
+                }
+                catch (Exception ex)
+                {
+                    WriteToConsole("Error with threads");
+                    WriteToConsole(ex.Message);
+                }
             }
         }
 
-        private void Scrap(int from, int to)
+        private void Scrap(int page)
         {
-            FilmWebScraper scraper = new FilmWebScraper();
-            scraper.TextBoxValueChanged += OtherWindowOnTextBoxValueChanged;
-            scraper.ScrapeMovies(from, to);
+            scraper.ScrapeMovies(page);
+            WriteToConsole($"Thread : {page} finished");
         }
 
         private void Transform()
@@ -157,11 +166,28 @@ namespace ETL.View
             {
                 WriteToConsole("Transform started");
                 WriteToConsole("Find json directory");
-                var path = System.IO.Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + @"\jsons";
+                string path = null;
+
+                try
+                {
+                    path = System.IO.Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + @"\jsons";
+                }
+                catch (Exception ex)
+                {
+                    WriteToConsole("Error with directory path");
+                    WriteToConsole(ex.Message);
+                    return;
+                }
 
                 string[] files = Directory.GetFiles(path, "*.txt")
                                      .Select(Path.GetFileName)
                                      .ToArray();
+
+                if (files == null || files.Length == 0)
+                {
+                    WriteToConsole("Error with finding files");
+                    return;
+                }
 
                 foreach (var file in files)
                 {
@@ -213,10 +239,11 @@ namespace ETL.View
 
                                 });
                             }
-                            WriteToConsole($"Transfrom moovie: {movie.Title}, by {movie.Director}");
-                            WriteToConsole($"Transfrom {file} finished");
-                            movieList.Add(movie);                           
+
+                            WriteToConsole($"Transform finished - movie: {movie.Title}, by {movie.Director}");
+                            movieList.Add(movie);
                         }
+                        WriteToConsole($"Transfrom of {file} finished");
                         moviesToLoad.AddRange(movieList);
                     }
                     WriteToConsole($"Delete json files: {filePath}");
@@ -227,6 +254,7 @@ namespace ETL.View
             {
                 WriteToConsole("The file could not be read:");
                 WriteToConsole(ex.Message);
+                return;
             }
         }
 
@@ -235,25 +263,21 @@ namespace ETL.View
             if (movies != null)
             {
                 WriteToConsole("Load to data base movies (count) - " + movies.Count);
-                Thread t = new Thread(() => DataCallers.Instance.AddMovies(movies));
-                t.Start();
-                WriteToConsole("Load to data base started");
-                t.Join();
-                WriteToConsole("Load to data base finished");
+                Thread thread = new Thread(() => DataCallers.Instance.AddMovies(movies));
+                thread.Start(); WriteToConsole("Load to database started");
+                thread.Join(); WriteToConsole("Load to database finished");
             }
             else
             {
                 WriteToConsole("Load to data base movies (count) - " + moviesToLoad.Count);
-                Thread t = new Thread(() => DataCallers.Instance.AddMovies(moviesToLoad));
-                t.Start();
-                WriteToConsole("Load to data base started");
-                t.Join();
-                WriteToConsole("Load to data base finished");
+                Thread thread = new Thread(() => DataCallers.Instance.AddMovies(moviesToLoad));
+
+                thread.Start(); WriteToConsole("Load to data base started");
+                thread.Join(); WriteToConsole("Load to data base finished");
             }
-          
-            
-            Thread t2 = new Thread(() => Search());
-            t2.Start();
+
+            Thread thread2 = new Thread(() => Search());
+            thread2.Start();
         }
 
         private void Setp3_Click(object sender, RoutedEventArgs e)
@@ -263,22 +287,24 @@ namespace ETL.View
 
         private void Search_Click(object sender, RoutedEventArgs e)
         {
-            Thread t = new Thread(() => Search());
+            var searchParameter = searchTB.Text;
+            Thread t = new Thread(() => Search(searchParameter));
             t.Start();
         }
 
         public void WriteToConsole(string txt)
         {
-            Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() => {
-                ConsoleOut.Text += DateTime.Now + " - " + txt + Environment.NewLine;
-            })); 
+            Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
+            {
+                ConsoleOut.Text += "INFO " + DateTime.Now + "                - " + txt + Environment.NewLine;
+            }));
         }
 
         private void DeleteAll_Click(object sender, RoutedEventArgs e)
         {
-            WriteToConsole("Delete All Click started");
+            WriteToConsole("Delete All started");
             DataCallers.Instance.RemoveAll();
-            
+
             WriteToConsole("Delete All finished");
             Thread t = new Thread(() => Search());
             t.Start();

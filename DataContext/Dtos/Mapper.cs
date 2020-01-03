@@ -46,6 +46,7 @@ namespace DataContext.Dtos
                 ReleaseDate = item.ReleaseDate,
                 BoxOffice = item.BoxOffice,
                 Production = (byte)item.Production,
+                Director = item.Director,
                 Staff = item.Staff?.ToList().Select(x => Set(x)).ToList(),
                 Types = item.Types?.ToList().Select(x => Set(x)).ToList(),
             };

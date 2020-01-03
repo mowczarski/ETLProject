@@ -24,7 +24,7 @@ namespace ETL.Webscraper
         public event EventHandler<TextBoxValueEventArgs> TextBoxValueChanged;
         #endregion
 
-
+        #region events
         protected virtual void OnTextBoxValueChanged(TextBoxValueEventArgs e)
         {
             TextBoxValueChanged?.Invoke(this, e);
@@ -39,29 +39,40 @@ namespace ETL.Webscraper
                 NewValue = newValue;
             }
         }
+        #endregion
 
-        public string ScrapeMovies(int from, int to)
+        public string ScrapeMovies(int pageNumber)
         {
             List<dynamic> movieList = new List<dynamic>();
             string json = null;
             bool result = false;
-            for (int i = from; i < to; i++)
-            {
-                var page = HtmlWeb.Load(FilmWebUrl + MoviesListSuffix + i).DocumentNode;
-                var movies = page.SelectNodes("//*[@class = 'hits__item']");
 
-                foreach (var movie in movies)
+            var page = HtmlWeb.Load(FilmWebUrl + MoviesListSuffix + pageNumber).DocumentNode;
+            var movies = page.SelectNodes("//*[@class = 'hits__item']");
+
+            if (movies == null || movies.Count == 0)
+            {
+                Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
                 {
-                    var movieLinkNode = movie.SelectSingleNode(".//a[@class ='filmPreview__link']");
-                    
-                    if (movieLinkNode != null)
+                    OnTextBoxValueChanged(new TextBoxValueEventArgs("Cannot get movies from filmweb.pl site !!"));
+                }));
+                return null;
+            }
+
+            foreach (var movie in movies)
+            {
+                var movieLinkNode = movie.SelectSingleNode(".//a[@class ='filmPreview__link']");
+
+                if (movieLinkNode != null)
+                {
+                    result = ScrapeMovie(movieList, movie, HttpUtility.HtmlDecode(movieLinkNode.GetAttributeValue("href", "default")));
+                }
+                else
+                {
+                    Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
                     {
-                        result = ScrapeMovie(movieList, movie, HttpUtility.HtmlDecode(movieLinkNode.GetAttributeValue("href", "default")));
-                    }
-                    else
-                    {
-                        System.Diagnostics.Debug.Print("Something wrong happenned on page: " + i);
-                    }
+                        OnTextBoxValueChanged(new TextBoxValueEventArgs("Something wrong happenned on page: " + pageNumber));
+                    }));
                 }
             }
 
@@ -74,7 +85,7 @@ namespace ETL.Webscraper
                     Directory.CreateDirectory(path);
 
                 SetFolderPermission(path);
-                System.IO.File.WriteAllText(path + $@"\movies_{from}-{to}.txt", json);
+                System.IO.File.WriteAllText(path + $@"\movies_{pageNumber}.txt", json);
             }
 
             return json;
@@ -117,27 +128,29 @@ namespace ETL.Webscraper
                 movie.Types = getTypes(page);
                 movie.Staff = getStaff(url);
 
-
-                Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() => {
+                Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
+                {
                     OnTextBoxValueChanged(new TextBoxValueEventArgs($"Scrapping movie: {movie.Title} ({movie.OrginalTitle}," +
                    $" {movie.Year}) - director: {movie.Director} - rank: {movie.Rank} - rate {movie.Rate} (total: {movie.RateTotalVotes}) " +
-                   $"- box office {movie.BoxOffice} - with {movie.Staff.Count} actors"));
+                   $"- box office {movie.BoxOffice}"));
                 }));
-               
 
                 movieList.Add(movie);
             }
             catch (Exception ex)
             {
+                Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
+                {
+                    OnTextBoxValueChanged(new TextBoxValueEventArgs("Error while scrapping: " + ex.Message));
+                }));
                 return false;
-                throw new Exception();
             }
             return true;
         }
 
         #region scraping methods
         private string getTitle(HtmlNode page, string url) => page.SelectSingleNode(".//h1[@class = 'inline filmTitle']").SelectSingleNode("//a[@href = '" + url + "']")?.InnerText;
-        
+
         private string getOrginalTitle(HtmlNode page) => page.SelectSingleNode(".//h2[@class = 'cap s-16 top-5']")?.InnerText;
 
         private string getRank(HtmlNode page) => page.SelectSingleNode(".//a[@class = 'worldRanking']")?.InnerText;
@@ -151,7 +164,7 @@ namespace ETL.Webscraper
         private string getRateTotalVotes(HtmlNode page) => page.SelectSingleNode(".//span[@class = 'rateBox__votes rateBox__votes--count']")?.InnerText;
 
         private string getDescription(HtmlNode page) => page.SelectSingleNode(".//div[@class = 'filmPlot bottom-15']")?.InnerText;
- 
+
         private string getDirector(HtmlNode page) => page.SelectSingleNode(".//li[@itemprop = 'director']")?.InnerText;
 
         private string getBoxOffice(HtmlNode page) => page.SelectSingleNode(".//li[@class = 'boxoffice']")?.InnerText;
@@ -160,31 +173,23 @@ namespace ETL.Webscraper
 
         private string getReleaseDate(HtmlNode mainPage, HtmlNode page)
         {
-            var movieLinkNode = HttpUtility.HtmlDecode(mainPage.SelectSingleNode(".//a[@class ='filmPreview__link']").GetAttributeValue("href", "default")) + "/dates";    
+            var movieLinkNode = HttpUtility.HtmlDecode(mainPage.SelectSingleNode(".//a[@class ='filmPreview__link']").GetAttributeValue("href", "default")) + "/dates";
             return page.SelectSingleNode($"//a[@href = '{movieLinkNode}']")?.InnerText;
         }
 
         private List<dynamic> getStaff(String url)
         {
-
-            //actors
             var page = HtmlWeb.Load(FilmWebUrl + url + CastSuffix).DocumentNode;
             var actorNodes = page.SelectNodes("//a[@rel = 'v:starring']");
             List<dynamic> listOfStaffs = new List<dynamic>();
 
             if (actorNodes != null)
-            { 
-                foreach (var actor in actorNodes.Take(10))
+            {
+                foreach (var actor in actorNodes.Take(5))
                 {
                     dynamic staff = new ExpandoObject();
                     staff.Name = actor.InnerText.Split(' ')[0];
                     staff.Surname = actor.InnerText.Split(' ')[1];
-                    staff.isActor = true;
-                    staff.isDirector = false;
-                    staff.isScenarist = false;
-                    staff.isPhotographer = false;
-                    staff.isComposer = false;
-
                     listOfStaffs.Add(staff);
                 }
             }
@@ -195,7 +200,7 @@ namespace ETL.Webscraper
         {
             List<dynamic> listOfTypes = new List<dynamic>();
 
-            var typeNodes = page.SelectSingleNode("//div[@class = 'filmPlot bottom-15']").SelectNodes("//ul[@class = 'inline sep-comma genresList']");
+            var typeNodes = page.SelectSingleNode("//div[@class = 'filmPlot bottom-15']").SelectSingleNode("//ul[@class = 'inline sep-comma genresList']").SelectNodes(".//li");
 
             if (typeNodes != null)
             {
@@ -204,7 +209,7 @@ namespace ETL.Webscraper
                     dynamic type = new ExpandoObject();
                     type.Name = t.InnerText;
                     type.Type = Converters.ConvertToTypeByte(t.InnerText);
-                    type.Description = " ";
+                    type.Description = "-";
                     listOfTypes.Add(type);
                 }
             }
