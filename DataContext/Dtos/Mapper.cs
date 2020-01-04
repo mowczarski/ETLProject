@@ -23,9 +23,10 @@ namespace DataContext.Dtos
                 Description = item.Description,
                 ReleaseDate = item.ReleaseDate,
                 BoxOffice = item.BoxOffice,
+                Director = item.Director,
                 Production = (PRODUCTION_COUNTRY)item.Production,
                 Staff = item.Staff?.ToList().Select(x => Get(x)).ToList(),
-                Types = item.Types?.ToList().Select(x => Get(x)).ToList(),
+                Types = item.Types?.ToList().Select(x => Get(x)).ToList(),             
             };
         }
 

@@ -46,7 +46,8 @@
                             <Button Width="50" Margin="10,0,0,0" Click="Search_Click" Content="Search" Background="GreenYellow"></Button>
                             <Button Width="100" Margin="10,0,0,0" Click="DeleteAll_Click" Content="Delete All" Background="Red"></Button>
                             <Button Width="110" Margin="10,0,0,0" Click="ExportCSV_Click" Content="Export to CSV ALL" Background="GreenYellow"></Button>
-                            <Button Width="140" Margin="10,0,0,0" Click="ExportCSVOne_Click" Content="Export to CSV MovieId -" Background="GreenYellow" ></Button>
+                            <Button Width="145" Margin="10,0,0,0" Click="ExportCSVOne_Click" Content="Export to CSV Movie of id" Background="GreenYellow" ></Button>
+                            <Label Content=" --> "/>
                             <TextBox x:Name="exportId" Width="25"  HorizontalAlignment="Left"/>
                         </StackPanel>
                         <ListView x:Name="listViewUsers" SelectionMode="Single" 
