@@ -7,6 +7,10 @@ namespace ETL.Callers
 {
     public class DataCallers : ICaller
     {
+        // JEST TO KLASA KTORA ZAWIERA IMPLEMENTACJE WZORCA SINGLETON
+        // ZAPEWANIA ONA INSTANCJE DOSTEPU DO SERWISU W PROJEKCIE DataContext
+        // WAZNE BY IMPLEMENTOWALA TEN SAM INTEFEJS CO SERWIS 
+
         static DataCallers instance = null;
         static MovieService movieService = null;
         static readonly object padlock = new object();
@@ -27,10 +31,10 @@ namespace ETL.Callers
             }
         }
 
-        public bool AddMovie(Movie movie)
+        public bool EditMovie(Movie movie)
         {
             bool result = false;
-            result = movieService.AddMovie(movie);
+            result = movieService.EditMovie(movie);
             return result;
         }
 

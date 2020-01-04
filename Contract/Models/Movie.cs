@@ -7,6 +7,9 @@ namespace Contract.Model
 {
     public class Movie
     {
+        // KLASA MOVIE KTORA UZYWANA JEST DO PREZENTACJI NA FRONCIE
+        // ROZNI SIE O KLASY BAZODANOWEJ TYM ZE TUTAL MOZNA OKRESLAC ROZNE TYPY TAKIE JAK ENUM CZY DEFINIOWAC NOWE POLA KTORE ZWRACAJA OKRESLONE DANE (np. TypesString)
+
         public int MovieId { get; set; }
         public string Title { get; set; }
         public string OrginalTitle { get; set; }
@@ -22,13 +25,14 @@ namespace Contract.Model
         public PRODUCTION_COUNTRY Production { get; set; }
         public List<MovieType> Types { get; set; }
         public List<Person> Staff { get; set; }
+        // ZAWIARA ONA LISTE AKTOROW I GATUNKOW
 
         public string StaffString
         {
             get
             {
                 if (Staff == null || Staff.Count == 0) return null;
-                else return string.Join(";", Staff.Select(x => x.Name).ToArray());
+                else return string.Join(", ", Staff.Select(x => x.Name).ToArray());
             }
         }
 
@@ -37,7 +41,7 @@ namespace Contract.Model
             get
             {
                 if (Types == null || Types.Count == 0) return null;
-                else return string.Join(";", Types.Select(x => x.Name).ToArray());
+                else return string.Join(", ", Types.Select(x => x.Name).ToArray());
             }
         }
 

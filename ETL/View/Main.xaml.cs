@@ -5,36 +5,48 @@ using ETL.Webscraper;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
 using static ETL.Webscraper.FilmWebScraper;
 
 namespace ETL.View
 {
-    /// <summary>
-    /// Interaction logic for Main.xaml
-    /// </summary>
     public partial class Main : Window
     {
-        List<Movie> movies = null;
         List<Movie> dbMovies = null;
-        List<Movie> moviesToLoad = new List<Movie>();
+        List<Movie> moviesToLoad = null;
+        Movie movieToEdit = null;
         readonly int proc = Environment.ProcessorCount;
         FilmWebScraper scraper = new FilmWebScraper();
+        Task[] tasksArray = null;
+        Thread[] threadsArray = null;
 
         public Main()
         {
-            InitializeComponent();
+            InitializeComponent(); 
+
+            // USTALAMY LICZBE WATKOW I TASKOW (PROGRAMOWANIE ASYNCHRONICZNE I WIELOWATKOWE)
+            threadsArray = new Thread[2];
+
+            // LICZNBA TASKOW JEST ROWNA LICZBIE RDZENI LOGICZNYCH PROCESORA
+            tasksArray = new Task[proc]; 
+           
+            // USTAWALY PUNKTY WYJSCIA DO EVENTU ZE SKRAPERA
             scraper.TextBoxValueChanged += OtherWindowOnTextBoxValueChanged;
+
             WriteToConsole("Application Started");
             WriteToConsole($"Number Of Logical Processors: {Environment.ProcessorCount}");
+
             ConsoleScrollViewer.ScrollToBottom();
-            Thread t = new Thread(() => Search());
-            t.Start();
+
+            threadsArray[0] = new Thread(() => Search());
+            threadsArray[0].Start();
         }
 
         private void OtherWindowOnTextBoxValueChanged(object sender, TextBoxValueEventArgs e)
@@ -43,16 +55,16 @@ namespace ETL.View
         }
 
         private object loadingLock = new object();
-        public void Search(string txt = null)
+        public void Search(string txt = null, bool getNewData = true)
         {
             WriteToConsole("Search initialized");
 
+            // UZYLO OBJECT LOCK, ZABRANIA ON DOSTEP DO OKRESLONEJ CZESCI KODU PRZEZ WIECEJ NIZ JEDEN WATEK
             lock (loadingLock)
             {
                 try
                 {
-                    if (dbMovies == null)
-                        dbMovies = UpdateData();
+                    if (getNewData) dbMovies = UpdateData();
 
                     Dispatcher.Invoke((Action)(() =>
                     {
@@ -76,6 +88,7 @@ namespace ETL.View
 
         public void UpdateView(string txt)
         {
+            WriteToConsole("UpdateView started");
             listViewUsers.ItemsSource = null;
 
             if (String.IsNullOrEmpty(txt))
@@ -90,23 +103,59 @@ namespace ETL.View
                     || (x.Staff != null && x.Staff.Any(y => y.Name.Contains(txt)))
                     || (x.Types != null && x.Types.Any(z => z.Name.Contains(txt))));
             }
+            WriteToConsole("UpdateView finished");
+        }
+
+        public void WriteToConsole(string txt)
+        {
+            // OUTPUT DO KONSOLI PROGRAMU 
+            // UZYTO DISPATCHERA - USTALA ON KOLEJKI WATKOW KTORE CHCE MIEC DOSTEP DO OKRESLONEJ CZESCI KODU
+            // W NASZYM PRZYPADKU DO KONTROLKI TEXTBLOCK (ConsoleOut)
+
+            Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
+            {
+                ConsoleOut.Text += "INFO " + DateTime.Now + "                - " + txt + Environment.NewLine;
+            }));
         }
 
         private void Start_Click(object sender, RoutedEventArgs e)
         {
-            Extract();
+            if (!(Step2.IsEnabled == false && Step3.IsEnabled == false)) 
+                return;
+
+            // BACKGROUNDWORKER POZWALA NA WYKONYWANIE OPERACJI W TLE
+            // POZWALA NA WYKONYWANIE ZLOZONYCH OPERACJI BEZ ZAWIESZANIA GUI
+
+            BackgroundWorker backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            backgroundWorker1.DoWork += new DoWorkEventHandler(backgroundWorker1_DoWork);
+            backgroundWorker1.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorker1_RunWorkerCompleted);
+            backgroundWorker1.RunWorkerAsync();
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e) => Extract(true); 
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
             Transform();
-            Load();
+            LoadInBackground();
+        }
+
+        private void LoadInBackground()
+        {
+            BackgroundWorker bgw = new System.ComponentModel.BackgroundWorker();
+            bgw.DoWork += new DoWorkEventHandler(Load);
+            bgw.RunWorkerAsync();
         }
 
         private void Stop_Click(object sender, RoutedEventArgs e)
         {
             moviesToLoad = null;
-            movies = null;
             dbMovies = null;
             listViewUsers.ItemsSource = null;
             Step2.IsEnabled = false;
             Step3.IsEnabled = false;
+
+            ConsoleOut.Text = DateTime.Now + " Reseted";
         }
 
         private void Setp1_Click(object sender, RoutedEventArgs e)
@@ -132,38 +181,69 @@ namespace ETL.View
             Transform();
             Step3.IsEnabled = true;
         }
+
+        private void Setp3_Click(object sender, RoutedEventArgs e)
+        {
+            LoadInBackground();
+        }
+
+        private void Search_Click(object sender, RoutedEventArgs e)
+        {
+            var searchParameter = searchTB.Text;
+            threadsArray[0] = new Thread(() => Search(searchParameter, false));
+            threadsArray[0].Start();
+        }
+
+        private void DeleteAll_Click(object sender, RoutedEventArgs e)
+        {
+            WriteToConsole("Delete All started");
+            DataCallers.Instance.RemoveAll();
+
+            WriteToConsole("Delete All finished");
+            threadsArray[0] = new Thread(() => Search());
+            threadsArray[0].Start();
+        }
+
         private object extractLock = new object();
-        private void Extract()
+        private void Extract(bool withWait = false)
         {
             WriteToConsole("Scrapping started");
 
-            for (int i = 0; i <= proc; i++)
-            {
-                try
+            for (int i = 1; i <= proc; i++)
+            { 
+                var page = i;
+                lock (extractLock)
                 {
-                    Thread t = new Thread(() => Scrap(i));
-                    t.Start();
-                    Thread.Sleep(50);
-                    WriteToConsole($"Thread : {i} started");
-                }
-                catch (Exception ex)
-                {
-                    WriteToConsole("Error with threads");
-                    WriteToConsole(ex.Message);
+                    try
+                    {
+                        tasksArray[i - 1] = new Task(() => Scrap(page));
+                        tasksArray[i - 1].Start();
+                        WriteToConsole($"Thread : {i} started");
+                    }
+                    catch (Exception ex)
+                    {
+                        WriteToConsole("Error with threads");
+                        WriteToConsole(ex.Message);
+                    }
                 }
             }
+            if (withWait)
+                Task.WaitAll(tasksArray);
         }
 
-        private void Scrap(int page)
+        private async Task<bool> Scrap(int page)
         {
-            scraper.ScrapeMovies(page);
+            await scraper.ScrapeMovies(page);
             WriteToConsole($"Thread : {page} finished");
+            return true;
         }
 
         private void Transform()
         {
             try
             {
+                // METODA TRANSFORMUJACA DANE Z PLIKOW JSON DO OBIEKTOW 
+                moviesToLoad = new List<Movie>();
                 WriteToConsole("Transform started");
                 WriteToConsole("Find json directory");
                 string path = null;
@@ -179,6 +259,7 @@ namespace ETL.View
                     return;
                 }
 
+                // POBIERAMY PLIKI
                 string[] files = Directory.GetFiles(path, "*.txt")
                                      .Select(Path.GetFileName)
                                      .ToArray();
@@ -189,6 +270,7 @@ namespace ETL.View
                     return;
                 }
 
+                // ITERUJEMY PO PLIKACH
                 foreach (var file in files)
                 {
                     var movieList = new List<Movie>();
@@ -202,6 +284,7 @@ namespace ETL.View
 
                         foreach (var it in json)
                         {
+                            // KONWETUJEMY DANE
                             var movie = new Movie
                             {
                                 BoxOffice = Converters.ConvertToDecimal(it.BoxOffice),
@@ -246,6 +329,8 @@ namespace ETL.View
                         WriteToConsole($"Transfrom of {file} finished");
                         moviesToLoad.AddRange(movieList);
                     }
+
+                    // USUWAMY PLIKI 
                     WriteToConsole($"Delete json files: {filePath}");
                     File.Delete(filePath);
                 }
@@ -258,56 +343,71 @@ namespace ETL.View
             }
         }
 
-        private void Load(List<Movie> movies = null)
+        private void Load(object sender, DoWorkEventArgs e)
         {
-            if (movies != null)
-            {
-                WriteToConsole("Load to data base movies (count) - " + movies.Count);
-                Thread thread = new Thread(() => DataCallers.Instance.AddMovies(movies));
-                thread.Start(); WriteToConsole("Load to database started");
-                thread.Join(); WriteToConsole("Load to database finished");
-            }
-            else
-            {
-                WriteToConsole("Load to data base movies (count) - " + moviesToLoad.Count);
-                Thread thread = new Thread(() => DataCallers.Instance.AddMovies(moviesToLoad));
+            WriteToConsole("Load to data base movies (count) - " + moviesToLoad.Count);
+            threadsArray[0] = new Thread(() => DataCallers.Instance.AddMovies(moviesToLoad));
+            threadsArray[0].Start(); WriteToConsole("Load to data base started");
+            threadsArray[0].Join();
 
-                thread.Start(); WriteToConsole("Load to data base started");
-                thread.Join(); WriteToConsole("Load to data base finished");
-            }
+            moviesToLoad = null;
 
-            Thread thread2 = new Thread(() => Search());
-            thread2.Start();
+            threadsArray[1] = new Thread(() => Search());
+            threadsArray[1].Start();
         }
 
-        private void Setp3_Click(object sender, RoutedEventArgs e)
+        private void ExportCSV_Click(object sender, RoutedEventArgs e) => ExportCSV.Serialize(dbMovies);
+
+        private void ExportCSVOne_Click(object sender, RoutedEventArgs e) => ExportCSV.Serialize(dbMovies?.Where(x => !string.IsNullOrEmpty(exportId.Text) && x.MovieId == Convert.ToInt32(exportId.Text)), exportId.Text);
+
+        private void SearchMovieId_Click(object sender, RoutedEventArgs e)
         {
-            Load();
+            WriteToConsole("Search movie for edit started ");
+
+            movieToEdit = dbMovies?.Where(x => !string.IsNullOrEmpty(editMovieId.Text) && x.MovieId == Convert.ToInt32(editMovieId.Text)).FirstOrDefault();
+
+            if (movieToEdit == null) return;
+
+            titleTb.Text = movieToEdit.Title;
+            orginalTitleTb.Text = movieToEdit.OrginalTitle;
+            descriptionTb.Text = movieToEdit.Description;
+            rankTb.Text = movieToEdit.Rank.ToString();
+            rateTb.Text = movieToEdit.Rate.ToString();
+            rateTotalTb.Text = movieToEdit.RateTotalVotes?.ToString();
+            directorTb.Text = movieToEdit.Director;
+            durationTb.Text = movieToEdit.Duration;
+            yearTb.Text = movieToEdit.Year?.ToString();
+            boxTb.Text = movieToEdit.BoxOffice.ToString();
+
+            WriteToConsole("Search movie for edit finished ");
         }
 
-        private void Search_Click(object sender, RoutedEventArgs e)
+        private void EditMovieClick(object sender, RoutedEventArgs e)
         {
-            var searchParameter = searchTB.Text;
-            Thread t = new Thread(() => Search(searchParameter));
-            t.Start();
-        }
+            if (movieToEdit == null) return;
 
-        public void WriteToConsole(string txt)
-        {
-            Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
-            {
-                ConsoleOut.Text += "INFO " + DateTime.Now + "                - " + txt + Environment.NewLine;
-            }));
-        }
+            WriteToConsole("Edit movie started");
 
-        private void DeleteAll_Click(object sender, RoutedEventArgs e)
-        {
-            WriteToConsole("Delete All started");
-            DataCallers.Instance.RemoveAll();
+            movieToEdit.Title = titleTb.Text;
+            movieToEdit.OrginalTitle = orginalTitleTb.Text;
+            movieToEdit.Description = descriptionTb.Text;
+            movieToEdit.Rank = string.IsNullOrEmpty(rankTb.Text) ? (int?)null : Convert.ToInt32(rankTb.Text);
+            movieToEdit.Rate = string.IsNullOrEmpty(rateTb.Text) ? (int?)null : Convert.ToInt32(rateTb.Text);
+            movieToEdit.RateTotalVotes = string.IsNullOrEmpty(rateTotalTb.Text) ? (int?)null : Convert.ToInt32(rateTotalTb.Text);
+            movieToEdit.Director = directorTb.Text;
+            movieToEdit.Duration = durationTb.Text;
+            movieToEdit.Year = string.IsNullOrEmpty(yearTb.Text) ? (int?)null : Convert.ToInt32(yearTb.Text);
+            movieToEdit.BoxOffice = Convert.ToDecimal(boxTb.Text);
 
-            WriteToConsole("Delete All finished");
-            Thread t = new Thread(() => Search());
-            t.Start();
+            var result = DataCallers.Instance.EditMovie(movieToEdit);
+
+            if (!result)
+                WriteToConsole("Edit movie success");
+            else 
+                WriteToConsole("Edit movie failed");
+
+            threadsArray[1] = new Thread(() => Search());
+            threadsArray[1].Start();
         }
     }
 }

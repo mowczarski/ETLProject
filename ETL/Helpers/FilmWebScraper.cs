@@ -8,6 +8,7 @@ using System.Linq;
 using System.Reflection;
 using System.Security.AccessControl;
 using System.Security.Principal;
+using System.Threading.Tasks;
 using System.Web;
 using System.Windows;
 using System.Windows.Threading;
@@ -25,6 +26,7 @@ namespace ETL.Webscraper
         #endregion
 
         #region events
+        // EVENTY W NASZYM PRZYPADKU SLUZA DO POWIADAMIANIA GLOWNEGO OKNA APLIKACJI ZEBY WYPISALA DO KONSOLI ZADANY TEKST
         protected virtual void OnTextBoxValueChanged(TextBoxValueEventArgs e)
         {
             TextBoxValueChanged?.Invoke(this, e);
@@ -41,7 +43,7 @@ namespace ETL.Webscraper
         }
         #endregion
 
-        public string ScrapeMovies(int pageNumber)
+        public async Task<string> ScrapeMovies(int pageNumber)
         {
             List<dynamic> movieList = new List<dynamic>();
             string json = null;
@@ -52,7 +54,7 @@ namespace ETL.Webscraper
 
             if (movies == null || movies.Count == 0)
             {
-                Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
+                await Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
                 {
                     OnTextBoxValueChanged(new TextBoxValueEventArgs("Cannot get movies from filmweb.pl site !!"));
                 }));
@@ -69,23 +71,25 @@ namespace ETL.Webscraper
                 }
                 else
                 {
-                    Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
+                    await Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
                     {
                         OnTextBoxValueChanged(new TextBoxValueEventArgs("Something wrong happenned on page: " + pageNumber));
                     }));
                 }
             }
 
+            // SERIALIZACJA DANYCH DO PLIKOW JSON
             if (result)
             {
                 json = Newtonsoft.Json.JsonConvert.SerializeObject(movieList);
                 var path = System.IO.Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + @"\jsons";
 
+                // TWORZENIE KATALOGU
                 if (!Directory.Exists(path))
                     Directory.CreateDirectory(path);
 
                 SetFolderPermission(path);
-                System.IO.File.WriteAllText(path + $@"\movies_{pageNumber}.txt", json);
+                System.IO.File.WriteAllText(path + $@"\movies_{pageNumber}.txt", json); // ZAPIS PLIKOW
             }
 
             return json;
@@ -93,6 +97,8 @@ namespace ETL.Webscraper
 
         public static void SetFolderPermission(string folderPath)
         {
+            // W NIEKTORYCH PRZYPADKACH DOSTEP DO KATALOGU W KTORYM BEDA PLIKU JSON MOZE BYC ZABRONIONY
+            // METODA TA NADAJE WSZYTSKIE UPRAWNIENIA DO TEGO KATALOGU
             var directoryInfo = new DirectoryInfo(folderPath);
             var directorySecurity = directoryInfo.GetAccessControl();
             var currentUserIdentity = WindowsIdentity.GetCurrent();
@@ -109,6 +115,7 @@ namespace ETL.Webscraper
 
         private bool ScrapeMovie(List<dynamic> movieList, HtmlNode mainPage, string url)
         {
+            // GLOWNA METODA SKRAPUJACA FILMY
             var page = HtmlWeb.Load(FilmWebUrl + url).DocumentNode;
             dynamic movie = new ExpandoObject();
             try
@@ -128,6 +135,7 @@ namespace ETL.Webscraper
                 movie.Types = getTypes(page);
                 movie.Staff = getStaff(url);
 
+                // WPISYWANIE DANYCH DO OKNA KONSOLI
                 Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
                 {
                     OnTextBoxValueChanged(new TextBoxValueEventArgs($"Scrapping movie: {movie.Title} ({movie.OrginalTitle}," +

@@ -5,6 +5,8 @@
     
     public partial class init : DbMigration
     {
+        // W PROJECIE UZYTO METODOLOGII CODE FIRST
+        // POLEGA ONA NA TYM ZE ZA POMOCA UTWORZONYCH KLAS GENETUJEMY PONIZSZY KOD KTORY TWORZY BAZE DANYCH
         public override void Up()
         {
             CreateTable(

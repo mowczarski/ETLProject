@@ -6,6 +6,9 @@ namespace ETL.Helpers
 {
     public class Converters
     {
+        // KONVERTERY SLUZA GLOWNIE W PROCESIE TRANSFORMACJI 
+        // KONWERTUJA DANE W POSTACI LANCUCHA ZNAKOW NA ROZNE TYPY (INT, DECIMAL, ENUM, DATETIME)
+
         public static decimal ConvertToDecimal(dynamic it)
         {
             if (it == null) return 0;
@@ -69,8 +72,9 @@ namespace ETL.Helpers
         public static MOVIE_TYPE ConvertToMovieType(dynamic it)
         {
             if (it == null) return MOVIE_TYPE.UNKNOWN;
+            var type = Convert.ToInt32(it);
 
-            switch (it)
+            switch (type)
             {
                 case 0:
                     return MOVIE_TYPE.UNKNOWN;

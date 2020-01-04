@@ -21,7 +21,7 @@
                 <RowDefinition Height="50" />
                 <RowDefinition Height="50" />
             </Grid.RowDefinitions>
-            <Button Grid.Row="0" Click="Start_Click" Content="Start" Name="Start" 
+            <Button Grid.Row="0" Click="Start_Click" Content="Start ETL" Name="Start" 
                     FontWeight="Bold" Grid.ColumnSpan="2" Style="{StaticResource MyButton2}"/>
             <Button Grid.Row="1" Click="Setp1_Click" Name="Step1" 
                     Style="{StaticResource MyButton2}" Content="Step 1 (Extract)"/>
@@ -30,7 +30,7 @@
             <Button Grid.Row="3" Click="Setp3_Click" Content="Step 3 (Insert)" IsEnabled="False" Name="Step3" 
                     Style="{StaticResource MyButton2}"/>
             <Button Grid.Row="4" FontSize="16" Grid.ColumnSpan="2" Click="Stop_Click" Name="Stop" 
-                    FontWeight="Bold" Background="Red" Margin="10" Content="Stop"/>
+                    FontWeight="Bold" Background="Red" Margin="10" Content="Reset"/>
         </Grid>
         <Grid Grid.Column="1" Grid.Row="1">
             <TabControl>
@@ -45,11 +45,15 @@
                             <TextBox Name="searchTB" Width="200"  HorizontalAlignment="Left"></TextBox>
                             <Button Width="50" Margin="10,0,0,0" Click="Search_Click" Content="Search" Background="GreenYellow"></Button>
                             <Button Width="100" Margin="10,0,0,0" Click="DeleteAll_Click" Content="Delete All" Background="Red"></Button>
+                            <Button Width="110" Margin="10,0,0,0" Click="ExportCSV_Click" Content="Export to CSV ALL" Background="GreenYellow"></Button>
+                            <Button Width="140" Margin="10,0,0,0" Click="ExportCSVOne_Click" Content="Export to CSV MovieId -" Background="GreenYellow" ></Button>
+                            <TextBox x:Name="exportId" Width="25"  HorizontalAlignment="Left"/>
                         </StackPanel>
                         <ListView x:Name="listViewUsers" SelectionMode="Single" 
                               ItemsSource="{Binding ElementName=window1, Path=Users, Mode=TwoWay}" Height="634">
                             <ListView.View>
                                 <GridView x:Name="gridViewUsers" AllowsColumnReorder="False">
+                                    <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Path=MovieId}" Width="25" />
                                     <GridViewColumn Header="Title" DisplayMemberBinding="{Binding Path=TitleString}" Width="100" />
                                     <GridViewColumn Header="Rank" DisplayMemberBinding="{Binding Path=Rank}" Width="30" />
                                     <GridViewColumn Header="Director" DisplayMemberBinding="{Binding Path=Director}" Width="100" />
@@ -62,10 +66,62 @@
                                     <GridViewColumn Header="Production" DisplayMemberBinding="{Binding Path=Production}" Width="90" />
                                     <GridViewColumn Header="BoxOffice" DisplayMemberBinding="{Binding Path=BoxOffice}" Width="90" />
                                     <GridViewColumn Header="Type" DisplayMemberBinding="{Binding Path=TypesString}" Width="90" />
-                                    <GridViewColumn Header="Actors" DisplayMemberBinding="{Binding Path=StaffString}" Width="90" />
+                                    <GridViewColumn Header="Actors" DisplayMemberBinding="{Binding Path=StaffString}" Width="150" />
                                 </GridView>
                             </ListView.View>
                         </ListView>
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="Edit movie">
+                    <StackPanel >
+                        <StackPanel Orientation="Horizontal" Margin="10,10,0,0" Height="50" VerticalAlignment="Top">
+                            <TextBox FontSize="30" FontWeight="Bold" Name="editMovieId" Width="200"  HorizontalAlignment="Left"></TextBox>
+                            <Button Width="221" Margin="10,0,0,0" Click="SearchMovieId_Click" Content="Press movie id to search" Background="GreenYellow"></Button>
+                        </StackPanel>
+                        <StackPanel Margin="10,10,0,0">
+                            <Label Content="Edit changes and press Save" FontSize="15"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                                <Label Content="Title" Width="150"></Label>
+                                <TextBox x:Name="titleTb" Width="200"></TextBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                                <Label Content="OrginalTitle" Width="150"></Label>
+                                <TextBox x:Name="orginalTitleTb" Width="200"></TextBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                                <Label Content="Director" Width="150"></Label>
+                                <TextBox x:Name="directorTb" Width="200"></TextBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                                <Label Content="Rank" Width="150"></Label>
+                                <TextBox x:Name="rankTb" Width="200"></TextBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                                <Label Content="Year" Width="150"></Label>
+                                <TextBox x:Name="yearTb" Width="200"></TextBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                                <Label Content="Duration" Width="150"></Label>
+                                <TextBox x:Name="durationTb" Width="200"></TextBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                                <Label Content="Rate" Width="150"></Label>
+                                <TextBox x:Name="rateTb" Width="200"></TextBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                                <Label Content="RateTotalVotes" Width="150"></Label>
+                                <TextBox  x:Name="rateTotalTb" Width="200"></TextBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                                <Label Content="BoxOffice" Width="150"></Label>
+                                <TextBox x:Name="boxTb" Width="200"></TextBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                                <Label Content="Description" Width="150"></Label>
+                                <TextBox  x:Name="descriptionTb" Width="200" Height="152" TextWrapping="Wrap"></TextBox>
+                            </StackPanel>
+                            <Button Width="200" Height="50" Content="Save" HorizontalAlignment="Left" Background="GreenYellow" Click="EditMovieClick" Margin="150,10,0,0"/>
+                        </StackPanel>
                     </StackPanel>
                 </TabItem>
             </TabControl>
