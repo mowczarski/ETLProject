@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="ETL process sample"  Width="1280" Height="720" ResizeMode="NoResize" WindowStyle="SingleBorderWindow">
+        Title="ETL process sample"  Width="1280" Height="720" WindowStartupLocation="CenterScreen"  ResizeMode="NoResize" WindowStyle="SingleBorderWindow">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -77,7 +77,7 @@
                     <StackPanel >
                         <StackPanel Orientation="Horizontal" Margin="10,10,0,0" Height="50" VerticalAlignment="Top">
                             <TextBox FontSize="30" FontWeight="Bold" Name="editMovieId" Width="140"  HorizontalAlignment="Left"></TextBox>
-                            <Button Width="200" Margin="10,0,0,0" Click="SearchMovieId_Click" Content="Search Movie by Id" Background="GreenYellow"></Button>
+                            <Button Width="200" Margin="10,0,0,0" Click="SearchMovieId_Click" Content="Search Movie by ID" Background="GreenYellow"></Button>
                         </StackPanel>
                         <StackPanel Margin="10,10,0,0">
                             <Label Content="Edit changes and press Save" FontWeight="Bold" FontSize="16"/>

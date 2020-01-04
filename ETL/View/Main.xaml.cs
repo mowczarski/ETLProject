@@ -29,14 +29,14 @@ namespace ETL.View
 
         public Main()
         {
-            InitializeComponent(); 
+            InitializeComponent();
 
             // USTALAMY LICZBE WATKOW I TASKOW (PROGRAMOWANIE ASYNCHRONICZNE I WIELOWATKOWE)
             threadsArray = new Thread[2];
 
             // LICZNBA TASKOW JEST ROWNA LICZBIE RDZENI LOGICZNYCH PROCESORA
-            tasksArray = new Task[proc]; 
-           
+            tasksArray = new Task[proc];
+
             // USTAWALY PUNKTY WYJSCIA DO EVENTU ZE SKRAPERA
             scraper.TextBoxValueChanged += OtherWindowOnTextBoxValueChanged;
 
@@ -120,16 +120,27 @@ namespace ETL.View
 
         private void Start_Click(object sender, RoutedEventArgs e)
         {
-            if (!(Step2.IsEnabled == false && Step3.IsEnabled == false)) 
-                return;
+            MessageBoxResult result = MessageBox.Show("Would you like to start ETL? \nThis operation can't be undone", "Choose you decision !!", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
-            // BACKGROUNDWORKER POZWALA NA WYKONYWANIE OPERACJI W TLE
-            // POZWALA NA WYKONYWANIE ZLOZONYCH OPERACJI BEZ ZAWIESZANIA GUI
+            switch (result)
+            {
+                case MessageBoxResult.Yes:
+                    {
+                        if (!(Step2.IsEnabled == false && Step3.IsEnabled == false))
+                            return;
 
-            BackgroundWorker backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            backgroundWorker1.DoWork += new DoWorkEventHandler(backgroundWorker1_DoWork);
-            backgroundWorker1.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorker1_RunWorkerCompleted);
-            backgroundWorker1.RunWorkerAsync();
+                        // BACKGROUNDWORKER POZWALA NA WYKONYWANIE OPERACJI W TLE
+                        // POZWALA NA WYKONYWANIE ZLOZONYCH OPERACJI BEZ ZAWIESZANIA GUI
+
+                        BackgroundWorker backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+                        backgroundWorker1.DoWork += new DoWorkEventHandler(backgroundWorker1_DoWork);
+                        backgroundWorker1.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorker1_RunWorkerCompleted);
+                        backgroundWorker1.RunWorkerAsync();
+                        break;
+                    }
+                case MessageBoxResult.No:
+                    break;
+            }
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e) => Extract(true); 
@@ -149,42 +160,95 @@ namespace ETL.View
 
         private void Stop_Click(object sender, RoutedEventArgs e)
         {
-            moviesToLoad = null;
-            dbMovies = null;
-            listViewUsers.ItemsSource = null;
-            Step2.IsEnabled = false;
-            Step3.IsEnabled = false;
+            MessageBoxResult result = MessageBox.Show("Do you want to reset?", "Choose you decision !!", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
-            ConsoleOut.Text = DateTime.Now + " Reseted";
+            switch (result)
+            {
+                case MessageBoxResult.Yes:
+                    {
+                        MessageBox.Show("Reseted Complete");
+
+                        moviesToLoad = null;
+                        dbMovies = null;
+                        listViewUsers.ItemsSource = null;
+                        Step2.IsEnabled = false;
+                        Step3.IsEnabled = false;
+
+                        ConsoleOut.Text = DateTime.Now + " Reseted";
+                        break;
+                    }
+                case MessageBoxResult.No:
+                    break;
+            }
         }
 
         private void Setp1_Click(object sender, RoutedEventArgs e)
         {
-            if (Step2.IsEnabled == true)
+            MessageBoxResult result = MessageBox.Show("Do you want to start STEP 1 ?", "Choose you decision !!", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+            switch (result)
             {
-                WriteToConsole("Cannot run Extract proces Again");
-                return;
+                case MessageBoxResult.Yes:
+                    {
+                        
+                        if (Step2.IsEnabled == true)
+                        {
+                            MessageBox.Show("Cannot do this operation");
+                            WriteToConsole("Cannot run Extract proces Again");
+                            return;
+                        }
+
+                        Extract();
+                        Step2.IsEnabled = true;
+
+                        break;
+                    }
+                case MessageBoxResult.No:
+                    break;
             }
 
-            Extract();
-            Step2.IsEnabled = true;
         }
 
         private void Setp2_Click(object sender, RoutedEventArgs e)
         {
-            if (Step3.IsEnabled == true)
-            {
-                WriteToConsole("Cannot run Transform proces Again");
-                return;
-            }
 
-            Transform();
-            Step3.IsEnabled = true;
+            MessageBoxResult result = MessageBox.Show("Do you want to start STEP 2 ?", "Choose you decision !!", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+            switch (result)
+            {
+                case MessageBoxResult.Yes:
+                    {
+                        if (Step3.IsEnabled == true)
+                        {
+                            MessageBox.Show("Cannot do this operation");
+                            WriteToConsole("Cannot run Transform proces Again");
+                            return;
+                        }
+
+                        Transform();
+                        Step3.IsEnabled = true;
+
+                        break;
+                    }
+                case MessageBoxResult.No:
+                    break;
+            }
         }
 
         private void Setp3_Click(object sender, RoutedEventArgs e)
         {
-            LoadInBackground();
+            MessageBoxResult result = MessageBox.Show("Do you want to start STEP 3 ?", "Choose you decision !!", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+            switch (result)
+            {
+                case MessageBoxResult.Yes:
+                    {
+                        LoadInBackground();
+                        break;
+                    }
+                case MessageBoxResult.No:
+                    break;
+            }         
         }
 
         private void Search_Click(object sender, RoutedEventArgs e)
@@ -196,12 +260,23 @@ namespace ETL.View
 
         private void DeleteAll_Click(object sender, RoutedEventArgs e)
         {
-            WriteToConsole("Delete All started");
-            DataCallers.Instance.RemoveAll();
+            MessageBoxResult result = MessageBox.Show("Do you want to delete all data? \nThis operation will purge all data from DataBase", "Choose you decision !!", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
-            WriteToConsole("Delete All finished");
-            threadsArray[0] = new Thread(() => Search());
-            threadsArray[0].Start();
+            switch (result)
+            {
+                case MessageBoxResult.Yes:
+                    {
+                        WriteToConsole("Delete All started");
+                        DataCallers.Instance.RemoveAll();
+
+                        WriteToConsole("Delete All finished");
+                        threadsArray[0] = new Thread(() => Search());
+                        threadsArray[0].Start();
+                        break;
+                    }
+                case MessageBoxResult.No:
+                    break;
+            }
         }
 
         private object extractLock = new object();
@@ -356,9 +431,43 @@ namespace ETL.View
             threadsArray[1].Start();
         }
 
-        private void ExportCSV_Click(object sender, RoutedEventArgs e) => ExportCSV.Serialize(dbMovies);
+        private void ExportCSV_Click(object sender, RoutedEventArgs e)
+        {
 
-        private void ExportCSVOne_Click(object sender, RoutedEventArgs e) => ExportCSV.Serialize(dbMovies?.Where(x => !string.IsNullOrEmpty(exportId.Text) && x.MovieId == Convert.ToInt32(exportId.Text)), exportId.Text);
+            MessageBoxResult result = MessageBox.Show("Do you want to export all data to CSV file ?", "Choose you decision !!", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+            switch (result)
+            {
+                case MessageBoxResult.Yes:
+                    {
+                        ExportCSV.Serialize(dbMovies);
+                        MessageBox.Show("Completed");
+                        break;
+                    }
+                case MessageBoxResult.No:
+                    break;
+            }
+          
+        }
+
+
+        private void ExportCSVOne_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("Do you want to export selected movie data to CSV file ?", "Choose you decision !!", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+            switch (result)
+            {
+                case MessageBoxResult.Yes:
+                    {
+                        ExportCSV.Serialize(dbMovies?.Where(x => !string.IsNullOrEmpty(exportId.Text) && x.MovieId == Convert.ToInt32(exportId.Text)), exportId.Text);
+                        MessageBox.Show("Completed");
+                        break;
+                    }
+                case MessageBoxResult.No:
+                    break;
+            }        
+        }
+
 
         private void SearchMovieId_Click(object sender, RoutedEventArgs e)
         {
@@ -384,30 +493,48 @@ namespace ETL.View
 
         private void EditMovieClick(object sender, RoutedEventArgs e)
         {
-            if (movieToEdit == null) return;
 
-            WriteToConsole("Edit movie started");
+            MessageBoxResult result = MessageBox.Show("Do you want to save changes ?", "Choose you decision!!", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
-            movieToEdit.Title = titleTb.Text;
-            movieToEdit.OrginalTitle = orginalTitleTb.Text;
-            movieToEdit.Description = descriptionTb.Text;
-            movieToEdit.Rank = string.IsNullOrEmpty(rankTb.Text) ? (int?)null : Convert.ToInt32(rankTb.Text);
-            movieToEdit.Rate = string.IsNullOrEmpty(rateTb.Text) ? (int?)null : Convert.ToInt32(rateTb.Text);
-            movieToEdit.RateTotalVotes = string.IsNullOrEmpty(rateTotalTb.Text) ? (int?)null : Convert.ToInt32(rateTotalTb.Text);
-            movieToEdit.Director = directorTb.Text;
-            movieToEdit.Duration = durationTb.Text;
-            movieToEdit.Year = string.IsNullOrEmpty(yearTb.Text) ? (int?)null : Convert.ToInt32(yearTb.Text);
-            movieToEdit.BoxOffice = Convert.ToDecimal(boxTb.Text);
+            switch (result)
+            {
+                case MessageBoxResult.Yes:
+                    {
+                        if (movieToEdit == null) return;
 
-            var result = DataCallers.Instance.EditMovie(movieToEdit);
+                        WriteToConsole("Edit movie started");
 
-            if (result)
-                WriteToConsole("Edit movie success");
-            else 
-                WriteToConsole("Edit movie failed");
+                        movieToEdit.Title = titleTb.Text;
+                        movieToEdit.OrginalTitle = orginalTitleTb.Text;
+                        movieToEdit.Description = descriptionTb.Text;
+                        movieToEdit.Rank = string.IsNullOrEmpty(rankTb.Text) ? (int?)null : Convert.ToInt32(rankTb.Text);
+                        movieToEdit.Rate = string.IsNullOrEmpty(rateTb.Text) ? (int?)null : Convert.ToInt32(rateTb.Text);
+                        movieToEdit.RateTotalVotes = string.IsNullOrEmpty(rateTotalTb.Text) ? (int?)null : Convert.ToInt32(rateTotalTb.Text);
+                        movieToEdit.Director = directorTb.Text;
+                        movieToEdit.Duration = durationTb.Text;
+                        movieToEdit.Year = string.IsNullOrEmpty(yearTb.Text) ? (int?)null : Convert.ToInt32(yearTb.Text);
+                        movieToEdit.BoxOffice = Convert.ToDecimal(boxTb.Text);
 
-            threadsArray[1] = new Thread(() => Search());
-            threadsArray[1].Start();
+                        var saved = DataCallers.Instance.EditMovie(movieToEdit);
+
+                        if (saved)
+                        {
+                            MessageBox.Show("Completed");
+                            WriteToConsole("Edit movie success");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Failed");
+                            WriteToConsole("Edit movie failed");
+                        }
+                           
+                        threadsArray[1] = new Thread(() => Search());
+                        threadsArray[1].Start();
+                        break;
+                    }
+                case MessageBoxResult.No:
+                    break;
+            }
         }
     }
 }
