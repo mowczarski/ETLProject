@@ -401,7 +401,7 @@ namespace ETL.View
 
             var result = DataCallers.Instance.EditMovie(movieToEdit);
 
-            if (!result)
+            if (result)
                 WriteToConsole("Edit movie success");
             else 
                 WriteToConsole("Edit movie failed");
