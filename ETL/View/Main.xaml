@@ -51,7 +51,7 @@
                             <TextBox x:Name="exportId" Width="25"  HorizontalAlignment="Left"/>
                         </StackPanel>
                         <ListView x:Name="listViewUsers" SelectionMode="Single" 
-                              ItemsSource="{Binding ElementName=window1, Path=Users, Mode=TwoWay}" Height="634">
+                              ItemsSource="{Binding ElementName=window1, Path=Users, Mode=TwoWay}" Height="618">
                             <ListView.View>
                                 <GridView x:Name="gridViewUsers" AllowsColumnReorder="False">
                                     <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Path=MovieId}" Width="25" />
@@ -76,11 +76,11 @@
                 <TabItem Header="Edit movie">
                     <StackPanel >
                         <StackPanel Orientation="Horizontal" Margin="10,10,0,0" Height="50" VerticalAlignment="Top">
-                            <TextBox FontSize="30" FontWeight="Bold" Name="editMovieId" Width="200"  HorizontalAlignment="Left"></TextBox>
-                            <Button Width="221" Margin="10,0,0,0" Click="SearchMovieId_Click" Content="Press movie id to search" Background="GreenYellow"></Button>
+                            <TextBox FontSize="30" FontWeight="Bold" Name="editMovieId" Width="140"  HorizontalAlignment="Left"></TextBox>
+                            <Button Width="200" Margin="10,0,0,0" Click="SearchMovieId_Click" Content="Search Movie by Id" Background="GreenYellow"></Button>
                         </StackPanel>
                         <StackPanel Margin="10,10,0,0">
-                            <Label Content="Edit changes and press Save" FontSize="15"/>
+                            <Label Content="Edit changes and press Save" FontWeight="Bold" FontSize="16"/>
                             <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
                                 <Label Content="Title" Width="150"></Label>
                                 <TextBox x:Name="titleTb" Width="200"></TextBox>
