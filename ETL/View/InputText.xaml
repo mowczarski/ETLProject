@@ -30,8 +30,8 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Label Content="Enter password" HorizontalAlignment="Center" Margin="5"/>
-        <TextBox FontSize="15" Grid.Row="1" Name="MyTextBox" Margin="5"/>
-        <Button Grid.Row="2" Content="OK" Click="Button_Click" Margin="50,5"/>
+        <Label Content="Enter password" HorizontalAlignment="Center" FontSize="16" Margin="5"/>
+        <TextBox FontSize="15" Grid.Row="1" Name="MyTextBox" Margin="50,5"/>
+        <Button Grid.Row="2" Content="OK" Background="GreenYellow" Click="Button_Click" Margin="50,5"/>
     </Grid>
 </Window>

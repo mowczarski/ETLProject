@@ -19,7 +19,7 @@
 <Application x:Class="ETL.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:ETL"
+             xmlns:local="clr-namespace:ETL" Exit="Application_Exit"
              StartupUri="View/Main.xaml">
     <Application.Resources>
         <ResourceDictionary Source="View/Styles.xaml"/>

@@ -106,7 +106,7 @@ namespace ETL.View
 
             if (string.IsNullOrEmpty(password) || !DataCallers.Instance.IsServerConnected())
             {
-                MessageBox.Show("Incorrect password\nApplication will be closed");
+                MessageBox.Show("Cannot connect to server\nApplication will be closed");
                 System.Environment.Exit(1);
             }
 
@@ -224,15 +224,16 @@ namespace ETL.View
 
             if (String.IsNullOrEmpty(txt))
             {
-                listViewUsers.ItemsSource = dbMovies;
+                listViewUsers.ItemsSource = dbMovies.OrderBy(x => x.MovieId);
             }
             else
             {
+                txt = txt.ToUpper();
                 listViewUsers.ItemsSource = dbMovies?.Where(x =>
-                    (!string.IsNullOrEmpty(x.OrginalTitle) && x.OrginalTitle.Contains(txt))
-                    || (!string.IsNullOrEmpty(x.OrginalTitle) && x.Title.Contains(txt))
-                    || (x.Staff != null && x.Staff.Any(y => y.Name.Contains(txt)))
-                    || (x.Types != null && x.Types.Any(z => z.Name.Contains(txt))));
+                    (!string.IsNullOrEmpty(x.OrginalTitle) && x.OrginalTitle.ToUpper().Contains(txt))
+                    || (!string.IsNullOrEmpty(x.OrginalTitle) && x.Title.ToUpper().Contains(txt))
+                    || (x.Staff != null && x.Staff.Any(y => y.NameSurname.ToUpper().Contains(txt)))
+                    || (x.Types != null && x.Types.Any(z => z.Name.ToUpper().Contains(txt))));
             }
             WriteToConsole("UpdateView finished");
         }
@@ -279,7 +280,7 @@ namespace ETL.View
                 return;
             }
                
-            MessageBoxResult result = MessageBox.Show("Would you like to start ETL process? \nThis operation can't be undone", "Choose you decision !!", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            MessageBoxResult result = MessageBox.Show("Would you like to start ETL process? \nThis operation can't be undone", "Choose one option", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
             switch (result)
             {
@@ -344,24 +345,24 @@ namespace ETL.View
         /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void Stop_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("Do you want to reset?", "Choose you decision !!", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            MessageBoxResult result = MessageBox.Show("Do you want to reset?", "Choose one option", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
             switch (result)
             {
                 case MessageBoxResult.Yes:
-                    {
-                        MessageBox.Show("Reseted Complete");
-
+                    {                     
                         moviesToLoad = null;
                         dbMovies = null;                    
                         listViewUsers.ItemsSource = null;
+                        movieToEdit = null;
                         Start.IsEnabled = true;
                         Step1.IsEnabled = true;
                         Step2.IsEnabled = false;
                         Step3.IsEnabled = false;
 
-                        ConsoleOut.Text = DateTime.Now + " Reseted";
+                        ConsoleOut.Text = DateTime.Now + " Reseted" + Environment.NewLine;
                         Search_Async();
+                        MessageBox.Show("Reseted Complete");
                         break;
                     }
                 case MessageBoxResult.No:
@@ -733,8 +734,18 @@ namespace ETL.View
         private void SearchMovieId_Click(object sender, RoutedEventArgs e)
         {
             WriteToConsole("Search movie for edit started ");
+            int movieId = 0;
 
-            movieToEdit = dbMovies?.Where(x => !string.IsNullOrEmpty(editMovieId.Text) && x.MovieId == Convert.ToInt32(editMovieId.Text)).FirstOrDefault();
+            try
+            {
+                movieId = Convert.ToInt32(editMovieId.Text);
+            }
+            catch
+            {
+                return;
+            }
+
+            movieToEdit = dbMovies?.Where(x => x.MovieId == movieId).FirstOrDefault();
 
             if (movieToEdit == null)
             {
@@ -791,16 +802,22 @@ namespace ETL.View
 
                         if (saved)
                         {
-                            MessageBox.Show("Completed");
+                            MessageBox.Show("Completed - edit movie");
                             WriteToConsole("Edit movie success");
+                            var movieToDelete = dbMovies?.Where(x => x.MovieId == movieToEdit.MovieId).FirstOrDefault();
+
+                            if (movieToDelete != null)
+                            {
+                                dbMovies?.Remove(movieToDelete);
+                                dbMovies?.Add(movieToEdit);
+                            }
                         }
                         else
                         {
                             MessageBox.Show("Failed");
                             WriteToConsole("Edit movie failed");
                         }
-
-                        Search_Async();
+                        //Search_Async();
                         break;
                     }
                 case MessageBoxResult.No:
