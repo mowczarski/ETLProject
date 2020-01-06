@@ -44,14 +44,30 @@ namespace ETL.View
             WriteToConsole($"Number Of Logical Processors: {Environment.ProcessorCount}");
 
             ConsoleScrollViewer.ScrollToBottom();
-
-            threadsArray[0] = new Thread(() => Search());
-            threadsArray[0].Start();
+            Search_Async();
         }
 
         private void OtherWindowOnTextBoxValueChanged(object sender, TextBoxValueEventArgs e)
         {
             WriteToConsole(e.NewValue);
+        }
+
+        private Thread loadingThread;
+        public void Search_Async(string txt = null, bool getNewData = true)
+        {
+            AbortLoading();
+            Working(true);
+            loadingThread = new Thread(() => Search(txt, getNewData));
+            loadingThread.Start();
+        }
+
+        public void AbortLoading()
+        {
+            if (loadingThread != null)
+            {
+                loadingThread.Abort();
+                loadingThread = null;
+            }
         }
 
         private object loadingLock = new object();
@@ -69,6 +85,7 @@ namespace ETL.View
                     Dispatcher.Invoke((Action)(() =>
                     {
                         UpdateView(txt);
+                        Working(false);
                     }));
                 }
                 catch (Exception ex)
@@ -82,7 +99,16 @@ namespace ETL.View
         {
             WriteToConsole("UpdateData started");
             var result = DataCallers.Instance.GetAllMovies();
-            WriteToConsole("UpdateData finished");
+
+            if (result == null || result.Count() == 0)
+            {
+                WriteToConsole("No movies found, fix connection with database or load movies to database");
+            }
+            else
+            {
+                WriteToConsole("UpdateData finished");
+            }
+
             return result;
         }
 
@@ -91,13 +117,19 @@ namespace ETL.View
             WriteToConsole("UpdateView started");
             listViewUsers.ItemsSource = null;
 
+            if (dbMovies == null || dbMovies.Count() == 0)
+            {
+                WriteToConsole("UpdateView - Movies not found");
+                return;
+            }
+
             if (String.IsNullOrEmpty(txt))
             {
                 listViewUsers.ItemsSource = dbMovies;
             }
             else
             {
-                listViewUsers.ItemsSource = dbMovies.Where(x =>
+                listViewUsers.ItemsSource = dbMovies?.Where(x =>
                     (!string.IsNullOrEmpty(x.OrginalTitle) && x.OrginalTitle.Contains(txt))
                     || (!string.IsNullOrEmpty(x.OrginalTitle) && x.Title.Contains(txt))
                     || (x.Staff != null && x.Staff.Any(y => y.Name.Contains(txt)))
@@ -105,6 +137,15 @@ namespace ETL.View
             }
             WriteToConsole("UpdateView finished");
         }
+
+        public void Working(bool state)
+        {
+            Dispatcher.Invoke((Action)(() =>
+            {
+                loadingShopB.Visibility = state ? Visibility.Visible : Visibility.Collapsed;
+            }));
+        }
+
 
         public void WriteToConsole(string txt)
         {
@@ -120,7 +161,13 @@ namespace ETL.View
 
         private void Start_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("Would you like to start ETL? \nThis operation can't be undone", "Choose you decision !!", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (Step2.IsEnabled == true || Step3.IsEnabled == true)
+            {
+                WriteToConsole("Cannot do this operation");
+                return;
+            }
+               
+            MessageBoxResult result = MessageBox.Show("Would you like to start ETL process? \nThis operation can't be undone", "Choose you decision !!", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
             switch (result)
             {
@@ -128,6 +175,11 @@ namespace ETL.View
                     {
                         if (!(Step2.IsEnabled == false && Step3.IsEnabled == false))
                             return;
+
+                        Start.IsEnabled = false;
+                        Step1.IsEnabled = false;
+                        Step2.IsEnabled = false;
+                        Step3.IsEnabled = false;
 
                         // BACKGROUNDWORKER POZWALA NA WYKONYWANIE OPERACJI W TLE
                         // POZWALA NA WYKONYWANIE ZLOZONYCH OPERACJI BEZ ZAWIESZANIA GUI
@@ -148,7 +200,9 @@ namespace ETL.View
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             Transform();
+            Working(true);
             LoadInBackground();
+            Working(false);
         }
 
         private void LoadInBackground()
@@ -169,12 +223,15 @@ namespace ETL.View
                         MessageBox.Show("Reseted Complete");
 
                         moviesToLoad = null;
-                        dbMovies = null;
+                        dbMovies = null;                    
                         listViewUsers.ItemsSource = null;
+                        Start.IsEnabled = true;
+                        Step1.IsEnabled = true;
                         Step2.IsEnabled = false;
                         Step3.IsEnabled = false;
 
                         ConsoleOut.Text = DateTime.Now + " Reseted";
+                        Search_Async();
                         break;
                     }
                 case MessageBoxResult.No:
@@ -184,13 +241,12 @@ namespace ETL.View
 
         private void Setp1_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("Do you want to start STEP 1 ?", "Choose you decision !!", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            MessageBoxResult result = MessageBox.Show("Do you want to start STEP 1?", "Choose one option", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
             switch (result)
             {
                 case MessageBoxResult.Yes:
                     {
-                        
                         if (Step2.IsEnabled == true)
                         {
                             MessageBox.Show("Cannot do this operation");
@@ -200,7 +256,7 @@ namespace ETL.View
 
                         Extract();
                         Step2.IsEnabled = true;
-
+                        Start.IsEnabled = false;
                         break;
                     }
                 case MessageBoxResult.No:
@@ -212,7 +268,7 @@ namespace ETL.View
         private void Setp2_Click(object sender, RoutedEventArgs e)
         {
 
-            MessageBoxResult result = MessageBox.Show("Do you want to start STEP 2 ?", "Choose you decision !!", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            MessageBoxResult result = MessageBox.Show("Do you want to start STEP 2?", "Choose one option", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
             switch (result)
             {
@@ -237,13 +293,15 @@ namespace ETL.View
 
         private void Setp3_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("Do you want to start STEP 3 ?", "Choose you decision !!", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            MessageBoxResult result = MessageBox.Show("Do you want to start STEP 3?", "Choose one option", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
             switch (result)
             {
                 case MessageBoxResult.Yes:
                     {
+                        Working(true);
                         LoadInBackground();
+                        Working(false);
                         break;
                     }
                 case MessageBoxResult.No:
@@ -254,24 +312,24 @@ namespace ETL.View
         private void Search_Click(object sender, RoutedEventArgs e)
         {
             var searchParameter = searchTB.Text;
-            threadsArray[0] = new Thread(() => Search(searchParameter, false));
-            threadsArray[0].Start();
+            Search_Async(searchParameter, false);
         }
 
         private void DeleteAll_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("Do you want to delete all data? \nThis operation will purge all data from DataBase", "Choose you decision !!", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            MessageBoxResult result = MessageBox.Show("Do you want to delete all data? \nThis operation will purge all data from DataBase", "Choose one option", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
             switch (result)
             {
                 case MessageBoxResult.Yes:
                     {
+                        Working(true);
                         WriteToConsole("Delete All started");
                         DataCallers.Instance.RemoveAll();
+                        Working(false);
 
                         WriteToConsole("Delete All finished");
-                        threadsArray[0] = new Thread(() => Search());
-                        threadsArray[0].Start();
+                        Search_Async();
                         break;
                     }
                 case MessageBoxResult.No:
@@ -427,21 +485,26 @@ namespace ETL.View
 
             moviesToLoad = null;
 
-            threadsArray[1] = new Thread(() => Search());
-            threadsArray[1].Start();
+            Search_Async();
         }
 
         private void ExportCSV_Click(object sender, RoutedEventArgs e)
         {
 
-            MessageBoxResult result = MessageBox.Show("Do you want to export all data to CSV file ?", "Choose you decision !!", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            MessageBoxResult result = MessageBox.Show("Do you want to export all data to CSV file?", "Choose one option", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
             switch (result)
             {
                 case MessageBoxResult.Yes:
                     {
+                        if (dbMovies == null || dbMovies.Count() == 0)
+                        {
+                            MessageBox.Show("No movies found !! \nTry again");
+                            break;
+                        }
+
                         ExportCSV.Serialize(dbMovies);
-                        MessageBox.Show("Completed");
+                        MessageBox.Show($"Completed - file db.csv created");
                         break;
                     }
                 case MessageBoxResult.No:
@@ -453,14 +516,22 @@ namespace ETL.View
 
         private void ExportCSVOne_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("Do you want to export selected movie data to CSV file ?", "Choose you decision !!", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            MessageBoxResult result = MessageBox.Show("Do you want to export selected movie data to CSV file?", "Choose one option", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
             switch (result)
             {
                 case MessageBoxResult.Yes:
                     {
-                        ExportCSV.Serialize(dbMovies?.Where(x => !string.IsNullOrEmpty(exportId.Text) && x.MovieId == Convert.ToInt32(exportId.Text)), exportId.Text);
-                        MessageBox.Show("Completed");
+                        var movie = dbMovies?.Where(x => !string.IsNullOrEmpty(exportId.Text) && x.MovieId == Convert.ToInt32(exportId.Text));
+
+                        if (movie == null || movie.Count() == 0)
+                        {
+                            MessageBox.Show("Movie not found !! \nTry again");
+                            break;
+                        }
+
+                        ExportCSV.Serialize(movie, exportId.Text);
+                        MessageBox.Show($"Completed - file MovieId-{exportId.Text}.csv created");
                         break;
                     }
                 case MessageBoxResult.No:
@@ -475,7 +546,13 @@ namespace ETL.View
 
             movieToEdit = dbMovies?.Where(x => !string.IsNullOrEmpty(editMovieId.Text) && x.MovieId == Convert.ToInt32(editMovieId.Text)).FirstOrDefault();
 
-            if (movieToEdit == null) return;
+            if (movieToEdit == null)
+            {
+                MessageBox.Show("Movie not found\nTry again");
+                WriteToConsole("Search movie - not found");
+                return;
+            }
+               
 
             titleTb.Text = movieToEdit.Title;
             orginalTitleTb.Text = movieToEdit.OrginalTitle;
@@ -494,7 +571,7 @@ namespace ETL.View
         private void EditMovieClick(object sender, RoutedEventArgs e)
         {
 
-            MessageBoxResult result = MessageBox.Show("Do you want to save changes ?", "Choose you decision!!", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            MessageBoxResult result = MessageBox.Show("Do you want to save changes?", "Choose one option", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
             switch (result)
             {
@@ -527,9 +604,8 @@ namespace ETL.View
                             MessageBox.Show("Failed");
                             WriteToConsole("Edit movie failed");
                         }
-                           
-                        threadsArray[1] = new Thread(() => Search());
-                        threadsArray[1].Start();
+
+                        Search_Async();
                         break;
                     }
                 case MessageBoxResult.No:
