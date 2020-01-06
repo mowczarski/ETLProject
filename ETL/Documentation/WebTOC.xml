@@ -1,0 +1,329 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpTOC>
+
+  <HelpTOCNode Id="d11c166a-367f-47b6-b921-6b7fd4f56432" Title="Contract.Enum Namespace" Url="html/453854746.htm">
+    <HelpTOCNode Title="MOVIE_TYPE Enumeration" Url="html/402117441.htm" />
+    <HelpTOCNode Title="PRODUCTION_COUNTRY Enumeration" Url="html/236748748.htm" />
+  </HelpTOCNode>
+  <HelpTOCNode Id="d957996e-2416-41f4-8220-c517e8a8fc8a" Title="Contract.Interfaces Namespace" Url="html/2104566358.htm">
+    <HelpTOCNode Id="0801ec5e-54b4-4b3c-b618-e7a24eaa26ae" Title="ICaller Interface" Url="html/2058385198.htm">
+      <HelpTOCNode Title="ICaller Members" Url="html/1859638818.htm" />
+      <HelpTOCNode Id="3418fe78-83c0-414d-b633-cc5bf14a3f5b" Title="ICaller Methods" Url="html/2089129728.htm">
+        <HelpTOCNode Title="AddMovies Method " Url="html/861036212.htm" />
+        <HelpTOCNode Title="EditMovie Method " Url="html/1229375904.htm" />
+        <HelpTOCNode Title="GetAllMovies Method " Url="html/367464008.htm" />
+        <HelpTOCNode Title="IsServerConnected Method " Url="html/844410822.htm" />
+        <HelpTOCNode Title="RemoveAll Method " Url="html/2045231794.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="b647ae5f-4267-475b-a423-3f41e3befafa" Title="ICaller Properties" Url="html/1610895429.htm">
+        <HelpTOCNode Title="ConnectionString Property " Url="html/888209305.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="773c8623-e6d3-45f5-8f34-c4d3c2e54213" Title="Contract.Model Namespace" Url="html/962371905.htm">
+    <HelpTOCNode Id="e0dce022-a7a7-484f-a39e-cb63341883ec" Title="Movie Class" Url="html/1010428831.htm">
+      <HelpTOCNode Title="Movie Members" Url="html/71054543.htm" />
+      <HelpTOCNode Id="b3cee333-76ce-4e3e-b1e7-71cb81ed1101" Title="Movie Properties" Url="html/774805263.htm">
+        <HelpTOCNode Title="BoxOffice Property " Url="html/1381144124.htm" />
+        <HelpTOCNode Title="Description Property " Url="html/136038982.htm" />
+        <HelpTOCNode Title="Director Property " Url="html/1479668209.htm" />
+        <HelpTOCNode Title="Duration Property " Url="html/923729912.htm" />
+        <HelpTOCNode Title="MovieId Property " Url="html/271229138.htm" />
+        <HelpTOCNode Title="OrginalTitle Property " Url="html/1990756576.htm" />
+        <HelpTOCNode Title="Production Property " Url="html/392456640.htm" />
+        <HelpTOCNode Title="Rank Property " Url="html/1870289604.htm" />
+        <HelpTOCNode Title="Rate Property " Url="html/708931982.htm" />
+        <HelpTOCNode Title="RateTotalVotes Property " Url="html/1063852283.htm" />
+        <HelpTOCNode Title="ReleaseDate Property " Url="html/1198374803.htm" />
+        <HelpTOCNode Title="Staff Property " Url="html/462613558.htm" />
+        <HelpTOCNode Title="StaffString Property " Url="html/363071303.htm" />
+        <HelpTOCNode Title="Title Property " Url="html/382819885.htm" />
+        <HelpTOCNode Title="TitleString Property " Url="html/1505284998.htm" />
+        <HelpTOCNode Title="Types Property " Url="html/393186906.htm" />
+        <HelpTOCNode Title="TypesString Property " Url="html/117065561.htm" />
+        <HelpTOCNode Title="Year Property " Url="html/1431041949.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="5af56a87-ba24-4243-a0fc-8cc46e8bb6a6" Title="MovieType Class" Url="html/1369248799.htm">
+      <HelpTOCNode Title="MovieType Members" Url="html/354988292.htm" />
+      <HelpTOCNode Id="5ac80e90-9764-4947-82f9-7d1b83c01e61" Title="MovieType Properties" Url="html/1356787794.htm">
+        <HelpTOCNode Title="Description Property " Url="html/1364641336.htm" />
+        <HelpTOCNode Title="MovieTypeId Property " Url="html/1365975601.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/1659962160.htm" />
+        <HelpTOCNode Title="Type Property " Url="html/1286864056.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="36b4b8e9-d665-4c44-932d-97cb72fb2046" Title="Person Class" Url="html/1590263949.htm">
+      <HelpTOCNode Title="Person Members" Url="html/2101894888.htm" />
+      <HelpTOCNode Id="7bbea182-e0bf-4848-83d9-4df2408a42b8" Title="Person Properties" Url="html/1573569606.htm">
+        <HelpTOCNode Title="Name Property " Url="html/625954379.htm" />
+        <HelpTOCNode Title="NameSurname Property " Url="html/774962117.htm" />
+        <HelpTOCNode Title="PersonId Property " Url="html/1556761413.htm" />
+        <HelpTOCNode Title="Surname Property " Url="html/1766025030.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="42dca5d9-d37c-43c1-ae48-a68bc3e02749" Title="DataContext.DataSource Namespace" Url="html/997971475.htm">
+    <HelpTOCNode Id="70403815-d1b8-4648-853f-f5f78cece73d" Title="ETLModel Class" Url="html/2066539276.htm">
+      <HelpTOCNode Title="ETLModel Members" Url="html/1512287771.htm" />
+      <HelpTOCNode Title="ETLModel Constructor " Url="html/1764843357.htm" />
+      <HelpTOCNode Id="dc0c7a5a-4829-4959-b4ca-87f2b3373d2d" Title="ETLModel Properties" Url="html/870826713.htm">
+        <HelpTOCNode Title="Movies Property " Url="html/179876241.htm" />
+        <HelpTOCNode Title="MovieTypes Property " Url="html/2050795763.htm" />
+        <HelpTOCNode Title="Persons Property " Url="html/109741124.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="c14db920-149c-4f31-bdc4-7ca5d99c7e01" Title="MovieService Class" Url="html/2090116651.htm">
+      <HelpTOCNode Title="MovieService Members" Url="html/637346984.htm" />
+      <HelpTOCNode Id="0f7ad968-51ef-4cf0-9477-25dc243ef6ff" Title="MovieService Fields" Url="html/335834069.htm">
+        <HelpTOCNode Title="_connectionString Field" Url="html/1527414610.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="92d1d073-1643-4215-b595-0ace48d15b28" Title="MovieService Methods" Url="html/1014437755.htm">
+        <HelpTOCNode Title="AddMovies Method " Url="html/1685054122.htm" />
+        <HelpTOCNode Title="EditMovie Method " Url="html/1460640310.htm" />
+        <HelpTOCNode Title="GetAllMovies Method " Url="html/1383057645.htm" />
+        <HelpTOCNode Title="IsServerConnected Method " Url="html/350112532.htm" />
+        <HelpTOCNode Title="RemoveAll Method " Url="html/1461724665.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="964c3249-c3b6-4ce2-a98d-296dd82b0cfa" Title="MovieService Properties" Url="html/419294938.htm">
+        <HelpTOCNode Title="ConnectionString Property " Url="html/2031685274.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="0dbc6115-ee5f-4c91-8b94-9c8d61e31fee" Title="DataContext.Dtos Namespace" Url="html/1176170487.htm">
+    <HelpTOCNode Id="593c9037-9a55-4f1f-8a5e-974270874fc2" Title="Mapper Class" Url="html/1526977365.htm">
+      <HelpTOCNode Title="Mapper Members" Url="html/91268935.htm" />
+      <HelpTOCNode Id="32fc27cd-42ad-4d9c-b694-8f6f40b39a65" Title="Mapper Methods" Url="html/2019301931.htm">
+        <HelpTOCNode Id="a2cf53ec-a8bd-4e4d-890a-48682fc21ce3" Title="Get Method " Url="html/283354416.htm">
+          <HelpTOCNode Title="Get Method (MovieDto)" Url="html/1787801934.htm" />
+          <HelpTOCNode Title="Get Method (PersonDto)" Url="html/1667700907.htm" />
+          <HelpTOCNode Title="Get Method (MovieTypeDto)" Url="html/1759105077.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="0fbdd8f8-99ef-4162-97e3-2873b57f1274" Title="Set Method " Url="html/282567984.htm">
+          <HelpTOCNode Title="Set Method (Movie)" Url="html/1491014897.htm" />
+          <HelpTOCNode Title="Set Method (Person)" Url="html/849679267.htm" />
+          <HelpTOCNode Title="Set Method (MovieType)" Url="html/842580083.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="ab149982-fc60-4cb1-984a-a63e57cd337a" Title="MovieDto Class" Url="html/435692322.htm">
+      <HelpTOCNode Title="MovieDto Members" Url="html/245489513.htm" />
+      <HelpTOCNode Id="44674cf3-328c-4d69-b743-c16100f46447" Title="MovieDto Properties" Url="html/2044095774.htm">
+        <HelpTOCNode Title="BoxOffice Property " Url="html/2095955831.htm" />
+        <HelpTOCNode Title="Description Property " Url="html/1293097691.htm" />
+        <HelpTOCNode Title="Director Property " Url="html/1736823159.htm" />
+        <HelpTOCNode Title="Duration Property " Url="html/1775685984.htm" />
+        <HelpTOCNode Title="MovieId Property " Url="html/1829849795.htm" />
+        <HelpTOCNode Title="OrginalTitle Property " Url="html/92504583.htm" />
+        <HelpTOCNode Title="Production Property " Url="html/617439514.htm" />
+        <HelpTOCNode Title="Rank Property " Url="html/328254466.htm" />
+        <HelpTOCNode Title="Rate Property " Url="html/43764236.htm" />
+        <HelpTOCNode Title="RateTotalVotes Property " Url="html/490370886.htm" />
+        <HelpTOCNode Title="ReleaseDate Property " Url="html/1477504011.htm" />
+        <HelpTOCNode Title="Staff Property " Url="html/25631150.htm" />
+        <HelpTOCNode Title="Title Property " Url="html/1677822359.htm" />
+        <HelpTOCNode Title="Types Property " Url="html/683910163.htm" />
+        <HelpTOCNode Title="Year Property " Url="html/1764112736.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="fd09b647-d901-41fa-aa76-8314cf1099b9" Title="MovieTypeDto Class" Url="html/1150161875.htm">
+      <HelpTOCNode Title="MovieTypeDto Members" Url="html/439713742.htm" />
+      <HelpTOCNode Id="cea4029f-9d95-46b6-b78a-730bde6413b7" Title="MovieTypeDto Properties" Url="html/1024647975.htm">
+        <HelpTOCNode Title="Description Property " Url="html/474879397.htm" />
+        <HelpTOCNode Title="Movies Property " Url="html/565654675.htm" />
+        <HelpTOCNode Title="MovieTypeId Property " Url="html/935402094.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/924441825.htm" />
+        <HelpTOCNode Title="Type Property " Url="html/165451220.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="42c0cb00-ddab-48da-bb1c-25d95774ab72" Title="PersonDto Class" Url="html/1661761425.htm">
+      <HelpTOCNode Title="PersonDto Members" Url="html/390866911.htm" />
+      <HelpTOCNode Id="477be375-0493-4e57-ab8c-9776a11ec9ac" Title="PersonDto Properties" Url="html/1638943339.htm">
+        <HelpTOCNode Title="Movies Property " Url="html/1806879443.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/39229040.htm" />
+        <HelpTOCNode Title="PersonId Property " Url="html/829998522.htm" />
+        <HelpTOCNode Title="Surname Property " Url="html/1534025464.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="426365be-33c2-423a-9a79-3a2a7b30b5d8" Title="DataContext.Migrations Namespace" Url="html/882598088.htm">
+    <HelpTOCNode Id="db2ba33f-83ce-4c5f-b50b-5c2be621fca2" Title="init Class" Url="html/358616133.htm">
+      <HelpTOCNode Title="init Members" Url="html/925834688.htm" />
+      <HelpTOCNode Id="01e44d94-23a0-4bc1-8497-fb51fc487e3a" Title="init Fields" Url="html/977457407.htm">
+        <HelpTOCNode Title="Resources Field" Url="html/645923472.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="2d15b65d-bdfe-44d4-81f2-6ee02ad9a8a3" Title="init Methods" Url="html/1646751362.htm">
+        <HelpTOCNode Title="Down Method " Url="html/910911605.htm" />
+        <HelpTOCNode Title="Up Method " Url="html/1557938982.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="b87165d9-f87e-493e-9fa3-dbf67c1d7a02" Title="init Properties" Url="html/746870805.htm">
+        <HelpTOCNode Title="Id Property " Url="html/361094974.htm" />
+        <HelpTOCNode Title="Source Property " Url="html/98354562.htm" />
+        <HelpTOCNode Title="Target Property " Url="html/1702020190.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="c1e09e57-2650-4bfc-b157-0b27ce4e88fa" Title="ETL Namespace" Url="html/636283613.htm">
+    <HelpTOCNode Title="App Class" Url="html/1726375135.htm" />
+  </HelpTOCNode>
+  <HelpTOCNode Id="b51e777b-9159-4044-a95d-612bdaf6c99c" Title="ETL.Callers Namespace" Url="html/1778133928.htm">
+    <HelpTOCNode Id="fa86dc1f-3afc-42eb-aa9f-49306f536200" Title="DataCallers Class" Url="html/1140477524.htm">
+      <HelpTOCNode Title="DataCallers Members" Url="html/293662600.htm" />
+      <HelpTOCNode Id="19ceb7ea-cc91-4856-ac8f-f64554970ea7" Title="DataCallers Fields" Url="html/114565654.htm">
+        <HelpTOCNode Title="instance Field" Url="html/309084925.htm" />
+        <HelpTOCNode Title="movieService Field" Url="html/348596644.htm" />
+        <HelpTOCNode Title="padlock Field" Url="html/867649049.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="7cea56b9-a958-4feb-9835-10356b4e239d" Title="DataCallers Methods" Url="html/1209767752.htm">
+        <HelpTOCNode Title="AddMovies Method " Url="html/1980663920.htm" />
+        <HelpTOCNode Title="EditMovie Method " Url="html/333116243.htm" />
+        <HelpTOCNode Title="GetAllMovies Method " Url="html/18680505.htm" />
+        <HelpTOCNode Title="IsServerConnected Method " Url="html/1082550716.htm" />
+        <HelpTOCNode Title="RemoveAll Method " Url="html/1879523456.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="a34ad1f3-8433-44df-a12f-8e2ba7a8bd77" Title="DataCallers Properties" Url="html/314925268.htm">
+        <HelpTOCNode Title="ConnectionString Property " Url="html/1399344013.htm" />
+        <HelpTOCNode Title="Instance Property " Url="html/34299764.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="d799c3a8-2306-4b60-884a-31ef8468e513" Title="ETL.Helpers Namespace" Url="html/1073529069.htm">
+    <HelpTOCNode Id="860464e3-3642-4f35-8eb0-366d24bc5c93" Title="Converters Class" Url="html/1655888091.htm">
+      <HelpTOCNode Title="Converters Members" Url="html/1264908977.htm" />
+      <HelpTOCNode Id="630e4144-ab7a-4e98-8bea-ce0aac5bff4d" Title="Converters Methods" Url="html/339886915.htm">
+        <HelpTOCNode Title="ConvertToDateTime Method " Url="html/165049358.htm" />
+        <HelpTOCNode Title="ConvertToDecimal Method " Url="html/2005023089.htm" />
+        <HelpTOCNode Title="ConvertToInt Method " Url="html/678918258.htm" />
+        <HelpTOCNode Title="ConvertToMovieType Method " Url="html/1316414867.htm" />
+        <HelpTOCNode Title="ConvertToProduction Method " Url="html/1641521901.htm" />
+        <HelpTOCNode Title="ConvertToString Method " Url="html/1028921467.htm" />
+        <HelpTOCNode Title="ConvertToTypeByte Method " Url="html/58152761.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="2f11518e-95cd-48df-a56f-da18915d4c55" Title="ExportCSV Class" Url="html/1214142081.htm">
+      <HelpTOCNode Title="ExportCSV Members" Url="html/959101733.htm" />
+      <HelpTOCNode Id="baf3eee6-a01a-4f66-92df-fc5ff899e002" Title="ExportCSV Methods" Url="html/1039941115.htm">
+        <HelpTOCNode Title="Serialize(T) Method " Url="html/324810826.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="f644950b-a6e3-4100-adc4-87d2bb7c78cc" Title="ExportCSV.CSVExport Class" Url="html/468951418.htm">
+      <HelpTOCNode Title="ExportCSV.CSVExport Members" Url="html/738684014.htm" />
+      <HelpTOCNode Id="7c65a14e-0698-42fe-ba6a-3c3c36bc2c18" Title="ExportCSV.CSVExport Methods" Url="html/1558393099.htm">
+        <HelpTOCNode Title="EscapeQuotes Method " Url="html/1113061495.htm" />
+        <HelpTOCNode Title="From(T) Method " Url="html/2022284681.htm" />
+        <HelpTOCNode Title="FromDate Method " Url="html/501901688.htm" />
+        <HelpTOCNode Title="FromNullableDate Method " Url="html/1828022814.htm" />
+        <HelpTOCNode Title="FromString Method " Url="html/72730229.htm" />
+        <HelpTOCNode Title="QuoteString Method " Url="html/1935714523.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="d4b3edf0-5eca-465b-9b44-19f4b1a4c984" Title="ExportCSV.SerializerCSV(T) Class" Url="html/2140285844.htm">
+      <HelpTOCNode Title="ExportCSV.SerializerCSV(T) Members" Url="html/1418438692.htm" />
+      <HelpTOCNode Title="SerializerCSV(T) Constructor " Url="html/1746323228.htm" />
+      <HelpTOCNode Id="20921e7a-1378-4997-ab26-e3aad0029f58" Title="ExportCSV.SerializerCSV(T) Methods" Url="html/1792177537.htm">
+        <HelpTOCNode Title="ExtractHeaders Method " Url="html/1146757500.htm" />
+        <HelpTOCNode Title="ExtractPropertyValues Method " Url="html/844730598.htm" />
+        <HelpTOCNode Title="Serialize Method " Url="html/1907714753.htm" />
+        <HelpTOCNode Title="ToCsvRow Method " Url="html/478778852.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="d29b79cf-3940-47a7-bbd8-6b5f54c59506" Title="ExportCSV.SerializerCSV(T) Properties" Url="html/776319767.htm">
+        <HelpTOCNode Title="PropertyValueConverters Property " Url="html/1216854056.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="cb899246-334e-450c-bc74-22cb84bef16a" Title="ETL.View Namespace" Url="html/570672117.htm">
+    <HelpTOCNode Id="419730f1-d543-4bae-bdea-0613f99ce9e8" Title="InputText Class" Url="html/1135221014.htm">
+      <HelpTOCNode Title="InputText Members" Url="html/2118188744.htm" />
+      <HelpTOCNode Title="InputText Constructor " Url="html/1133081903.htm" />
+      <HelpTOCNode Id="e9239643-6c83-4e07-b5e7-870accce8b19" Title="InputText Methods" Url="html/668294777.htm">
+        <HelpTOCNode Title="Button_Click Method " Url="html/930252149.htm" />
+        <HelpTOCNode Title="Get Method " Url="html/2123246660.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="45bbc875-3f20-4483-9b6f-150e00ecc2c4" Title="Main Class" Url="html/1808527265.htm">
+      <HelpTOCNode Title="Main Members" Url="html/1844448189.htm" />
+      <HelpTOCNode Title="Main Constructor " Url="html/2017817873.htm" />
+      <HelpTOCNode Id="e0d908da-4cfa-497d-88f0-b494ae808b2c" Title="Main Fields" Url="html/1628132629.htm">
+        <HelpTOCNode Title="dbMovies Field" Url="html/1595547356.htm" />
+        <HelpTOCNode Title="extractLock Field" Url="html/1151153641.htm" />
+        <HelpTOCNode Title="loadingLock Field" Url="html/234876689.htm" />
+        <HelpTOCNode Title="loadingThread Field" Url="html/1013034356.htm" />
+        <HelpTOCNode Title="moviesToLoad Field" Url="html/1860352234.htm" />
+        <HelpTOCNode Title="movieToEdit Field" Url="html/222445616.htm" />
+        <HelpTOCNode Title="proc Field" Url="html/860972337.htm" />
+        <HelpTOCNode Title="scraper Field" Url="html/1798404887.htm" />
+        <HelpTOCNode Title="tasksArray Field" Url="html/2041085416.htm" />
+        <HelpTOCNode Title="threadsArray Field" Url="html/1824950960.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="9650e8a7-c6d5-48f8-92c3-bf9656de53b2" Title="Main Methods" Url="html/1207590969.htm">
+        <HelpTOCNode Title="AbortLoading Method " Url="html/1483094680.htm" />
+        <HelpTOCNode Title="backgroundWorker1_DoWork Method " Url="html/925318010.htm" />
+        <HelpTOCNode Title="backgroundWorker1_RunWorkerCompleted Method " Url="html/609973627.htm" />
+        <HelpTOCNode Title="CheckPassword Method " Url="html/402738730.htm" />
+        <HelpTOCNode Title="DeleteAll_Click Method " Url="html/1375274945.htm" />
+        <HelpTOCNode Title="EditMovieClick Method " Url="html/1952867470.htm" />
+        <HelpTOCNode Title="ExportCSV_Click Method " Url="html/2048962926.htm" />
+        <HelpTOCNode Title="ExportCSVOne_Click Method " Url="html/1231664986.htm" />
+        <HelpTOCNode Title="Extract Method " Url="html/176890984.htm" />
+        <HelpTOCNode Title="Load Method " Url="html/1919320360.htm" />
+        <HelpTOCNode Title="LoadInBackground Method " Url="html/2032533534.htm" />
+        <HelpTOCNode Title="OtherWindowOnTextBoxValueChanged Method " Url="html/1645962280.htm" />
+        <HelpTOCNode Title="Scrap Method " Url="html/404184603.htm" />
+        <HelpTOCNode Title="Search Method " Url="html/1456044448.htm" />
+        <HelpTOCNode Title="Search_Async Method " Url="html/415870463.htm" />
+        <HelpTOCNode Title="Search_Click Method " Url="html/372680762.htm" />
+        <HelpTOCNode Title="SearchMovieId_Click Method " Url="html/499941830.htm" />
+        <HelpTOCNode Title="Setp1_Click Method " Url="html/369347323.htm" />
+        <HelpTOCNode Title="Setp2_Click Method " Url="html/667191335.htm" />
+        <HelpTOCNode Title="Setp3_Click Method " Url="html/720550707.htm" />
+        <HelpTOCNode Title="Start_Click Method " Url="html/249123473.htm" />
+        <HelpTOCNode Title="Stop_Click Method " Url="html/11456045.htm" />
+        <HelpTOCNode Title="Transform Method " Url="html/1044121215.htm" />
+        <HelpTOCNode Title="UpdateData Method " Url="html/864075724.htm" />
+        <HelpTOCNode Title="UpdateView Method " Url="html/387152476.htm" />
+        <HelpTOCNode Title="Working Method " Url="html/1975623309.htm" />
+        <HelpTOCNode Title="WriteToConsole Method " Url="html/1834334536.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="0aa26597-8a25-47e8-a76c-3ab8d95bc1e8" Title="ETL.Webscraper Namespace" Url="html/16530385.htm">
+    <HelpTOCNode Id="e640920b-2a46-41f0-bff8-d98014056ffe" Title="FilmWebScraper Class" Url="html/749865156.htm">
+      <HelpTOCNode Title="FilmWebScraper Members" Url="html/736693635.htm" />
+      <HelpTOCNode Id="507d5c5d-9caa-4652-a436-ae11f972cd7b" Title="FilmWebScraper Fields" Url="html/562196444.htm">
+        <HelpTOCNode Title="CastSuffix Field" Url="html/803822797.htm" />
+        <HelpTOCNode Title="FilmWebUrl Field" Url="html/2130491688.htm" />
+        <HelpTOCNode Title="HtmlWeb Field" Url="html/2082249004.htm" />
+        <HelpTOCNode Title="MoviesListSuffix Field" Url="html/2049074695.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="9c739146-ce65-47cf-9c35-ba9d83eb1ed5" Title="FilmWebScraper Methods" Url="html/2127299719.htm">
+        <HelpTOCNode Title="getBoxOffice Method " Url="html/629417254.htm" />
+        <HelpTOCNode Title="getDescription Method " Url="html/956073739.htm" />
+        <HelpTOCNode Title="getDirector Method " Url="html/388598801.htm" />
+        <HelpTOCNode Title="getDuration Method " Url="html/1305135569.htm" />
+        <HelpTOCNode Title="getOrginalTitle Method " Url="html/1505103828.htm" />
+        <HelpTOCNode Title="getProduction Method " Url="html/29800686.htm" />
+        <HelpTOCNode Title="getRank Method " Url="html/1790485509.htm" />
+        <HelpTOCNode Title="getRate Method " Url="html/215906903.htm" />
+        <HelpTOCNode Title="getRateTotalVotes Method " Url="html/32820740.htm" />
+        <HelpTOCNode Title="getReleaseDate Method " Url="html/126949721.htm" />
+        <HelpTOCNode Title="getStaff Method " Url="html/61623381.htm" />
+        <HelpTOCNode Title="getTitle Method " Url="html/1431375533.htm" />
+        <HelpTOCNode Title="getTypes Method " Url="html/181534994.htm" />
+        <HelpTOCNode Title="getYear Method " Url="html/1555336095.htm" />
+        <HelpTOCNode Title="ScrapeMovie Method " Url="html/1365497070.htm" />
+        <HelpTOCNode Title="ScrapeMovies Method " Url="html/2070721267.htm" />
+        <HelpTOCNode Title="SetFolderPermission Method " Url="html/28077043.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="31085d1e-0f7b-43d1-baef-9e13931a591a" Title="FilmWebScraper Events" Url="html/1906479722.htm">
+        <HelpTOCNode Title="TextBoxValueChanged Event" Url="html/1677259073.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="2dac9eed-f9b9-47bf-a08f-0a0b6c6a957d" Title="FilmWebScraper.TextBoxValueEventArgs Class" Url="html/38601720.htm">
+      <HelpTOCNode Title="FilmWebScraper.TextBoxValueEventArgs Members" Url="html/1739447759.htm" />
+      <HelpTOCNode Title="TextBoxValueEventArgs Constructor " Url="html/1525395773.htm" />
+      <HelpTOCNode Id="8289c1db-9b6f-423e-82b2-ad3d11cfec30" Title="FilmWebScraper.TextBoxValueEventArgs Properties" Url="html/2020817980.htm">
+        <HelpTOCNode Title="NewValue Property " Url="html/862892158.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+</HelpTOC>

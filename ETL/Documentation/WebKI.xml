@@ -1,0 +1,794 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpKI>
+  <HelpKINode Title=".defaultInstance field" Url="html/1630484693.htm" />
+  <HelpKINode Title=".resourceCulture field" Url="html/1091394733.htm" />
+  <HelpKINode Title=".resourceMan field" Url="html/174898615.htm" />
+  <HelpKINode Title="AbortLoading method" Url="html/1483094680.htm" />
+  <HelpKINode Title="AddMovies method">
+    <HelpKINode Title="AddMovies Method " Url="html/1980663920.htm" />
+    <HelpKINode Title="AddMovies Method " Url="html/861036212.htm" />
+    <HelpKINode Title="AddMovies Method " Url="html/1685054122.htm" />
+  </HelpKINode>
+  <HelpKINode Title="AKCJA enumeration member" Url="html/402117441.htm" />
+  <HelpKINode Title="AKCJA field" Url="html/1333993864.htm" />
+  <HelpKINode Title="ANGLIA enumeration member" Url="html/236748748.htm" />
+  <HelpKINode Title="ANGLIA field" Url="html/588025037.htm" />
+  <HelpKINode Title="ANIMOWANY enumeration member" Url="html/402117441.htm" />
+  <HelpKINode Title="ANIMOWANY field" Url="html/30330020.htm" />
+  <HelpKINode Title="App class">
+    <HelpKINode Title="App Class" Url="html/1726375135.htm" />
+    <HelpKINode Title="about App class" Url="html/1726375135.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ARGENTYNA enumeration member" Url="html/236748748.htm" />
+  <HelpKINode Title="ARGENTYNA field" Url="html/2000663777.htm" />
+  <HelpKINode Title="AUSTRALIA enumeration member" Url="html/236748748.htm" />
+  <HelpKINode Title="AUSTRALIA field" Url="html/1801576621.htm" />
+  <HelpKINode Title="backgroundWorker1_DoWork method" Url="html/925318010.htm" />
+  <HelpKINode Title="backgroundWorker1_RunWorkerCompleted method" Url="html/609973627.htm" />
+  <HelpKINode Title="BoxOffice property">
+    <HelpKINode Title="BoxOffice Property " Url="html/1381144124.htm" />
+    <HelpKINode Title="BoxOffice Property " Url="html/2095955831.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Button_Click method" Url="html/930252149.htm" />
+  <HelpKINode Title="CastSuffix field" Url="html/803822797.htm" />
+  <HelpKINode Title="CheckPassword method" Url="html/402738730.htm" />
+  <HelpKINode Title="ConnectionString property">
+    <HelpKINode Title="ConnectionString Property " Url="html/888209305.htm" />
+    <HelpKINode Title="ConnectionString Property " Url="html/1399344013.htm" />
+    <HelpKINode Title="ConnectionString Property " Url="html/2031685274.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Contract.Enum namespace" Url="html/453854746.htm" />
+  <HelpKINode Title="Contract.Enum.MOVIE_TYPE enumeration" Url="html/402117441.htm" />
+  <HelpKINode Title="Contract.Enum.PRODUCTION_COUNTRY enumeration" Url="html/236748748.htm" />
+  <HelpKINode Title="Contract.Interfaces namespace" Url="html/2104566358.htm" />
+  <HelpKINode Title="Contract.Interfaces.ICaller interface">
+    <HelpKINode Title="ICaller Interface" Url="html/2058385198.htm" />
+    <HelpKINode Title="ICaller Members" Url="html/1859638818.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Contract.Model namespace" Url="html/962371905.htm" />
+  <HelpKINode Title="Contract.Model.Movie class">
+    <HelpKINode Title="Movie Class" Url="html/1010428831.htm" />
+    <HelpKINode Title="Movie Members" Url="html/71054543.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Contract.Model.MovieType class">
+    <HelpKINode Title="MovieType Class" Url="html/1369248799.htm" />
+    <HelpKINode Title="MovieType Members" Url="html/354988292.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Contract.Model.Person class">
+    <HelpKINode Title="Person Class" Url="html/1590263949.htm" />
+    <HelpKINode Title="Person Members" Url="html/2101894888.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Converters class">
+    <HelpKINode Title="Converters Class" Url="html/1655888091.htm" />
+    <HelpKINode Title="Converters Members" Url="html/1264908977.htm" />
+    <HelpKINode Title="about Converters class" Url="html/1655888091.htm" />
+    <HelpKINode Title="all members" Url="html/1264908977.htm" />
+    <HelpKINode Title="methods" Url="html/339886915.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Converters.ConvertToDateTime method" Url="html/165049358.htm" />
+  <HelpKINode Title="Converters.ConvertToDecimal method" Url="html/2005023089.htm" />
+  <HelpKINode Title="Converters.ConvertToInt method" Url="html/678918258.htm" />
+  <HelpKINode Title="Converters.ConvertToMovieType method" Url="html/1316414867.htm" />
+  <HelpKINode Title="Converters.ConvertToProduction method" Url="html/1641521901.htm" />
+  <HelpKINode Title="Converters.ConvertToString method" Url="html/1028921467.htm" />
+  <HelpKINode Title="Converters.ConvertToTypeByte method" Url="html/58152761.htm" />
+  <HelpKINode Title="ConvertToDateTime method" Url="html/165049358.htm" />
+  <HelpKINode Title="ConvertToDecimal method" Url="html/2005023089.htm" />
+  <HelpKINode Title="ConvertToInt method" Url="html/678918258.htm" />
+  <HelpKINode Title="ConvertToMovieType method" Url="html/1316414867.htm" />
+  <HelpKINode Title="ConvertToProduction method" Url="html/1641521901.htm" />
+  <HelpKINode Title="ConvertToString method" Url="html/1028921467.htm" />
+  <HelpKINode Title="ConvertToTypeByte method" Url="html/58152761.htm" />
+  <HelpKINode Title="CSVExport.EscapeQuotes method" Url="html/1113061495.htm" />
+  <HelpKINode Title="CSVExport.From(Of T) method" Url="html/2022284681.htm" />
+  <HelpKINode Title="CSVExport.From&lt;T&gt; method" Url="html/2022284681.htm" />
+  <HelpKINode Title="CSVExport.FromDate method" Url="html/501901688.htm" />
+  <HelpKINode Title="CSVExport.FromNullableDate method" Url="html/1828022814.htm" />
+  <HelpKINode Title="CSVExport.FromString method" Url="html/72730229.htm" />
+  <HelpKINode Title="CSVExport.QuoteString method" Url="html/1935714523.htm" />
+  <HelpKINode Title="DataCallers class">
+    <HelpKINode Title="DataCallers Class" Url="html/1140477524.htm" />
+    <HelpKINode Title="DataCallers Members" Url="html/293662600.htm" />
+    <HelpKINode Title="about DataCallers class" Url="html/1140477524.htm" />
+    <HelpKINode Title="all members" Url="html/293662600.htm" />
+    <HelpKINode Title="fields" Url="html/114565654.htm" />
+    <HelpKINode Title="methods" Url="html/1209767752.htm" />
+    <HelpKINode Title="properties" Url="html/314925268.htm" />
+  </HelpKINode>
+  <HelpKINode Title="DataCallers.AddMovies method" Url="html/1980663920.htm" />
+  <HelpKINode Title="DataCallers.ConnectionString property" Url="html/1399344013.htm" />
+  <HelpKINode Title="DataCallers.EditMovie method" Url="html/333116243.htm" />
+  <HelpKINode Title="DataCallers.GetAllMovies method" Url="html/18680505.htm" />
+  <HelpKINode Title="DataCallers.instance field" Url="html/309084925.htm" />
+  <HelpKINode Title="DataCallers.Instance property" Url="html/34299764.htm" />
+  <HelpKINode Title="DataCallers.IsServerConnected method" Url="html/1082550716.htm" />
+  <HelpKINode Title="DataCallers.movieService field" Url="html/348596644.htm" />
+  <HelpKINode Title="DataCallers.padlock field" Url="html/867649049.htm" />
+  <HelpKINode Title="DataCallers.RemoveAll method" Url="html/1879523456.htm" />
+  <HelpKINode Title="DataContext.DataSource namespace" Url="html/997971475.htm" />
+  <HelpKINode Title="DataContext.DataSource.ETLModel class">
+    <HelpKINode Title="ETLModel Class" Url="html/2066539276.htm" />
+    <HelpKINode Title="ETLModel Members" Url="html/1512287771.htm" />
+  </HelpKINode>
+  <HelpKINode Title="DataContext.DataSource.MovieService class">
+    <HelpKINode Title="MovieService Class" Url="html/2090116651.htm" />
+    <HelpKINode Title="MovieService Members" Url="html/637346984.htm" />
+  </HelpKINode>
+  <HelpKINode Title="DataContext.Dtos namespace" Url="html/1176170487.htm" />
+  <HelpKINode Title="DataContext.Dtos.Mapper class">
+    <HelpKINode Title="Mapper Class" Url="html/1526977365.htm" />
+    <HelpKINode Title="Mapper Members" Url="html/91268935.htm" />
+  </HelpKINode>
+  <HelpKINode Title="DataContext.Dtos.MovieDto class">
+    <HelpKINode Title="MovieDto Class" Url="html/435692322.htm" />
+    <HelpKINode Title="MovieDto Members" Url="html/245489513.htm" />
+  </HelpKINode>
+  <HelpKINode Title="DataContext.Dtos.MovieTypeDto class">
+    <HelpKINode Title="MovieTypeDto Class" Url="html/1150161875.htm" />
+    <HelpKINode Title="MovieTypeDto Members" Url="html/439713742.htm" />
+  </HelpKINode>
+  <HelpKINode Title="DataContext.Dtos.PersonDto class">
+    <HelpKINode Title="PersonDto Class" Url="html/1661761425.htm" />
+    <HelpKINode Title="PersonDto Members" Url="html/390866911.htm" />
+  </HelpKINode>
+  <HelpKINode Title="DataContext.Migrations namespace" Url="html/882598088.htm" />
+  <HelpKINode Title="DataContext.Migrations.init class">
+    <HelpKINode Title="init Class" Url="html/358616133.htm" />
+    <HelpKINode Title="init Members" Url="html/925834688.htm" />
+  </HelpKINode>
+  <HelpKINode Title="dbMovies field" Url="html/1595547356.htm" />
+  <HelpKINode Title="defaultInstance field" Url="html/1630484693.htm" />
+  <HelpKINode Title="DeleteAll_Click method" Url="html/1375274945.htm" />
+  <HelpKINode Title="Description property">
+    <HelpKINode Title="Description Property " Url="html/1364641336.htm" />
+    <HelpKINode Title="Description Property " Url="html/474879397.htm" />
+    <HelpKINode Title="Description Property " Url="html/1293097691.htm" />
+    <HelpKINode Title="Description Property " Url="html/136038982.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Director property">
+    <HelpKINode Title="Director Property " Url="html/1736823159.htm" />
+    <HelpKINode Title="Director Property " Url="html/1479668209.htm" />
+  </HelpKINode>
+  <HelpKINode Title="DOKUMENTALNY enumeration member" Url="html/402117441.htm" />
+  <HelpKINode Title="DOKUMENTALNY field" Url="html/1824228366.htm" />
+  <HelpKINode Title="Down method" Url="html/910911605.htm" />
+  <HelpKINode Title="DRAMAT enumeration member" Url="html/402117441.htm" />
+  <HelpKINode Title="DRAMAT field" Url="html/1536985157.htm" />
+  <HelpKINode Title="Duration property">
+    <HelpKINode Title="Duration Property " Url="html/923729912.htm" />
+    <HelpKINode Title="Duration Property " Url="html/1775685984.htm" />
+  </HelpKINode>
+  <HelpKINode Title="EditMovie method">
+    <HelpKINode Title="EditMovie Method " Url="html/1460640310.htm" />
+    <HelpKINode Title="EditMovie Method " Url="html/333116243.htm" />
+    <HelpKINode Title="EditMovie Method " Url="html/1229375904.htm" />
+  </HelpKINode>
+  <HelpKINode Title="EditMovieClick method" Url="html/1952867470.htm" />
+  <HelpKINode Title="EscapeQuotes method" Url="html/1113061495.htm" />
+  <HelpKINode Title="ETL namespace" Url="html/636283613.htm" />
+  <HelpKINode Title="ETL.App class" Url="html/1726375135.htm" />
+  <HelpKINode Title="ETL.Callers namespace" Url="html/1778133928.htm" />
+  <HelpKINode Title="ETL.Callers.DataCallers class">
+    <HelpKINode Title="DataCallers Class" Url="html/1140477524.htm" />
+    <HelpKINode Title="DataCallers Members" Url="html/293662600.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ETL.Helpers namespace" Url="html/1073529069.htm" />
+  <HelpKINode Title="ETL.Helpers.Converters class">
+    <HelpKINode Title="Converters Class" Url="html/1655888091.htm" />
+    <HelpKINode Title="Converters Members" Url="html/1264908977.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ETL.Helpers.ExportCSV class">
+    <HelpKINode Title="ExportCSV Class" Url="html/1214142081.htm" />
+    <HelpKINode Title="ExportCSV Members" Url="html/959101733.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ETL.Helpers.ExportCSV.CSVExport class">
+    <HelpKINode Title="ExportCSV.CSVExport Class" Url="html/468951418.htm" />
+    <HelpKINode Title="ExportCSV.CSVExport Members" Url="html/738684014.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ETL.Helpers.ExportCSV.SerializerCSV(Of T) class">
+    <HelpKINode Title="ExportCSV.SerializerCSV(T) Class" Url="html/2140285844.htm" />
+    <HelpKINode Title="ExportCSV.SerializerCSV(T) Members" Url="html/1418438692.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ETL.Helpers.ExportCSV.SerializerCSV&lt;T&gt; class">
+    <HelpKINode Title="ExportCSV.SerializerCSV(T) Class" Url="html/2140285844.htm" />
+    <HelpKINode Title="ExportCSV.SerializerCSV(T) Members" Url="html/1418438692.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ETL.View namespace" Url="html/570672117.htm" />
+  <HelpKINode Title="ETL.View.InputText class">
+    <HelpKINode Title="InputText Class" Url="html/1135221014.htm" />
+    <HelpKINode Title="InputText Members" Url="html/2118188744.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ETL.View.Main class">
+    <HelpKINode Title="Main Class" Url="html/1808527265.htm" />
+    <HelpKINode Title="Main Members" Url="html/1844448189.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ETL.Webscraper namespace" Url="html/16530385.htm" />
+  <HelpKINode Title="ETL.Webscraper.FilmWebScraper class">
+    <HelpKINode Title="FilmWebScraper Class" Url="html/749865156.htm" />
+    <HelpKINode Title="FilmWebScraper Members" Url="html/736693635.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ETL.Webscraper.FilmWebScraper.TextBoxValueEventArgs class">
+    <HelpKINode Title="FilmWebScraper.TextBoxValueEventArgs Class" Url="html/38601720.htm" />
+    <HelpKINode Title="FilmWebScraper.TextBoxValueEventArgs Members" Url="html/1739447759.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ETLModel class">
+    <HelpKINode Title="ETLModel Class" Url="html/2066539276.htm" />
+    <HelpKINode Title="ETLModel Members" Url="html/1512287771.htm" />
+    <HelpKINode Title="about ETLModel class" Url="html/2066539276.htm" />
+    <HelpKINode Title="all members" Url="html/1512287771.htm" />
+    <HelpKINode Title="constructor" Url="html/1764843357.htm" />
+    <HelpKINode Title="properties" Url="html/870826713.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ETLModel.ETLModel constructor" Url="html/1764843357.htm" />
+  <HelpKINode Title="ETLModel.Movies property" Url="html/179876241.htm" />
+  <HelpKINode Title="ETLModel.MovieTypes property" Url="html/2050795763.htm" />
+  <HelpKINode Title="ETLModel.Persons property" Url="html/109741124.htm" />
+  <HelpKINode Title="ExportCSV class">
+    <HelpKINode Title="ExportCSV Class" Url="html/1214142081.htm" />
+    <HelpKINode Title="ExportCSV Members" Url="html/959101733.htm" />
+    <HelpKINode Title="about ExportCSV class" Url="html/1214142081.htm" />
+    <HelpKINode Title="all members" Url="html/959101733.htm" />
+    <HelpKINode Title="methods" Url="html/1039941115.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ExportCSV.CSVExport class">
+    <HelpKINode Title="ExportCSV.CSVExport Class" Url="html/468951418.htm" />
+    <HelpKINode Title="ExportCSV.CSVExport Members" Url="html/738684014.htm" />
+    <HelpKINode Title="about ExportCSV.CSVExport class" Url="html/468951418.htm" />
+    <HelpKINode Title="all members" Url="html/738684014.htm" />
+    <HelpKINode Title="methods" Url="html/1558393099.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ExportCSV.Serialize(Of T) method" Url="html/324810826.htm" />
+  <HelpKINode Title="ExportCSV.Serialize&lt;T&gt; method" Url="html/324810826.htm" />
+  <HelpKINode Title="ExportCSV.SerializerCSV(Of T) class">
+    <HelpKINode Title="ExportCSV.SerializerCSV(T) Class" Url="html/2140285844.htm" />
+    <HelpKINode Title="ExportCSV.SerializerCSV(T) Members" Url="html/1418438692.htm" />
+    <HelpKINode Title="about ExportCSV.SerializerCSV(Of T) class" Url="html/2140285844.htm" />
+    <HelpKINode Title="all members" Url="html/1418438692.htm" />
+    <HelpKINode Title="methods" Url="html/1792177537.htm" />
+    <HelpKINode Title="properties" Url="html/776319767.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ExportCSV.SerializerCSV&lt;T&gt; class">
+    <HelpKINode Title="ExportCSV.SerializerCSV(T) Class" Url="html/2140285844.htm" />
+    <HelpKINode Title="ExportCSV.SerializerCSV(T) Members" Url="html/1418438692.htm" />
+    <HelpKINode Title="about ExportCSV.SerializerCSV&lt;T&gt; class" Url="html/2140285844.htm" />
+    <HelpKINode Title="all members" Url="html/1418438692.htm" />
+    <HelpKINode Title="methods" Url="html/1792177537.htm" />
+    <HelpKINode Title="properties" Url="html/776319767.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ExportCSVOne_Click method" Url="html/1231664986.htm" />
+  <HelpKINode Title="ExportCSV_Click method" Url="html/2048962926.htm" />
+  <HelpKINode Title="Extract method" Url="html/176890984.htm" />
+  <HelpKINode Title="ExtractHeaders method" Url="html/1146757500.htm" />
+  <HelpKINode Title="extractLock field" Url="html/1151153641.htm" />
+  <HelpKINode Title="ExtractPropertyValues method" Url="html/844730598.htm" />
+  <HelpKINode Title="FAMILIJNY enumeration member" Url="html/402117441.htm" />
+  <HelpKINode Title="FAMILIJNY field" Url="html/1632876273.htm" />
+  <HelpKINode Title="FANTASY enumeration member" Url="html/402117441.htm" />
+  <HelpKINode Title="FANTASY field" Url="html/1656688490.htm" />
+  <HelpKINode Title="FILIPINY enumeration member" Url="html/236748748.htm" />
+  <HelpKINode Title="FILIPINY field" Url="html/146691152.htm" />
+  <HelpKINode Title="FilmWebScraper class">
+    <HelpKINode Title="FilmWebScraper Class" Url="html/749865156.htm" />
+    <HelpKINode Title="FilmWebScraper Members" Url="html/736693635.htm" />
+    <HelpKINode Title="about FilmWebScraper class" Url="html/749865156.htm" />
+    <HelpKINode Title="all members" Url="html/736693635.htm" />
+    <HelpKINode Title="events" Url="html/1906479722.htm" />
+    <HelpKINode Title="fields" Url="html/562196444.htm" />
+    <HelpKINode Title="methods" Url="html/2127299719.htm" />
+  </HelpKINode>
+  <HelpKINode Title="FilmWebScraper.CastSuffix field" Url="html/803822797.htm" />
+  <HelpKINode Title="FilmWebScraper.FilmWebUrl field" Url="html/2130491688.htm" />
+  <HelpKINode Title="FilmWebScraper.getBoxOffice method" Url="html/629417254.htm" />
+  <HelpKINode Title="FilmWebScraper.getDescription method" Url="html/956073739.htm" />
+  <HelpKINode Title="FilmWebScraper.getDirector method" Url="html/388598801.htm" />
+  <HelpKINode Title="FilmWebScraper.getDuration method" Url="html/1305135569.htm" />
+  <HelpKINode Title="FilmWebScraper.getOrginalTitle method" Url="html/1505103828.htm" />
+  <HelpKINode Title="FilmWebScraper.getProduction method" Url="html/29800686.htm" />
+  <HelpKINode Title="FilmWebScraper.getRank method" Url="html/1790485509.htm" />
+  <HelpKINode Title="FilmWebScraper.getRate method" Url="html/215906903.htm" />
+  <HelpKINode Title="FilmWebScraper.getRateTotalVotes method" Url="html/32820740.htm" />
+  <HelpKINode Title="FilmWebScraper.getReleaseDate method" Url="html/126949721.htm" />
+  <HelpKINode Title="FilmWebScraper.getStaff method" Url="html/61623381.htm" />
+  <HelpKINode Title="FilmWebScraper.getTitle method" Url="html/1431375533.htm" />
+  <HelpKINode Title="FilmWebScraper.getTypes method" Url="html/181534994.htm" />
+  <HelpKINode Title="FilmWebScraper.getYear method" Url="html/1555336095.htm" />
+  <HelpKINode Title="FilmWebScraper.HtmlWeb field" Url="html/2082249004.htm" />
+  <HelpKINode Title="FilmWebScraper.MoviesListSuffix field" Url="html/2049074695.htm" />
+  <HelpKINode Title="FilmWebScraper.ScrapeMovie method" Url="html/1365497070.htm" />
+  <HelpKINode Title="FilmWebScraper.ScrapeMovies method" Url="html/2070721267.htm" />
+  <HelpKINode Title="FilmWebScraper.SetFolderPermission method" Url="html/28077043.htm" />
+  <HelpKINode Title="FilmWebScraper.TextBoxValueChanged event" Url="html/1677259073.htm" />
+  <HelpKINode Title="FilmWebScraper.TextBoxValueEventArgs class">
+    <HelpKINode Title="FilmWebScraper.TextBoxValueEventArgs Class" Url="html/38601720.htm" />
+    <HelpKINode Title="FilmWebScraper.TextBoxValueEventArgs Members" Url="html/1739447759.htm" />
+    <HelpKINode Title="about FilmWebScraper.TextBoxValueEventArgs class" Url="html/38601720.htm" />
+    <HelpKINode Title="all members" Url="html/1739447759.htm" />
+    <HelpKINode Title="properties" Url="html/2020817980.htm" />
+  </HelpKINode>
+  <HelpKINode Title="FilmWebUrl field" Url="html/2130491688.htm" />
+  <HelpKINode Title="FRANCJA enumeration member" Url="html/236748748.htm" />
+  <HelpKINode Title="FRANCJA field" Url="html/364083078.htm" />
+  <HelpKINode Title="From(Of T) method" Url="html/2022284681.htm" />
+  <HelpKINode Title="From&lt;T&gt; method" Url="html/2022284681.htm" />
+  <HelpKINode Title="FromDate method" Url="html/501901688.htm" />
+  <HelpKINode Title="FromNullableDate method" Url="html/1828022814.htm" />
+  <HelpKINode Title="FromString method" Url="html/72730229.htm" />
+  <HelpKINode Title="Get method">
+    <HelpKINode Title="Get Method " Url="html/283354416.htm" />
+    <HelpKINode Title="Get Method " Url="html/2123246660.htm" />
+  </HelpKINode>
+  <HelpKINode Title="GetAllMovies method">
+    <HelpKINode Title="GetAllMovies Method " Url="html/367464008.htm" />
+    <HelpKINode Title="GetAllMovies Method " Url="html/1383057645.htm" />
+    <HelpKINode Title="GetAllMovies Method " Url="html/18680505.htm" />
+  </HelpKINode>
+  <HelpKINode Title="getBoxOffice method" Url="html/629417254.htm" />
+  <HelpKINode Title="getDescription method" Url="html/956073739.htm" />
+  <HelpKINode Title="getDirector method" Url="html/388598801.htm" />
+  <HelpKINode Title="getDuration method" Url="html/1305135569.htm" />
+  <HelpKINode Title="getOrginalTitle method" Url="html/1505103828.htm" />
+  <HelpKINode Title="getProduction method" Url="html/29800686.htm" />
+  <HelpKINode Title="getRank method" Url="html/1790485509.htm" />
+  <HelpKINode Title="getRate method" Url="html/215906903.htm" />
+  <HelpKINode Title="getRateTotalVotes method" Url="html/32820740.htm" />
+  <HelpKINode Title="getReleaseDate method" Url="html/126949721.htm" />
+  <HelpKINode Title="getStaff method" Url="html/61623381.htm" />
+  <HelpKINode Title="getTitle method" Url="html/1431375533.htm" />
+  <HelpKINode Title="getTypes method" Url="html/181534994.htm" />
+  <HelpKINode Title="getYear method" Url="html/1555336095.htm" />
+  <HelpKINode Title="GRECJA enumeration member" Url="html/236748748.htm" />
+  <HelpKINode Title="GRECJA field" Url="html/264463214.htm" />
+  <HelpKINode Title="HISZPANIA enumeration member" Url="html/236748748.htm" />
+  <HelpKINode Title="HISZPANIA field" Url="html/1626784089.htm" />
+  <HelpKINode Title="HONKONG enumeration member" Url="html/236748748.htm" />
+  <HelpKINode Title="HONKONG field" Url="html/602817292.htm" />
+  <HelpKINode Title="HORROR enumeration member" Url="html/402117441.htm" />
+  <HelpKINode Title="HORROR field" Url="html/690694007.htm" />
+  <HelpKINode Title="HtmlWeb field" Url="html/2082249004.htm" />
+  <HelpKINode Title="ICaller interface">
+    <HelpKINode Title="ICaller Interface" Url="html/2058385198.htm" />
+    <HelpKINode Title="ICaller Members" Url="html/1859638818.htm" />
+    <HelpKINode Title="about ICaller interface" Url="html/2058385198.htm" />
+    <HelpKINode Title="all members" Url="html/1859638818.htm" />
+    <HelpKINode Title="methods" Url="html/2089129728.htm" />
+    <HelpKINode Title="properties" Url="html/1610895429.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ICaller.AddMovies method" Url="html/861036212.htm" />
+  <HelpKINode Title="ICaller.ConnectionString property" Url="html/888209305.htm" />
+  <HelpKINode Title="ICaller.EditMovie method" Url="html/1229375904.htm" />
+  <HelpKINode Title="ICaller.GetAllMovies method" Url="html/367464008.htm" />
+  <HelpKINode Title="ICaller.IsServerConnected method" Url="html/844410822.htm" />
+  <HelpKINode Title="ICaller.RemoveAll method" Url="html/2045231794.htm" />
+  <HelpKINode Title="Id property" Url="html/361094974.htm" />
+  <HelpKINode Title="INDIE enumeration member" Url="html/236748748.htm" />
+  <HelpKINode Title="INDIE field" Url="html/479229395.htm" />
+  <HelpKINode Title="init class">
+    <HelpKINode Title="init Class" Url="html/358616133.htm" />
+    <HelpKINode Title="init Members" Url="html/925834688.htm" />
+    <HelpKINode Title="about init class" Url="html/358616133.htm" />
+    <HelpKINode Title="all members" Url="html/925834688.htm" />
+    <HelpKINode Title="fields" Url="html/977457407.htm" />
+    <HelpKINode Title="methods" Url="html/1646751362.htm" />
+    <HelpKINode Title="properties" Url="html/746870805.htm" />
+  </HelpKINode>
+  <HelpKINode Title="init.Down method" Url="html/910911605.htm" />
+  <HelpKINode Title="init.Id property" Url="html/361094974.htm" />
+  <HelpKINode Title="init.Resources field" Url="html/645923472.htm" />
+  <HelpKINode Title="init.Source property" Url="html/98354562.htm" />
+  <HelpKINode Title="init.Target property" Url="html/1702020190.htm" />
+  <HelpKINode Title="init.Up method" Url="html/1557938982.htm" />
+  <HelpKINode Title="InputText class">
+    <HelpKINode Title="InputText Class" Url="html/1135221014.htm" />
+    <HelpKINode Title="InputText Members" Url="html/2118188744.htm" />
+    <HelpKINode Title="about InputText class" Url="html/1135221014.htm" />
+    <HelpKINode Title="all members" Url="html/2118188744.htm" />
+    <HelpKINode Title="constructor" Url="html/1133081903.htm" />
+    <HelpKINode Title="methods" Url="html/668294777.htm" />
+  </HelpKINode>
+  <HelpKINode Title="InputText.Button_Click method" Url="html/930252149.htm" />
+  <HelpKINode Title="InputText.Get method" Url="html/2123246660.htm" />
+  <HelpKINode Title="InputText.InputText constructor" Url="html/1133081903.htm" />
+  <HelpKINode Title="instance field" Url="html/309084925.htm" />
+  <HelpKINode Title="Instance property" Url="html/34299764.htm" />
+  <HelpKINode Title="IsServerConnected method">
+    <HelpKINode Title="IsServerConnected Method " Url="html/844410822.htm" />
+    <HelpKINode Title="IsServerConnected Method " Url="html/350112532.htm" />
+    <HelpKINode Title="IsServerConnected Method " Url="html/1082550716.htm" />
+  </HelpKINode>
+  <HelpKINode Title="JAPONIA enumeration member" Url="html/236748748.htm" />
+  <HelpKINode Title="JAPONIA field" Url="html/665786063.htm" />
+  <HelpKINode Title="KANADA enumeration member" Url="html/236748748.htm" />
+  <HelpKINode Title="KANADA field" Url="html/1494649017.htm" />
+  <HelpKINode Title="KOMEDIA enumeration member" Url="html/402117441.htm" />
+  <HelpKINode Title="KOMEDIA field" Url="html/1758599717.htm" />
+  <HelpKINode Title="KRYMIMAL enumeration member" Url="html/402117441.htm" />
+  <HelpKINode Title="KRYMIMAL field" Url="html/2014744231.htm" />
+  <HelpKINode Title="Load method" Url="html/1919320360.htm" />
+  <HelpKINode Title="LoadInBackground method" Url="html/2032533534.htm" />
+  <HelpKINode Title="loadingLock field" Url="html/234876689.htm" />
+  <HelpKINode Title="loadingThread field" Url="html/1013034356.htm" />
+  <HelpKINode Title="Main class">
+    <HelpKINode Title="Main Class" Url="html/1808527265.htm" />
+    <HelpKINode Title="Main Members" Url="html/1844448189.htm" />
+    <HelpKINode Title="about Main class" Url="html/1808527265.htm" />
+    <HelpKINode Title="all members" Url="html/1844448189.htm" />
+    <HelpKINode Title="constructor" Url="html/2017817873.htm" />
+    <HelpKINode Title="fields" Url="html/1628132629.htm" />
+    <HelpKINode Title="methods" Url="html/1207590969.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Main.AbortLoading method" Url="html/1483094680.htm" />
+  <HelpKINode Title="Main.backgroundWorker1_DoWork method" Url="html/925318010.htm" />
+  <HelpKINode Title="Main.backgroundWorker1_RunWorkerCompleted method" Url="html/609973627.htm" />
+  <HelpKINode Title="Main.CheckPassword method" Url="html/402738730.htm" />
+  <HelpKINode Title="Main.dbMovies field" Url="html/1595547356.htm" />
+  <HelpKINode Title="Main.DeleteAll_Click method" Url="html/1375274945.htm" />
+  <HelpKINode Title="Main.EditMovieClick method" Url="html/1952867470.htm" />
+  <HelpKINode Title="Main.ExportCSVOne_Click method" Url="html/1231664986.htm" />
+  <HelpKINode Title="Main.ExportCSV_Click method" Url="html/2048962926.htm" />
+  <HelpKINode Title="Main.Extract method" Url="html/176890984.htm" />
+  <HelpKINode Title="Main.extractLock field" Url="html/1151153641.htm" />
+  <HelpKINode Title="Main.Load method" Url="html/1919320360.htm" />
+  <HelpKINode Title="Main.LoadInBackground method" Url="html/2032533534.htm" />
+  <HelpKINode Title="Main.loadingLock field" Url="html/234876689.htm" />
+  <HelpKINode Title="Main.loadingThread field" Url="html/1013034356.htm" />
+  <HelpKINode Title="Main.Main constructor" Url="html/2017817873.htm" />
+  <HelpKINode Title="Main.moviesToLoad field" Url="html/1860352234.htm" />
+  <HelpKINode Title="Main.movieToEdit field" Url="html/222445616.htm" />
+  <HelpKINode Title="Main.OtherWindowOnTextBoxValueChanged method" Url="html/1645962280.htm" />
+  <HelpKINode Title="Main.proc field" Url="html/860972337.htm" />
+  <HelpKINode Title="Main.Scrap method" Url="html/404184603.htm" />
+  <HelpKINode Title="Main.scraper field" Url="html/1798404887.htm" />
+  <HelpKINode Title="Main.Search method" Url="html/1456044448.htm" />
+  <HelpKINode Title="Main.SearchMovieId_Click method" Url="html/499941830.htm" />
+  <HelpKINode Title="Main.Search_Async method" Url="html/415870463.htm" />
+  <HelpKINode Title="Main.Search_Click method" Url="html/372680762.htm" />
+  <HelpKINode Title="Main.Setp1_Click method" Url="html/369347323.htm" />
+  <HelpKINode Title="Main.Setp2_Click method" Url="html/667191335.htm" />
+  <HelpKINode Title="Main.Setp3_Click method" Url="html/720550707.htm" />
+  <HelpKINode Title="Main.Start_Click method" Url="html/249123473.htm" />
+  <HelpKINode Title="Main.Stop_Click method" Url="html/11456045.htm" />
+  <HelpKINode Title="Main.tasksArray field" Url="html/2041085416.htm" />
+  <HelpKINode Title="Main.threadsArray field" Url="html/1824950960.htm" />
+  <HelpKINode Title="Main.Transform method" Url="html/1044121215.htm" />
+  <HelpKINode Title="Main.UpdateData method" Url="html/864075724.htm" />
+  <HelpKINode Title="Main.UpdateView method" Url="html/387152476.htm" />
+  <HelpKINode Title="Main.Working method" Url="html/1975623309.htm" />
+  <HelpKINode Title="Main.WriteToConsole method" Url="html/1834334536.htm" />
+  <HelpKINode Title="Mapper class">
+    <HelpKINode Title="Mapper Class" Url="html/1526977365.htm" />
+    <HelpKINode Title="Mapper Members" Url="html/91268935.htm" />
+    <HelpKINode Title="about Mapper class" Url="html/1526977365.htm" />
+    <HelpKINode Title="all members" Url="html/91268935.htm" />
+    <HelpKINode Title="methods" Url="html/2019301931.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Mapper.Get method" Url="html/283354416.htm" />
+  <HelpKINode Title="Mapper.Set method" Url="html/282567984.htm" />
+  <HelpKINode Title="MEKSYK enumeration member" Url="html/236748748.htm" />
+  <HelpKINode Title="MEKSYK field" Url="html/916695459.htm" />
+  <HelpKINode Title="MELODRAMAT enumeration member" Url="html/402117441.htm" />
+  <HelpKINode Title="MELODRAMAT field" Url="html/1218103225.htm" />
+  <HelpKINode Title="Movie class">
+    <HelpKINode Title="Movie Class" Url="html/1010428831.htm" />
+    <HelpKINode Title="Movie Members" Url="html/71054543.htm" />
+    <HelpKINode Title="about Movie class" Url="html/1010428831.htm" />
+    <HelpKINode Title="all members" Url="html/71054543.htm" />
+    <HelpKINode Title="properties" Url="html/774805263.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Movie.BoxOffice property" Url="html/1381144124.htm" />
+  <HelpKINode Title="Movie.Description property" Url="html/136038982.htm" />
+  <HelpKINode Title="Movie.Director property" Url="html/1479668209.htm" />
+  <HelpKINode Title="Movie.Duration property" Url="html/923729912.htm" />
+  <HelpKINode Title="Movie.MovieId property" Url="html/271229138.htm" />
+  <HelpKINode Title="Movie.OrginalTitle property" Url="html/1990756576.htm" />
+  <HelpKINode Title="Movie.Production property" Url="html/392456640.htm" />
+  <HelpKINode Title="Movie.Rank property" Url="html/1870289604.htm" />
+  <HelpKINode Title="Movie.Rate property" Url="html/708931982.htm" />
+  <HelpKINode Title="Movie.RateTotalVotes property" Url="html/1063852283.htm" />
+  <HelpKINode Title="Movie.ReleaseDate property" Url="html/1198374803.htm" />
+  <HelpKINode Title="Movie.Staff property" Url="html/462613558.htm" />
+  <HelpKINode Title="Movie.StaffString property" Url="html/363071303.htm" />
+  <HelpKINode Title="Movie.Title property" Url="html/382819885.htm" />
+  <HelpKINode Title="Movie.TitleString property" Url="html/1505284998.htm" />
+  <HelpKINode Title="Movie.Types property" Url="html/393186906.htm" />
+  <HelpKINode Title="Movie.TypesString property" Url="html/117065561.htm" />
+  <HelpKINode Title="Movie.Year property" Url="html/1431041949.htm" />
+  <HelpKINode Title="MovieDto class">
+    <HelpKINode Title="MovieDto Class" Url="html/435692322.htm" />
+    <HelpKINode Title="MovieDto Members" Url="html/245489513.htm" />
+    <HelpKINode Title="about MovieDto class" Url="html/435692322.htm" />
+    <HelpKINode Title="all members" Url="html/245489513.htm" />
+    <HelpKINode Title="properties" Url="html/2044095774.htm" />
+  </HelpKINode>
+  <HelpKINode Title="MovieDto.BoxOffice property" Url="html/2095955831.htm" />
+  <HelpKINode Title="MovieDto.Description property" Url="html/1293097691.htm" />
+  <HelpKINode Title="MovieDto.Director property" Url="html/1736823159.htm" />
+  <HelpKINode Title="MovieDto.Duration property" Url="html/1775685984.htm" />
+  <HelpKINode Title="MovieDto.MovieId property" Url="html/1829849795.htm" />
+  <HelpKINode Title="MovieDto.OrginalTitle property" Url="html/92504583.htm" />
+  <HelpKINode Title="MovieDto.Production property" Url="html/617439514.htm" />
+  <HelpKINode Title="MovieDto.Rank property" Url="html/328254466.htm" />
+  <HelpKINode Title="MovieDto.Rate property" Url="html/43764236.htm" />
+  <HelpKINode Title="MovieDto.RateTotalVotes property" Url="html/490370886.htm" />
+  <HelpKINode Title="MovieDto.ReleaseDate property" Url="html/1477504011.htm" />
+  <HelpKINode Title="MovieDto.Staff property" Url="html/25631150.htm" />
+  <HelpKINode Title="MovieDto.Title property" Url="html/1677822359.htm" />
+  <HelpKINode Title="MovieDto.Types property" Url="html/683910163.htm" />
+  <HelpKINode Title="MovieDto.Year property" Url="html/1764112736.htm" />
+  <HelpKINode Title="MovieId property">
+    <HelpKINode Title="MovieId Property " Url="html/1829849795.htm" />
+    <HelpKINode Title="MovieId Property " Url="html/271229138.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Movies property">
+    <HelpKINode Title="Movies Property " Url="html/179876241.htm" />
+    <HelpKINode Title="Movies Property " Url="html/1806879443.htm" />
+    <HelpKINode Title="Movies Property " Url="html/565654675.htm" />
+  </HelpKINode>
+  <HelpKINode Title="MovieService class">
+    <HelpKINode Title="MovieService Class" Url="html/2090116651.htm" />
+    <HelpKINode Title="MovieService Members" Url="html/637346984.htm" />
+    <HelpKINode Title="about MovieService class" Url="html/2090116651.htm" />
+    <HelpKINode Title="all members" Url="html/637346984.htm" />
+    <HelpKINode Title="fields" Url="html/335834069.htm" />
+    <HelpKINode Title="methods" Url="html/1014437755.htm" />
+    <HelpKINode Title="properties" Url="html/419294938.htm" />
+  </HelpKINode>
+  <HelpKINode Title="movieService field" Url="html/348596644.htm" />
+  <HelpKINode Title="MovieService.AddMovies method" Url="html/1685054122.htm" />
+  <HelpKINode Title="MovieService.ConnectionString property" Url="html/2031685274.htm" />
+  <HelpKINode Title="MovieService.EditMovie method" Url="html/1460640310.htm" />
+  <HelpKINode Title="MovieService.GetAllMovies method" Url="html/1383057645.htm" />
+  <HelpKINode Title="MovieService.IsServerConnected method" Url="html/350112532.htm" />
+  <HelpKINode Title="MovieService.RemoveAll method" Url="html/1461724665.htm" />
+  <HelpKINode Title="MovieService._connectionString field" Url="html/1527414610.htm" />
+  <HelpKINode Title="MoviesListSuffix field" Url="html/2049074695.htm" />
+  <HelpKINode Title="moviesToLoad field" Url="html/1860352234.htm" />
+  <HelpKINode Title="movieToEdit field" Url="html/222445616.htm" />
+  <HelpKINode Title="MovieType class">
+    <HelpKINode Title="MovieType Class" Url="html/1369248799.htm" />
+    <HelpKINode Title="MovieType Members" Url="html/354988292.htm" />
+    <HelpKINode Title="about MovieType class" Url="html/1369248799.htm" />
+    <HelpKINode Title="all members" Url="html/354988292.htm" />
+    <HelpKINode Title="properties" Url="html/1356787794.htm" />
+  </HelpKINode>
+  <HelpKINode Title="MovieType.Description property" Url="html/1364641336.htm" />
+  <HelpKINode Title="MovieType.MovieTypeId property" Url="html/1365975601.htm" />
+  <HelpKINode Title="MovieType.Name property" Url="html/1659962160.htm" />
+  <HelpKINode Title="MovieType.Type property" Url="html/1286864056.htm" />
+  <HelpKINode Title="MovieTypeDto class">
+    <HelpKINode Title="MovieTypeDto Class" Url="html/1150161875.htm" />
+    <HelpKINode Title="MovieTypeDto Members" Url="html/439713742.htm" />
+    <HelpKINode Title="about MovieTypeDto class" Url="html/1150161875.htm" />
+    <HelpKINode Title="all members" Url="html/439713742.htm" />
+    <HelpKINode Title="properties" Url="html/1024647975.htm" />
+  </HelpKINode>
+  <HelpKINode Title="MovieTypeDto.Description property" Url="html/474879397.htm" />
+  <HelpKINode Title="MovieTypeDto.Movies property" Url="html/565654675.htm" />
+  <HelpKINode Title="MovieTypeDto.MovieTypeId property" Url="html/935402094.htm" />
+  <HelpKINode Title="MovieTypeDto.Name property" Url="html/924441825.htm" />
+  <HelpKINode Title="MovieTypeDto.Type property" Url="html/165451220.htm" />
+  <HelpKINode Title="MovieTypeId property">
+    <HelpKINode Title="MovieTypeId Property " Url="html/1365975601.htm" />
+    <HelpKINode Title="MovieTypeId Property " Url="html/935402094.htm" />
+  </HelpKINode>
+  <HelpKINode Title="MovieTypes property" Url="html/2050795763.htm" />
+  <HelpKINode Title="MOVIE_TYPE enumeration" Url="html/402117441.htm" />
+  <HelpKINode Title="MOVIE_TYPE.AKCJA field" Url="html/1333993864.htm" />
+  <HelpKINode Title="MOVIE_TYPE.ANIMOWANY field" Url="html/30330020.htm" />
+  <HelpKINode Title="MOVIE_TYPE.DOKUMENTALNY field" Url="html/1824228366.htm" />
+  <HelpKINode Title="MOVIE_TYPE.DRAMAT field" Url="html/1536985157.htm" />
+  <HelpKINode Title="MOVIE_TYPE.FAMILIJNY field" Url="html/1632876273.htm" />
+  <HelpKINode Title="MOVIE_TYPE.FANTASY field" Url="html/1656688490.htm" />
+  <HelpKINode Title="MOVIE_TYPE.HORROR field" Url="html/690694007.htm" />
+  <HelpKINode Title="MOVIE_TYPE.KOMEDIA field" Url="html/1758599717.htm" />
+  <HelpKINode Title="MOVIE_TYPE.KRYMIMAL field" Url="html/2014744231.htm" />
+  <HelpKINode Title="MOVIE_TYPE.MELODRAMAT field" Url="html/1218103225.htm" />
+  <HelpKINode Title="MOVIE_TYPE.NIEMY field" Url="html/484791057.htm" />
+  <HelpKINode Title="MOVIE_TYPE.PRZYGODOWY field" Url="html/1287203483.htm" />
+  <HelpKINode Title="MOVIE_TYPE.ROMANS field" Url="html/1725820075.htm" />
+  <HelpKINode Title="MOVIE_TYPE.SCIFI field" Url="html/1055591428.htm" />
+  <HelpKINode Title="MOVIE_TYPE.THRILLER field" Url="html/1133522771.htm" />
+  <HelpKINode Title="MOVIE_TYPE.UNKNOWN field" Url="html/140515179.htm" />
+  <HelpKINode Title="Name property">
+    <HelpKINode Title="Name Property " Url="html/625954379.htm" />
+    <HelpKINode Title="Name Property " Url="html/924441825.htm" />
+    <HelpKINode Title="Name Property " Url="html/1659962160.htm" />
+    <HelpKINode Title="Name Property " Url="html/39229040.htm" />
+  </HelpKINode>
+  <HelpKINode Title="NameSurname property" Url="html/774962117.htm" />
+  <HelpKINode Title="NewValue property" Url="html/862892158.htm" />
+  <HelpKINode Title="NIEMCY enumeration member" Url="html/236748748.htm" />
+  <HelpKINode Title="NIEMCY field" Url="html/1298071293.htm" />
+  <HelpKINode Title="NIEMY enumeration member" Url="html/402117441.htm" />
+  <HelpKINode Title="NIEMY field" Url="html/484791057.htm" />
+  <HelpKINode Title="OrginalTitle property">
+    <HelpKINode Title="OrginalTitle Property " Url="html/92504583.htm" />
+    <HelpKINode Title="OrginalTitle Property " Url="html/1990756576.htm" />
+  </HelpKINode>
+  <HelpKINode Title="OtherWindowOnTextBoxValueChanged method" Url="html/1645962280.htm" />
+  <HelpKINode Title="padlock field" Url="html/867649049.htm" />
+  <HelpKINode Title="Person class">
+    <HelpKINode Title="Person Class" Url="html/1590263949.htm" />
+    <HelpKINode Title="Person Members" Url="html/2101894888.htm" />
+    <HelpKINode Title="about Person class" Url="html/1590263949.htm" />
+    <HelpKINode Title="all members" Url="html/2101894888.htm" />
+    <HelpKINode Title="properties" Url="html/1573569606.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Person.Name property" Url="html/625954379.htm" />
+  <HelpKINode Title="Person.NameSurname property" Url="html/774962117.htm" />
+  <HelpKINode Title="Person.PersonId property" Url="html/1556761413.htm" />
+  <HelpKINode Title="Person.Surname property" Url="html/1766025030.htm" />
+  <HelpKINode Title="PersonDto class">
+    <HelpKINode Title="PersonDto Class" Url="html/1661761425.htm" />
+    <HelpKINode Title="PersonDto Members" Url="html/390866911.htm" />
+    <HelpKINode Title="about PersonDto class" Url="html/1661761425.htm" />
+    <HelpKINode Title="all members" Url="html/390866911.htm" />
+    <HelpKINode Title="properties" Url="html/1638943339.htm" />
+  </HelpKINode>
+  <HelpKINode Title="PersonDto.Movies property" Url="html/1806879443.htm" />
+  <HelpKINode Title="PersonDto.Name property" Url="html/39229040.htm" />
+  <HelpKINode Title="PersonDto.PersonId property" Url="html/829998522.htm" />
+  <HelpKINode Title="PersonDto.Surname property" Url="html/1534025464.htm" />
+  <HelpKINode Title="PersonId property">
+    <HelpKINode Title="PersonId Property " Url="html/829998522.htm" />
+    <HelpKINode Title="PersonId Property " Url="html/1556761413.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Persons property" Url="html/109741124.htm" />
+  <HelpKINode Title="POLSKA enumeration member" Url="html/236748748.htm" />
+  <HelpKINode Title="POLSKA field" Url="html/2027400051.htm" />
+  <HelpKINode Title="proc field" Url="html/860972337.htm" />
+  <HelpKINode Title="Production property">
+    <HelpKINode Title="Production Property " Url="html/617439514.htm" />
+    <HelpKINode Title="Production Property " Url="html/392456640.htm" />
+  </HelpKINode>
+  <HelpKINode Title="PRODUCTION_COUNTRY enumeration" Url="html/236748748.htm" />
+  <HelpKINode Title="PRODUCTION_COUNTRY.ANGLIA field" Url="html/588025037.htm" />
+  <HelpKINode Title="PRODUCTION_COUNTRY.ARGENTYNA field" Url="html/2000663777.htm" />
+  <HelpKINode Title="PRODUCTION_COUNTRY.AUSTRALIA field" Url="html/1801576621.htm" />
+  <HelpKINode Title="PRODUCTION_COUNTRY.FILIPINY field" Url="html/146691152.htm" />
+  <HelpKINode Title="PRODUCTION_COUNTRY.FRANCJA field" Url="html/364083078.htm" />
+  <HelpKINode Title="PRODUCTION_COUNTRY.GRECJA field" Url="html/264463214.htm" />
+  <HelpKINode Title="PRODUCTION_COUNTRY.HISZPANIA field" Url="html/1626784089.htm" />
+  <HelpKINode Title="PRODUCTION_COUNTRY.HONKONG field" Url="html/602817292.htm" />
+  <HelpKINode Title="PRODUCTION_COUNTRY.INDIE field" Url="html/479229395.htm" />
+  <HelpKINode Title="PRODUCTION_COUNTRY.JAPONIA field" Url="html/665786063.htm" />
+  <HelpKINode Title="PRODUCTION_COUNTRY.KANADA field" Url="html/1494649017.htm" />
+  <HelpKINode Title="PRODUCTION_COUNTRY.MEKSYK field" Url="html/916695459.htm" />
+  <HelpKINode Title="PRODUCTION_COUNTRY.NIEMCY field" Url="html/1298071293.htm" />
+  <HelpKINode Title="PRODUCTION_COUNTRY.POLSKA field" Url="html/2027400051.htm" />
+  <HelpKINode Title="PRODUCTION_COUNTRY.RFN field" Url="html/1384893660.htm" />
+  <HelpKINode Title="PRODUCTION_COUNTRY.UNKNOWN field" Url="html/744262155.htm" />
+  <HelpKINode Title="PRODUCTION_COUNTRY.USA field" Url="html/575786185.htm" />
+  <HelpKINode Title="PRODUCTION_COUNTRY.WLOCHY field" Url="html/946904808.htm" />
+  <HelpKINode Title="PRODUCTION_COUNTRY.ZSRR field" Url="html/1066144421.htm" />
+  <HelpKINode Title="PropertyValueConverters property" Url="html/1216854056.htm" />
+  <HelpKINode Title="PRZYGODOWY enumeration member" Url="html/402117441.htm" />
+  <HelpKINode Title="PRZYGODOWY field" Url="html/1287203483.htm" />
+  <HelpKINode Title="QuoteString method" Url="html/1935714523.htm" />
+  <HelpKINode Title="Rank property">
+    <HelpKINode Title="Rank Property " Url="html/328254466.htm" />
+    <HelpKINode Title="Rank Property " Url="html/1870289604.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Rate property">
+    <HelpKINode Title="Rate Property " Url="html/43764236.htm" />
+    <HelpKINode Title="Rate Property " Url="html/708931982.htm" />
+  </HelpKINode>
+  <HelpKINode Title="RateTotalVotes property">
+    <HelpKINode Title="RateTotalVotes Property " Url="html/1063852283.htm" />
+    <HelpKINode Title="RateTotalVotes Property " Url="html/490370886.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ReleaseDate property">
+    <HelpKINode Title="ReleaseDate Property " Url="html/1477504011.htm" />
+    <HelpKINode Title="ReleaseDate Property " Url="html/1198374803.htm" />
+  </HelpKINode>
+  <HelpKINode Title="RemoveAll method">
+    <HelpKINode Title="RemoveAll Method " Url="html/1461724665.htm" />
+    <HelpKINode Title="RemoveAll Method " Url="html/1879523456.htm" />
+    <HelpKINode Title="RemoveAll Method " Url="html/2045231794.htm" />
+  </HelpKINode>
+  <HelpKINode Title="resourceCulture field" Url="html/1091394733.htm" />
+  <HelpKINode Title="resourceMan field" Url="html/174898615.htm" />
+  <HelpKINode Title="Resources field" Url="html/645923472.htm" />
+  <HelpKINode Title="RFN enumeration member" Url="html/236748748.htm" />
+  <HelpKINode Title="RFN field" Url="html/1384893660.htm" />
+  <HelpKINode Title="ROMANS enumeration member" Url="html/402117441.htm" />
+  <HelpKINode Title="ROMANS field" Url="html/1725820075.htm" />
+  <HelpKINode Title="SCIFI enumeration member" Url="html/402117441.htm" />
+  <HelpKINode Title="SCIFI field" Url="html/1055591428.htm" />
+  <HelpKINode Title="Scrap method" Url="html/404184603.htm" />
+  <HelpKINode Title="ScrapeMovie method" Url="html/1365497070.htm" />
+  <HelpKINode Title="ScrapeMovies method" Url="html/2070721267.htm" />
+  <HelpKINode Title="scraper field" Url="html/1798404887.htm" />
+  <HelpKINode Title="Search method" Url="html/1456044448.htm" />
+  <HelpKINode Title="SearchMovieId_Click method" Url="html/499941830.htm" />
+  <HelpKINode Title="Search_Async method" Url="html/415870463.htm" />
+  <HelpKINode Title="Search_Click method" Url="html/372680762.htm" />
+  <HelpKINode Title="Serialize method" Url="html/1907714753.htm" />
+  <HelpKINode Title="Serialize(Of T) method" Url="html/324810826.htm" />
+  <HelpKINode Title="Serialize&lt;T&gt; method" Url="html/324810826.htm" />
+  <HelpKINode Title="SerializerCSV(Of T) class">
+    <HelpKINode Title="constructor" Url="html/1746323228.htm" />
+  </HelpKINode>
+  <HelpKINode Title="SerializerCSV(Of T).ExtractHeaders method" Url="html/1146757500.htm" />
+  <HelpKINode Title="SerializerCSV(Of T).ExtractPropertyValues method" Url="html/844730598.htm" />
+  <HelpKINode Title="SerializerCSV(Of T).PropertyValueConverters property" Url="html/1216854056.htm" />
+  <HelpKINode Title="SerializerCSV(Of T).Serialize method" Url="html/1907714753.htm" />
+  <HelpKINode Title="SerializerCSV(Of T).SerializerCSV constructor" Url="html/1746323228.htm" />
+  <HelpKINode Title="SerializerCSV(Of T).ToCsvRow method" Url="html/478778852.htm" />
+  <HelpKINode Title="SerializerCSV&lt;T&gt; class">
+    <HelpKINode Title="constructor" Url="html/1746323228.htm" />
+  </HelpKINode>
+  <HelpKINode Title="SerializerCSV&lt;T&gt;.ExtractHeaders method" Url="html/1146757500.htm" />
+  <HelpKINode Title="SerializerCSV&lt;T&gt;.ExtractPropertyValues method" Url="html/844730598.htm" />
+  <HelpKINode Title="SerializerCSV&lt;T&gt;.PropertyValueConverters property" Url="html/1216854056.htm" />
+  <HelpKINode Title="SerializerCSV&lt;T&gt;.Serialize method" Url="html/1907714753.htm" />
+  <HelpKINode Title="SerializerCSV&lt;T&gt;.SerializerCSV constructor" Url="html/1746323228.htm" />
+  <HelpKINode Title="SerializerCSV&lt;T&gt;.ToCsvRow method" Url="html/478778852.htm" />
+  <HelpKINode Title="Set method" Url="html/282567984.htm" />
+  <HelpKINode Title="SetFolderPermission method" Url="html/28077043.htm" />
+  <HelpKINode Title="Setp1_Click method" Url="html/369347323.htm" />
+  <HelpKINode Title="Setp2_Click method" Url="html/667191335.htm" />
+  <HelpKINode Title="Setp3_Click method" Url="html/720550707.htm" />
+  <HelpKINode Title="Source property" Url="html/98354562.htm" />
+  <HelpKINode Title="Staff property">
+    <HelpKINode Title="Staff Property " Url="html/462613558.htm" />
+    <HelpKINode Title="Staff Property " Url="html/25631150.htm" />
+  </HelpKINode>
+  <HelpKINode Title="StaffString property" Url="html/363071303.htm" />
+  <HelpKINode Title="Start_Click method" Url="html/249123473.htm" />
+  <HelpKINode Title="Stop_Click method" Url="html/11456045.htm" />
+  <HelpKINode Title="Surname property">
+    <HelpKINode Title="Surname Property " Url="html/1534025464.htm" />
+    <HelpKINode Title="Surname Property " Url="html/1766025030.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Target property" Url="html/1702020190.htm" />
+  <HelpKINode Title="tasksArray field" Url="html/2041085416.htm" />
+  <HelpKINode Title="TextBoxValueChanged event" Url="html/1677259073.htm" />
+  <HelpKINode Title="TextBoxValueEventArgs class">
+    <HelpKINode Title="constructor" Url="html/1525395773.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TextBoxValueEventArgs.NewValue property" Url="html/862892158.htm" />
+  <HelpKINode Title="TextBoxValueEventArgs.TextBoxValueEventArgs constructor" Url="html/1525395773.htm" />
+  <HelpKINode Title="threadsArray field" Url="html/1824950960.htm" />
+  <HelpKINode Title="THRILLER enumeration member" Url="html/402117441.htm" />
+  <HelpKINode Title="THRILLER field" Url="html/1133522771.htm" />
+  <HelpKINode Title="Title property">
+    <HelpKINode Title="Title Property " Url="html/1677822359.htm" />
+    <HelpKINode Title="Title Property " Url="html/382819885.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TitleString property" Url="html/1505284998.htm" />
+  <HelpKINode Title="ToCsvRow method" Url="html/478778852.htm" />
+  <HelpKINode Title="Transform method" Url="html/1044121215.htm" />
+  <HelpKINode Title="Type property">
+    <HelpKINode Title="Type Property " Url="html/1286864056.htm" />
+    <HelpKINode Title="Type Property " Url="html/165451220.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Types property">
+    <HelpKINode Title="Types Property " Url="html/393186906.htm" />
+    <HelpKINode Title="Types Property " Url="html/683910163.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TypesString property" Url="html/117065561.htm" />
+  <HelpKINode Title="UNKNOWN enumeration member">
+    <HelpKINode Title="MOVIE_TYPE Enumeration" Url="html/402117441.htm" />
+    <HelpKINode Title="PRODUCTION_COUNTRY Enumeration" Url="html/236748748.htm" />
+  </HelpKINode>
+  <HelpKINode Title="UNKNOWN field">
+    <HelpKINode Title="UNKNOWN Field" Url="html/140515179.htm" />
+    <HelpKINode Title="UNKNOWN Field" Url="html/744262155.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Up method" Url="html/1557938982.htm" />
+  <HelpKINode Title="UpdateData method" Url="html/864075724.htm" />
+  <HelpKINode Title="UpdateView method" Url="html/387152476.htm" />
+  <HelpKINode Title="USA enumeration member" Url="html/236748748.htm" />
+  <HelpKINode Title="USA field" Url="html/575786185.htm" />
+  <HelpKINode Title="WLOCHY enumeration member" Url="html/236748748.htm" />
+  <HelpKINode Title="WLOCHY field" Url="html/946904808.htm" />
+  <HelpKINode Title="Working method" Url="html/1975623309.htm" />
+  <HelpKINode Title="WriteToConsole method" Url="html/1834334536.htm" />
+  <HelpKINode Title="Year property">
+    <HelpKINode Title="Year Property " Url="html/1764112736.htm" />
+    <HelpKINode Title="Year Property " Url="html/1431041949.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ZSRR enumeration member" Url="html/236748748.htm" />
+  <HelpKINode Title="ZSRR field" Url="html/1066144421.htm" />
+  <HelpKINode Title="_connectionString field" Url="html/1527414610.htm" />
+</HelpKI>

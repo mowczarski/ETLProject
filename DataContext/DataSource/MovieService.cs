@@ -1,4 +1,17 @@
-﻿using System;
+﻿// ***********************************************************************
+// Assembly         : DataContext
+// Author           : Mariusz
+// Created          : 12-30-2019
+//
+// Last Modified By : Mariusz
+// Last Modified On : 01-06-2020
+// ***********************************************************************
+// <copyright file="MovieService.cs" company="">
+//     Copyright ©  2019
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Contract.Interfaces;
@@ -7,9 +20,21 @@ using DataContext.Dtos;
 
 namespace DataContext.DataSource
 {
+    /// <summary>
+    /// Class MovieService.
+    /// Implements the <see cref="Contract.Interfaces.ICaller" />
+    /// </summary>
+    /// <seealso cref="Contract.Interfaces.ICaller" />
     public class MovieService : ICaller
     {
+        /// <summary>
+        /// The connection string
+        /// </summary>
         private static string _connectionString = null;
+        /// <summary>
+        /// Gets or sets the connection string.
+        /// </summary>
+        /// <value>The connection string.</value>
         public string ConnectionString
         {
             get
@@ -25,6 +50,12 @@ namespace DataContext.DataSource
         }
 
         // KLASA TA PELNI FUNKCJE SERVISU WYKONUJACEGO METODY ROBIACE OPERACJE NA BAZIE DANYCH
+        /// <summary>
+        /// Edits the movie.
+        /// </summary>
+        /// <param name="movie">The movie.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        /// <exception cref="System.NotImplementedException"></exception>
         public bool EditMovie(Movie movie)
         {
             using (var context = new ETLModel(ConnectionString))
@@ -57,6 +88,12 @@ namespace DataContext.DataSource
             }
         }
 
+        /// <summary>
+        /// Adds the movies.
+        /// </summary>
+        /// <param name="movies">The movies.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        /// <exception cref="Exception"></exception>
         public bool AddMovies(List<Movie> movies)
         {
             using (var context = new ETLModel(ConnectionString))
@@ -147,6 +184,11 @@ namespace DataContext.DataSource
             }
         }
 
+        /// <summary>
+        /// Gets all movies.
+        /// </summary>
+        /// <returns>List&lt;Movie&gt;.</returns>
+        /// <exception cref="Exception"></exception>
         public List<Movie> GetAllMovies()
         {
             using (var context = new ETLModel(ConnectionString))
@@ -166,6 +208,11 @@ namespace DataContext.DataSource
             }
         }
 
+        /// <summary>
+        /// Removes all.
+        /// </summary>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        /// <exception cref="Exception"></exception>
         public bool RemoveAll()
         {
             using (var context = new ETLModel(ConnectionString))
@@ -194,6 +241,10 @@ namespace DataContext.DataSource
             }
         }
 
+        /// <summary>
+        /// Determines whether [is server connected].
+        /// </summary>
+        /// <returns><c>true</c> if [is server connected]; otherwise, <c>false</c>.</returns>
         public bool IsServerConnected()
         {
             using (var context = new ETLModel(ConnectionString))

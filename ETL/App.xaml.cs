@@ -1,4 +1,17 @@
-﻿using System;
+﻿// ***********************************************************************
+// Assembly         : ETL
+// Author           : Mariusz
+// Created          : 12-30-2019
+//
+// Last Modified By : Mariusz
+// Last Modified On : 12-30-2019
+// ***********************************************************************
+// <copyright file="App.xaml.cs" company="">
+//     Copyright ©  2019 Mariusz Owczarski
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;

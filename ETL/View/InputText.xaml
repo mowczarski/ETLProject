@@ -1,4 +1,24 @@
-﻿<Window x:Class="ETL.View.InputText"
+﻿<!--// ***********************************************************************
+// Assembly         : ETL
+// Author           : Mariusz
+// Created          : 01-06-2020
+//
+// Last Modified By : Mariusz
+// Last Modified On : 01-06-2020
+// ***********************************************************************
+// <copyright file="InputText.xaml" company="">
+//     Copyright ©  2019 Mariusz Owczarski
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+/// <summary>
+/// Class InputText.
+/// Implements the <see cref="System.Windows.Window" />
+/// Implements the <see cref="System.Windows.Markup.IComponentConnector" />
+/// </summary>
+/// <seealso cref="System.Windows.Window" />
+/// <seealso cref="System.Windows.Markup.IComponentConnector" />-->
+<Window x:Class="ETL.View.InputText"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Height="200" Title="ETL project"

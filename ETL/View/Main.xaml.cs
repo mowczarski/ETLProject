@@ -1,4 +1,17 @@
-﻿using Contract.Model;
+﻿// ***********************************************************************
+// Assembly         : ETL
+// Author           : Mariusz
+// Created          : 12-30-2019
+//
+// Last Modified By : Mariusz
+// Last Modified On : 01-06-2020
+// ***********************************************************************
+// <copyright file="Main.xaml.cs" company="">
+//     Copyright ©  2019 Mariusz Owczarski
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+using Contract.Model;
 using ETL.Callers;
 using ETL.Helpers;
 using ETL.Webscraper;
@@ -17,16 +30,47 @@ using static ETL.Webscraper.FilmWebScraper;
 
 namespace ETL.View
 {
+    /// <summary>
+    /// Class Main.
+    /// Implements the <see cref="System.Windows.Window" />
+    /// Implements the <see cref="System.Windows.Markup.IComponentConnector" />
+    /// </summary>
+    /// <seealso cref="System.Windows.Window" />
+    /// <seealso cref="System.Windows.Markup.IComponentConnector" />
     public partial class Main : Window
     {
+        /// <summary>
+        /// The database movies
+        /// </summary>
         List<Movie> dbMovies = null;
+        /// <summary>
+        /// The movies to load
+        /// </summary>
         List<Movie> moviesToLoad = null;
+        /// <summary>
+        /// The movie to edit
+        /// </summary>
         Movie movieToEdit = null;
+        /// <summary>
+        /// The proc
+        /// </summary>
         readonly int proc = Environment.ProcessorCount;
+        /// <summary>
+        /// The scraper
+        /// </summary>
         FilmWebScraper scraper = new FilmWebScraper();
+        /// <summary>
+        /// The tasks array
+        /// </summary>
         Task[] tasksArray = null;
+        /// <summary>
+        /// The threads array
+        /// </summary>
         Thread[] threadsArray = null;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Main"/> class.
+        /// </summary>
         public Main()
         {
             InitializeComponent();
@@ -49,6 +93,9 @@ namespace ETL.View
             Search_Async();
         }
 
+        /// <summary>
+        /// Checks the password.
+        /// </summary>
         public void CheckPassword()
         {
             InputText enterPassword = new InputText();
@@ -66,12 +113,25 @@ namespace ETL.View
             enterPassword = null;
         }
 
+        /// <summary>
+        /// Others the window on text box value changed.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="TextBoxValueEventArgs"/> instance containing the event data.</param>
         private void OtherWindowOnTextBoxValueChanged(object sender, TextBoxValueEventArgs e)
         {
             WriteToConsole(e.NewValue);
         }
 
+        /// <summary>
+        /// The loading thread
+        /// </summary>
         private Thread loadingThread;
+        /// <summary>
+        /// Searches the asynchronous.
+        /// </summary>
+        /// <param name="txt">The text.</param>
+        /// <param name="getNewData">if set to <c>true</c> [get new data].</param>
         public void Search_Async(string txt = null, bool getNewData = true)
         {
             AbortLoading();
@@ -80,6 +140,9 @@ namespace ETL.View
             loadingThread.Start();
         }
 
+        /// <summary>
+        /// Aborts the loading.
+        /// </summary>
         public void AbortLoading()
         {
             if (loadingThread != null)
@@ -89,7 +152,16 @@ namespace ETL.View
             }
         }
 
+        /// <summary>
+        /// The loading lock
+        /// </summary>
         private object loadingLock = new object();
+        /// <summary>
+        /// Searches the specified text.
+        /// </summary>
+        /// <param name="txt">The text.</param>
+        /// <param name="getNewData">if set to <c>true</c> [get new data].</param>
+        /// <exception cref="Exception"></exception>
         public void Search(string txt = null, bool getNewData = true)
         {
             WriteToConsole("Search initialized");
@@ -114,6 +186,10 @@ namespace ETL.View
             }
         }
 
+        /// <summary>
+        /// Updates the data.
+        /// </summary>
+        /// <returns>List&lt;Movie&gt;.</returns>
         private List<Movie> UpdateData()
         {
             WriteToConsole("UpdateData started");
@@ -131,6 +207,10 @@ namespace ETL.View
             return result;
         }
 
+        /// <summary>
+        /// Updates the view.
+        /// </summary>
+        /// <param name="txt">The text.</param>
         public void UpdateView(string txt)
         {
             WriteToConsole("UpdateView started");
@@ -157,6 +237,10 @@ namespace ETL.View
             WriteToConsole("UpdateView finished");
         }
 
+        /// <summary>
+        /// Workings the specified state.
+        /// </summary>
+        /// <param name="state">if set to <c>true</c> [state].</param>
         public void Working(bool state)
         {
             Dispatcher.Invoke((Action)(() =>
@@ -166,6 +250,10 @@ namespace ETL.View
         }
 
 
+        /// <summary>
+        /// Writes to console.
+        /// </summary>
+        /// <param name="txt">The text.</param>
         public void WriteToConsole(string txt)
         {
             // OUTPUT DO KONSOLI PROGRAMU 
@@ -178,6 +266,11 @@ namespace ETL.View
             }));
         }
 
+        /// <summary>
+        /// Handles the Click event of the Start control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void Start_Click(object sender, RoutedEventArgs e)
         {
             if (Step2.IsEnabled == true || Step3.IsEnabled == true)
@@ -214,8 +307,18 @@ namespace ETL.View
             }
         }
 
-        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e) => Extract(true); 
+        /// <summary>
+        /// Handles the DoWork event of the backgroundWorker1 control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="DoWorkEventArgs"/> instance containing the event data.</param>
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e) => Extract(true);
 
+        /// <summary>
+        /// Handles the RunWorkerCompleted event of the backgroundWorker1 control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RunWorkerCompletedEventArgs"/> instance containing the event data.</param>
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             Transform();
@@ -224,6 +327,9 @@ namespace ETL.View
             Working(false);
         }
 
+        /// <summary>
+        /// Loads the in background.
+        /// </summary>
         private void LoadInBackground()
         {
             BackgroundWorker bgw = new System.ComponentModel.BackgroundWorker();
@@ -231,6 +337,11 @@ namespace ETL.View
             bgw.RunWorkerAsync();
         }
 
+        /// <summary>
+        /// Handles the Click event of the Stop control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void Stop_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult result = MessageBox.Show("Do you want to reset?", "Choose you decision !!", MessageBoxButton.YesNo, MessageBoxImage.Question);
@@ -258,6 +369,11 @@ namespace ETL.View
             }
         }
 
+        /// <summary>
+        /// Handles the Click event of the Setp1 control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void Setp1_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult result = MessageBox.Show("Do you want to start STEP 1?", "Choose one option", MessageBoxButton.YesNo, MessageBoxImage.Question);
@@ -284,6 +400,11 @@ namespace ETL.View
 
         }
 
+        /// <summary>
+        /// Handles the Click event of the Setp2 control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void Setp2_Click(object sender, RoutedEventArgs e)
         {
 
@@ -310,6 +431,11 @@ namespace ETL.View
             }
         }
 
+        /// <summary>
+        /// Handles the Click event of the Setp3 control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void Setp3_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult result = MessageBox.Show("Do you want to start STEP 3?", "Choose one option", MessageBoxButton.YesNo, MessageBoxImage.Question);
@@ -328,12 +454,22 @@ namespace ETL.View
             }         
         }
 
+        /// <summary>
+        /// Handles the Click event of the Search control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void Search_Click(object sender, RoutedEventArgs e)
         {
             var searchParameter = searchTB.Text;
             Search_Async(searchParameter, false);
         }
 
+        /// <summary>
+        /// Handles the Click event of the DeleteAll control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void DeleteAll_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult result = MessageBox.Show("Do you want to delete all data? \nThis operation will purge all data from DataBase", "Choose one option", MessageBoxButton.YesNo, MessageBoxImage.Question);
@@ -356,7 +492,14 @@ namespace ETL.View
             }
         }
 
+        /// <summary>
+        /// The extract lock
+        /// </summary>
         private object extractLock = new object();
+        /// <summary>
+        /// Extracts the specified with wait.
+        /// </summary>
+        /// <param name="withWait">if set to <c>true</c> [with wait].</param>
         private void Extract(bool withWait = false)
         {
             WriteToConsole("Scrapping started");
@@ -383,6 +526,11 @@ namespace ETL.View
                 Task.WaitAll(tasksArray);
         }
 
+        /// <summary>
+        /// Scraps the specified page.
+        /// </summary>
+        /// <param name="page">The page.</param>
+        /// <returns>Task&lt;System.Boolean&gt;.</returns>
         private async Task<bool> Scrap(int page)
         {
             await scraper.ScrapeMovies(page);
@@ -390,6 +538,9 @@ namespace ETL.View
             return true;
         }
 
+        /// <summary>
+        /// Transforms this instance.
+        /// </summary>
         private void Transform()
         {
             try
@@ -495,6 +646,11 @@ namespace ETL.View
             }
         }
 
+        /// <summary>
+        /// Loads the specified sender.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="DoWorkEventArgs"/> instance containing the event data.</param>
         private void Load(object sender, DoWorkEventArgs e)
         {
             WriteToConsole("Load to data base movies (count) - " + moviesToLoad.Count);
@@ -507,6 +663,11 @@ namespace ETL.View
             Search_Async();
         }
 
+        /// <summary>
+        /// Handles the Click event of the ExportCSV control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void ExportCSV_Click(object sender, RoutedEventArgs e)
         {
 
@@ -533,6 +694,11 @@ namespace ETL.View
         }
 
 
+        /// <summary>
+        /// Handles the Click event of the ExportCSVOne control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void ExportCSVOne_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult result = MessageBox.Show("Do you want to export selected movie data to CSV file?", "Choose one option", MessageBoxButton.YesNo, MessageBoxImage.Question);
@@ -559,6 +725,11 @@ namespace ETL.View
         }
 
 
+        /// <summary>
+        /// Handles the Click event of the SearchMovieId control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void SearchMovieId_Click(object sender, RoutedEventArgs e)
         {
             WriteToConsole("Search movie for edit started ");
@@ -587,6 +758,11 @@ namespace ETL.View
             WriteToConsole("Search movie for edit finished ");
         }
 
+        /// <summary>
+        /// Edits the movie click.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void EditMovieClick(object sender, RoutedEventArgs e)
         {
 

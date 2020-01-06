@@ -1,12 +1,35 @@
-﻿namespace DataContext.Migrations
+﻿// ***********************************************************************
+// Assembly         : DataContext
+// Author           : Mariusz
+// Created          : 12-30-2019
+//
+// Last Modified By : Mariusz
+// Last Modified On : 01-04-2020
+// ***********************************************************************
+// <copyright file="201912291831332_init.cs" company="">
+//     Copyright ©  2019
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+namespace DataContext.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
-    
+
+    /// <summary>
+    /// Class init.
+    /// Implements the <see cref="System.Data.Entity.Migrations.DbMigration" />
+    /// Implements the <see cref="System.Data.Entity.Migrations.Infrastructure.IMigrationMetadata" />
+    /// </summary>
+    /// <seealso cref="System.Data.Entity.Migrations.DbMigration" />
+    /// <seealso cref="System.Data.Entity.Migrations.Infrastructure.IMigrationMetadata" />
     public partial class init : DbMigration
     {
         // W PROJECIE UZYTO METODOLOGII CODE FIRST
         // POLEGA ONA NA TYM ZE ZA POMOCA UTWORZONYCH KLAS GENETUJEMY PONIZSZY KOD KTORY TWORZY BAZE DANYCH
+        /// <summary>
+        /// Operations to be performed during the upgrade process.
+        /// </summary>
         public override void Up()
         {
             CreateTable(
@@ -77,7 +100,10 @@
                 //.Index(t => t.MovieDto_MovieId);
             
         }
-        
+
+        /// <summary>
+        /// Operations to be performed during the downgrade process.
+        /// </summary>
         public override void Down()
         {
             DropForeignKey("dbo.MovieTypeDtoMovieDtoes", "MovieDto_MovieId", "dbo.Movies");

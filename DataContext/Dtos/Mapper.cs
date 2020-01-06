@@ -1,11 +1,32 @@
-﻿using Contract.Model;
+﻿// ***********************************************************************
+// Assembly         : DataContext
+// Author           : Mariusz
+// Created          : 12-30-2019
+//
+// Last Modified By : Mariusz
+// Last Modified On : 01-04-2020
+// ***********************************************************************
+// <copyright file="Mapper.cs" company="">
+//     Copyright ©  2019
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+using Contract.Model;
 using System.Linq;
 using Contract.Enum;
 
 namespace DataContext.Dtos
 {
+    /// <summary>
+    /// Class Mapper.
+    /// </summary>
     public static class Mapper
     {
+        /// <summary>
+        /// Gets the specified item.
+        /// </summary>
+        /// <param name="item">The item.</param>
+        /// <returns>Movie.</returns>
         public static Movie Get(this MovieDto item)
         {
             if (item == null) return null;
@@ -30,6 +51,11 @@ namespace DataContext.Dtos
             };
         }
 
+        /// <summary>
+        /// Sets the specified item.
+        /// </summary>
+        /// <param name="item">The item.</param>
+        /// <returns>MovieDto.</returns>
         public static MovieDto Set(this Movie item)
         {
             if (item == null) return null;
@@ -53,6 +79,11 @@ namespace DataContext.Dtos
             };
         }
 
+        /// <summary>
+        /// Gets the specified item.
+        /// </summary>
+        /// <param name="item">The item.</param>
+        /// <returns>Person.</returns>
         public static Person Get(this PersonDto item)
         {
             if (item == null) return null;
@@ -65,6 +96,11 @@ namespace DataContext.Dtos
             };
         }
 
+        /// <summary>
+        /// Sets the specified item.
+        /// </summary>
+        /// <param name="item">The item.</param>
+        /// <returns>PersonDto.</returns>
         public static PersonDto Set(this Person item)
         {
             if (item == null) return null;
@@ -77,6 +113,11 @@ namespace DataContext.Dtos
             };
         }
 
+        /// <summary>
+        /// Sets the specified item.
+        /// </summary>
+        /// <param name="item">The item.</param>
+        /// <returns>MovieTypeDto.</returns>
         public static MovieTypeDto Set(this MovieType item)
         {
             if (item == null) return null;
@@ -90,6 +131,11 @@ namespace DataContext.Dtos
             };
         }
 
+        /// <summary>
+        /// Gets the specified item.
+        /// </summary>
+        /// <param name="item">The item.</param>
+        /// <returns>MovieType.</returns>
         public static MovieType Get(this MovieTypeDto item)
         {
             if (item == null) return null;

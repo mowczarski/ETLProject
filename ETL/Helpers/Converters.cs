@@ -1,32 +1,68 @@
-﻿using Contract.Enum;
+﻿// ***********************************************************************
+// Assembly         : ETL
+// Author           : Mariusz
+// Created          : 12-30-2019
+//
+// Last Modified By : Mariusz
+// Last Modified On : 01-04-2020
+// ***********************************************************************
+// <copyright file="Converters.cs" company="">
+//     Copyright ©  2019 Mariusz Owczarski
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+using Contract.Enum;
 using System;
 using System.Text.RegularExpressions;
 
 namespace ETL.Helpers
 {
+    /// <summary>
+    /// Class Converters.
+    /// </summary>
     public class Converters
     {
         // KONVERTERY SLUZA GLOWNIE W PROCESIE TRANSFORMACJI 
         // KONWERTUJA DANE W POSTACI LANCUCHA ZNAKOW NA ROZNE TYPY (INT, DECIMAL, ENUM, DATETIME)
 
+        /// <summary>
+        /// Converts to decimal.
+        /// </summary>
+        /// <param name="it">It.</param>
+        /// <returns>System.Decimal.</returns>
         public static decimal ConvertToDecimal(dynamic it)
         {
             if (it == null) return 0;
             else return Convert.ToDecimal(Regex.Match(Convert.ToString(it).Replace(" ", ""), @"\d+").Value);
         }
 
+        /// <summary>
+        /// Converts to string.
+        /// </summary>
+        /// <param name="it">It.</param>
+        /// <returns>System.String.</returns>
         public static string ConvertToString(dynamic it)
         {
             if (it == null) return null;
             else return Convert.ToString(it);
         }
 
+        /// <summary>
+        /// Converts to int.
+        /// </summary>
+        /// <param name="it">It.</param>
+        /// <returns>System.Nullable&lt;System.Int32&gt;.</returns>
         public static int? ConvertToInt(dynamic it)
         {
             if (it == null) return null;
             else return Convert.ToInt32(Regex.Match(Convert.ToString(it).Replace(" ", ""), @"\d+").Value);
         }
 
+        /// <summary>
+        /// Converts to type byte.
+        /// </summary>
+        /// <param name="it">It.</param>
+        /// <returns>System.Byte.</returns>
         public static byte ConvertToTypeByte(dynamic it)
         {
             if (it == null) return 0;
@@ -68,7 +104,12 @@ namespace ETL.Helpers
                     return 0;
             };
         }
-    
+
+        /// <summary>
+        /// Converts the type of to movie.
+        /// </summary>
+        /// <param name="it">It.</param>
+        /// <returns>MOVIE_TYPE.</returns>
         public static MOVIE_TYPE ConvertToMovieType(dynamic it)
         {
             if (it == null) return MOVIE_TYPE.UNKNOWN;
@@ -113,6 +154,11 @@ namespace ETL.Helpers
             }
         }
 
+        /// <summary>
+        /// Converts to date time.
+        /// </summary>
+        /// <param name="it">It.</param>
+        /// <returns>DateTime.</returns>
         public static DateTime ConvertToDateTime(dynamic it)
         {
             if (it == null) return new DateTime();
@@ -174,6 +220,11 @@ namespace ETL.Helpers
             return new DateTime(year, month, day);
         }
 
+        /// <summary>
+        /// Converts to production.
+        /// </summary>
+        /// <param name="it">It.</param>
+        /// <returns>PRODUCTION_COUNTRY.</returns>
         public static PRODUCTION_COUNTRY ConvertToProduction(dynamic it)
         {
             if (it == null) return PRODUCTION_COUNTRY.UNKNOWN;

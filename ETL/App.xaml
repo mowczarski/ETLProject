@@ -1,4 +1,22 @@
-﻿<Application x:Class="ETL.App"
+﻿<!--// ***********************************************************************
+// Assembly         : ETL
+// Author           : Mariusz
+// Created          : 12-30-2019
+//
+// Last Modified By : Mariusz
+// Last Modified On : 12-30-2019
+// ***********************************************************************
+// <copyright file="App.xaml" company="">
+//     Copyright ©  2019 Mariusz Owczarski
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+/// <summary>
+/// Class App.
+/// Implements the <see cref="System.Windows.Application" />
+/// </summary>
+/// <seealso cref="System.Windows.Application" />-->
+<Application x:Class="ETL.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:ETL"
