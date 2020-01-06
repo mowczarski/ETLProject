@@ -8,7 +8,7 @@ The application presents the ETL process. It consists in extracting data from an
 
 ### Installing
 
-Download the latest package from https://github.com/mowczarski/ETLProject/releases and run file
+Download the latest package (Projekt11.ETL.v2.0.rar) from https://github.com/mowczarski/ETLProject/releases and run file
 
 ```
 ETL.exe
