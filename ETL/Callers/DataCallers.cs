@@ -31,6 +31,8 @@ namespace ETL.Callers
             }
         }
 
+        public string ConnectionString { get => movieService.ConnectionString; set => movieService.ConnectionString = value; }
+
         public bool EditMovie(Movie movie)
         {
             bool result = false;
@@ -56,6 +58,13 @@ namespace ETL.Callers
         {
             bool result = false;
             result = movieService.RemoveAll();
+            return result;
+        }
+
+        public bool IsServerConnected()
+        {
+            bool result = false;
+            result = movieService.IsServerConnected();
             return result;
         }
     }

@@ -1,6 +1,7 @@
 using DataContext.Dtos;
 using MySql.Data.Entity;
 using System.Data.Entity;
+using System.Data.SqlClient;
 
 namespace DataContext.DataSource
 {
@@ -10,9 +11,9 @@ namespace DataContext.DataSource
     [DbConfigurationType(typeof(MySqlEFConfiguration))]
     public class ETLModel : DbContext
     {
-        public ETLModel() : base("name=ETLModel") {
-
-            //this.Configuration.LazyLoadingEnabled = false;
+        public ETLModel(string value) : base(value)
+        {
+            ////this.Configuration.LazyLoadingEnabled = false;
         }
 
         public DbSet<MovieDto> Movies { get; set; }

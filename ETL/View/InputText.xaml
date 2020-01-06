@@ -1,0 +1,17 @@
+﻿<Window x:Class="ETL.View.InputText"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Height="200" Title="ETL project"
+        Width="300" WindowStartupLocation="CenterScreen"  ResizeMode="NoResize" WindowStyle="SingleBorderWindow">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label Content="Enter password" HorizontalAlignment="Center" Margin="5"/>
+        <TextBox FontSize="15" Grid.Row="1" Name="MyTextBox" Margin="5"/>
+        <Button Grid.Row="2" Content="OK" Click="Button_Click" Margin="50,5"/>
+    </Grid>
+</Window>

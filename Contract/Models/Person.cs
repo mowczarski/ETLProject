@@ -6,5 +6,13 @@
         public int PersonId { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
+
+        public string NameSurname 
+        { 
+            get
+            {
+                return Name + " " + Surname;
+            }
+        }
     }
 }

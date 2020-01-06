@@ -9,6 +9,8 @@ namespace Contract.Interfaces
         //JEST TO ZWYKLY INTERFEJS KTORY OKRESLA MEDOTY WYMAGANE PODCZAS JEGO IMPLEMENTACJI
 
         #region interface methods
+        string ConnectionString { get; set; }
+
         bool EditMovie(Movie movie);
 
         bool AddMovies(List<Movie> movie);
@@ -16,6 +18,8 @@ namespace Contract.Interfaces
         List<Movie> GetAllMovies();
 
         bool RemoveAll();
+
+        bool IsServerConnected();
         #endregion
     }
 }

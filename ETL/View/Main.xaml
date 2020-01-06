@@ -66,8 +66,8 @@
                                     <GridViewColumn Header="ReleaseDate" DisplayMemberBinding="{Binding Path=ReleaseDate}" Width="140" />
                                     <GridViewColumn Header="Production" DisplayMemberBinding="{Binding Path=Production}" Width="90" />
                                     <GridViewColumn Header="BoxOffice" DisplayMemberBinding="{Binding Path=BoxOffice}" Width="90" />
-                                    <GridViewColumn Header="Type" DisplayMemberBinding="{Binding Path=TypesString}" Width="90" />
-                                    <GridViewColumn Header="Actors" DisplayMemberBinding="{Binding Path=StaffString}" Width="150" />
+                                    <GridViewColumn Header="Type" DisplayMemberBinding="{Binding Path=TypesString}" Width="150" />
+                                    <GridViewColumn Header="Actors" DisplayMemberBinding="{Binding Path=StaffString}" Width="200" />
                                 </GridView>
                             </ListView.View>
                         </ListView>

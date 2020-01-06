@@ -32,7 +32,7 @@ namespace Contract.Model
             get
             {
                 if (Staff == null || Staff.Count == 0) return null;
-                else return string.Join(", ", Staff.Select(x => x.Name).ToArray());
+                else return string.Join(", ", Staff.Select(x => x.NameSurname).ToArray());
             }
         }
 
@@ -49,8 +49,8 @@ namespace Contract.Model
         {
             get
             {
-                if (OrginalTitle == null) return Title;
-                else return OrginalTitle;
+                if (Title == null) return OrginalTitle;
+                else return Title;
             }
         }
     }

@@ -31,6 +31,8 @@ namespace ETL.View
         {
             InitializeComponent();
 
+            CheckPassword();
+
             // USTALAMY LICZBE WATKOW I TASKOW (PROGRAMOWANIE ASYNCHRONICZNE I WIELOWATKOWE)
             threadsArray = new Thread[2];
 
@@ -45,6 +47,23 @@ namespace ETL.View
 
             ConsoleScrollViewer.ScrollToBottom();
             Search_Async();
+        }
+
+        public void CheckPassword()
+        {
+            InputText enterPassword = new InputText();
+            enterPassword.ShowDialog();
+            var password = enterPassword.Get();
+
+            DataCallers.Instance.ConnectionString = $"server = 89.68.162.35; port = 4000; userid = mario; password = {password}; database = ETLProject; sslmode = None";
+
+            if (string.IsNullOrEmpty(password) || !DataCallers.Instance.IsServerConnected())
+            {
+                MessageBox.Show("Incorrect password\nApplication will be closed");
+                System.Environment.Exit(1);
+            }
+
+            enterPassword = null;
         }
 
         private void OtherWindowOnTextBoxValueChanged(object sender, TextBoxValueEventArgs e)

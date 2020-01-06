@@ -9,10 +9,25 @@ namespace DataContext.DataSource
 {
     public class MovieService : ICaller
     {
+        private static string _connectionString = null;
+        public string ConnectionString
+        {
+            get
+            {
+                if (!String.IsNullOrEmpty(_connectionString))
+                    return _connectionString;
+                return String.Empty;
+            }
+            set
+            {
+                _connectionString = value;
+            }
+        }
+
         // KLASA TA PELNI FUNKCJE SERVISU WYKONUJACEGO METODY ROBIACE OPERACJE NA BAZIE DANYCH
         public bool EditMovie(Movie movie)
         {
-            using (var context = new ETLModel())
+            using (var context = new ETLModel(ConnectionString))
             {
                 try
                 {
@@ -44,7 +59,7 @@ namespace DataContext.DataSource
 
         public bool AddMovies(List<Movie> movies)
         {
-            using (var context = new ETLModel())
+            using (var context = new ETLModel(ConnectionString))
             {
                 // LAZY LOADING POZWALA NA ZWIEKSZENIE SZYBKOSCI POBIERANIA DANYCH Z BAZY ZA POMOCA ENTITY FRAMEWORKA
                 // NIE POBIERA ON OBJEKTOW REFEJENCYJNYCH (np. POBIERAJAC FILM NIE POBIERZE NIEPOTRZEBNIE AUTOMATYCZNIE WSZYSTKICH AKTOROW)
@@ -134,7 +149,7 @@ namespace DataContext.DataSource
 
         public List<Movie> GetAllMovies()
         {
-            using (var context = new ETLModel())
+            using (var context = new ETLModel(ConnectionString))
             {
                 try
                 {
@@ -153,7 +168,7 @@ namespace DataContext.DataSource
 
         public bool RemoveAll()
         {
-            using (var context = new ETLModel())
+            using (var context = new ETLModel(ConnectionString))
             {
                 try
                 {
@@ -175,6 +190,22 @@ namespace DataContext.DataSource
                 {
                     return false;
                     throw new Exception();
+                }
+            }
+        }
+
+        public bool IsServerConnected()
+        {
+            using (var context = new ETLModel(ConnectionString))
+            {
+                try
+                {
+                    context.Database.Connection.Open();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    return false;
                 }
             }
         }
